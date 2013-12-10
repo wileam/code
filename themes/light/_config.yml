@@ -1,0 +1,46 @@
+menu:
+  Home: /
+  About: /about
+  Archives: /archives
+
+widgets: 
+#- search
+- about_me
+- category
+- tag
+- recent_posts
+- duoshuo_recent_comments
+- links
+
+excerpt_link: 全文
+
+twitter:
+  username:
+  show_replies: false
+  tweet_count: 5
+
+addthis:
+#  enable: true
+  pubid:
+  facebook: true
+  twitter: true
+  google: true
+  pinterest: true
+
+fancybox: true
+
+google_analytics: UA-41676519-1
+rss:
+
+links:
+- name: Life Blog
+  link: http://blog.wileam.com
+
+duoshuo: wileamcode
+
+about_me:
+  title: ABOUT ME
+  avatar: /uploads/avatar.jpg
+  texts:
+  - <a href="/about" target="_BLANK">Joanna Wu(wileam)</a>
+  - <img src="/uploads/email.gif">

@@ -1,0 +1,54 @@
+date: 2013-12-11 01:34:59.010
+argv: c:\Program Files\nodejs\node.exe c:\Documents and Settings\user\Application Data\npm\node_modules\hexo\bin\hexo deploy --generate
+os: Windows_NT 5.1.2600 win32 ia32
+version:
+  hexo: 2.3.0
+  http_parser: 1.0
+  node: 0.10.22
+  v8: 3.14.5.9
+  ares: 1.9.0-DEV
+  uv: 0.10.19
+  zlib: 1.2.3
+  modules: 11
+  openssl: 1.0.1e
+---
+
+[debug] 01:34:57.836 Configuration file load successfully
+[debug] 01:34:57.839 Version info checked successfully
+[debug] 01:34:57.840 Loading the database...
+[debug] 01:34:58.325 Theme layout loaded
+[debug] 01:34:58.342 Theme configuration loaded
+[debug] 01:34:58.360 Processed: CNAME
+[debug] 01:34:58.360 Processed: uploads/avatar.jpg
+[debug] 01:34:58.365 Processed: uploads/email.gif
+[debug] 01:34:58.373 Processed: about/index.md
+[debug] 01:34:58.382 Processed: _posts/hello-world.md
+[debug] 01:34:58.452 Processed: _posts/markdown-exercise.md
+[debug] 01:34:58.457 Theme i18n loaded
+[debug] 01:34:58.462 Theme source loaded
+[debug] 01:34:58.488 Cache saved
+[info] 01:34:58.494 Files loaded in 0.209s
+[debug] 01:34:58.517 Render archive: archives/
+[debug] 01:34:58.517 Render archive: archives/2013/
+[debug] 01:34:58.517 Render archive: archives/2013/12/
+[debug] 01:34:58.517 Render index: 
+[debug] 01:34:58.517 Render page: about/index.html
+[debug] 01:34:58.517 Render post: markdown-exercise/
+[debug] 01:34:58.517 Render post: hello-world/
+[debug] 01:34:58.517 Render tag: tags/markdown/
+[debug] 01:34:58.517 Render tag: tags/syntax/
+[debug] 01:34:58.574 Public folder cleared: CNAME,uploads\avatar.jpg,uploads\email.gif,fancybox\blank.gif,fancybox\fancybox_loading.gif,fancybox\fancybox_loading@2x.gif,fancybox\fancybox_overlay.png,fancybox\fancybox_sprite.png,fancybox\fancybox_sprite@2x.png,fancybox\jquery.fancybox.css,fancybox\jquery.fancybox.pack.js,js\gallery.js,js\jquery.imagesloaded.min.js,css\style.css,css\font\fontawesome-webfont.eot,css\font\fontawesome-webfont.svg,css\font\fontawesome-webfont.ttf,css\font\fontawesome-webfont.woff,archives\index.html,archives\2013\index.html,archives\2013\12\index.html,index.html,about\index.html,markdown-exercise\index.html,hello-world\index.html,tags\markdown\index.html,tags\syntax\index.html
+[create] 01:34:58.883 Public: archives\index.html
+[create] 01:34:58.895 Public: archives\2013\12\index.html
+[create] 01:34:58.901 Public: index.html
+[create] 01:34:58.906 Public: about\index.html
+[create] 01:34:58.931 Public: markdown-exercise\index.html
+[create] 01:34:58.936 Public: archives\2013\index.html
+[create] 01:34:58.937 Public: hello-world\index.html
+[create] 01:34:58.944 Public: tags\syntax\index.html
+[create] 01:34:58.971 Public: tags\markdown\index.html
+[info] 01:34:58.971 9 files generated in 0.458s
+[info] 01:34:58.971 Start deploying: github
+[info] 01:34:58.972 Clearing .deploy folder...
+[error] 01:34:58.989 Error: EBUSY, rmdir 'f:\coding\hexo\.deploy\css'
+Error: EBUSY, rmdir 'f:\coding\hexo\.deploy\css'
