@@ -42,7 +42,7 @@ Markdown学习练习笔记/兼文档
 *to be continued*
 
 reference: [markdown syntax](http://daringfireball.net/projects/markdown/syntax)
-点此查看：[文章源码](https://github.com/wileam/code/blob/master/source\_posts/markdown-exercise.md)
+点此查看：[文章源码](https://raw.github.com/wileam/code/master/source/_posts/markdown-exercise.md)
 
 **题外话**
 hexo支持markdown语法，而hexo本身是要求用[YAML](http://en.wikipedia.org/wiki/YAML)来写的，比如文章要同时标记多个tags，就需要用
