@@ -1,7 +1,7 @@
 menu:
   Home: /
   About: /about
-  Archives: /archives
+  RSS: /atom.xml
 
 widgets: 
 - search
@@ -9,6 +9,7 @@ widgets:
 - category
 - tag
 - recent_posts
+- weibo
 - duoshuo_recent_comments
 - links
 
@@ -20,7 +21,7 @@ twitter:
   tweet_count: 5
 
 addthis:
- enable: false
+ # enable: false
   pubid:
   facebook: true
   twitter: true
@@ -30,7 +31,7 @@ addthis:
 fancybox: true
 
 google_analytics: UA-41676519-1
-rss:
+rss: /atom.xml
 
 links:
 - name: Life Blog
@@ -43,5 +44,5 @@ about_me:
   avatar: /uploads/avatar.jpg
   texts:
   - <a href="/about" target="_BLANK">Joanna Wu(wileam)</a>
-  - <p>Smile, breathe & go slowly. ^_^</p>
+  - Smile, breathe & go slowly. ^_^
   - <img src="/uploads/email.gif">

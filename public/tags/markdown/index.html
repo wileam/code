@@ -51,7 +51,7 @@
     
       <li><a href="/about">About</a></li>
     
-      <li><a href="/archives">Archives</a></li>
+      <li><a href="/atom.xml">RSS</a></li>
     
   </ul>
   <div class="clearfix"></div>
@@ -73,7 +73,7 @@
       
       
   
-    <h1 class="title"><a href="/markdown-exercise/">markdown-exercise</a></h1>
+    <h1 class="title"><a href="/markdown-exercise/">markdown document</a></h1>
   
 
     </header>
@@ -87,11 +87,12 @@
 <span class="header">一级标题第二种写法 H1
 ===========</span></code></pre>
 <h3>二级标题 H2</h3>
-<pre><code><span class="preprocessor">## 二级标题 H2</span>
+<pre><code><span class="comment">##</span> <span class="comment">二级标题</span> <span class="comment">H2</span>
 
-二级标题第二种写法 H2
+<span class="comment">二级标题第二种写法</span> <span class="comment">H2</span>
+<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
 
-<span class="preprocessor">### H3</span></code></pre>
+<span class="comment">###</span> <span class="comment">H3</code></pre>
 <h3>引用 Blockquotes</h3>
 <pre><code>&gt; <span class="variable">Smile</span>, breathe <span class="keyword">and</span> go slowly.</code></pre>
 <h2>列表 LIST</h2>
@@ -106,8 +107,7 @@
 <li>第一点</li>
 <li>第二点</li>
 </ol>
-<p><em>to be continued</em></p>
-<p>reference: <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">markdown syntax</a><br>点此查看：<a href="https://raw.github.com/wileam/code/master/source/_posts/markdown-exercise.md" target="_blank">文章源码</a></p>
+<p>reference: <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">markdown syntax</a></p>
 <p><strong>题外话</strong><br>hexo支持markdown语法，而hexo本身是要求用<a href="http://en.wikipedia.org/wiki/YAML" target="_blank">YAML</a>来写的，比如文章要同时标记多个tags，就需要用</p>
 <pre><code><span class="attribute">tags</span>: <span class="string">[tag1, tag2]</span></code></pre>
 <p>这样的语法来写，倒是和JSON有点儿像。 :)</p>
@@ -134,6 +134,13 @@
 </nav>
 </div></div>
     <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:code.wileam.com">
+  </form>
+</div>
+
   
 <div class="widget about_me">
   <h3 class="title">ABOUT ME</h3>
@@ -144,6 +151,8 @@
     
     <li><a href="/about" target="_BLANK">Joanna Wu(wileam)</a></li>
     
+    <li>Smile, breathe & go slowly. ^_^</li>
+    
     <li><img src="/uploads/email.gif"></li>
     
   </ul>
@@ -151,6 +160,15 @@
 
 
   
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/syntax/">syntax</a><small>1</small></li>
+  
+  </ul>
+</div>
+
 
   
 <div class="widget tag">
@@ -171,16 +189,14 @@
   <ul class="entry">
     
       <li>
-        <a href="/markdown-exercise/">markdown-exercise</a>
-      </li>
-    
-      <li>
-        <a href="/hello-world/">Hello World</a>
+        <a href="/markdown-exercise/">markdown document</a>
       </li>
     
   </ul>
 </div>
 
+
+  <iframe width="100%" height="600" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=600&fansRow=1&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1508913647&verifier=b246ee69&dpc=1"></iframe>
 
   
 <div class="widget duoshuo_recent_comments">

@@ -6,14 +6,16 @@ date: 2013-12-10 23:01:54
 
 小雪、Joanna。
 
-<i class="icon-github"></i>
+<!-- <a href="https://www.facebook.com/Joanna.Wu.0326"><img src="/uploads/icon/facebook.png" width="28px" height="28px" alt=""></a> -->
 
 Contact: 
 <img src="/uploads/email.gif" alt="">
 
-New version/ English/geek version ABOUT
+New 2013 version/ English version ABOUT
 --------------
 Geek, (to be) a coder, (to be) a front-end developer.
+
+Based in Beijing, China.
 
 Enjoy coding, playing chess, soduko, rubik's cube...etc
 
