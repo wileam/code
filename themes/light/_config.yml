@@ -4,7 +4,7 @@ menu:
   Archives: /archives
 
 widgets: 
-#- search
+- search
 - about_me
 - category
 - tag
@@ -20,7 +20,7 @@ twitter:
   tweet_count: 5
 
 addthis:
-#  enable: true
+ enable: false
   pubid:
   facebook: true
   twitter: true
@@ -43,4 +43,5 @@ about_me:
   avatar: /uploads/avatar.jpg
   texts:
   - <a href="/about" target="_BLANK">Joanna Wu(wileam)</a>
+  - <p>Smile, breathe & go slowly. ^_^</p>
   - <img src="/uploads/email.gif">

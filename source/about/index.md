@@ -1,6 +1,13 @@
 title: About
 date: 2013-12-10 23:01:54
 ---
+
+<img src="/uploads/avatar-reading.jpg" width="180px" height="180px" alt="">
+
+小雪、Joanna。
+
+<i class="icon-github"></i>
+
 Contact: 
 <img src="/uploads/email.gif" alt="">
 
@@ -20,10 +27,6 @@ Enjoy reading, writing, travelling...etc
 
 旧版/中文版关于
 ----------------
-About Me:
-小雪、Joanna。
-
-———————–
 
 好奇，不安，生命力旺盛。害怕一眼望穿的生活。
 
