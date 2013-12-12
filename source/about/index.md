@@ -13,7 +13,7 @@ Contact:
 
 New 2013 version/ English version ABOUT
 --------------
-Geek, (to be) a coder, (to be) a front-end developer.
+Geek, coder, front-end developer.
 
 Based in Beijing, China.
 

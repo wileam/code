@@ -6,6 +6,7 @@ menu:
 widgets: 
 - search
 - about_me
+- calendar
 - category
 - tag
 - recent_posts
@@ -13,12 +14,13 @@ widgets:
 - duoshuo_recent_comments
 - links
 
+highlightjs: monokai_sublime
+
 excerpt_link: 全文
 
-twitter:
-  username:
-  show_replies: false
-  tweet_count: 5
+twitter_id: wileam
+facebook_id: Joanna.Wu.0326
+github_id: wileam
 
 addthis:
  # enable: false
@@ -45,4 +47,5 @@ about_me:
   texts:
   - <a href="/about" target="_BLANK">Joanna Wu(wileam)</a>
   - Smile, breathe & go slowly. ^_^
+  - <br>
   - <img src="/uploads/email.gif">

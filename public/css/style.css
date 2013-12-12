@@ -1,11 +1,9 @@
-@import url("//fonts.googleapis.com/css?family=Lato:400,400italic");
 @font-face {
   font-family: 'FontAwesome';
   font-style: normal;
   font-weight: normal;
   src: url("font/fontawesome-webfont.eot?#iefix") format('embedded-opentype'), url("font/fontawesome-webfont.woff") format('woff'), url("font/fontawesome-webfont.ttf") format('truetype'), url("font/fontawesome-webfont.svg#FontAwesomeRegular") format('svg');
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +31,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "微软雅黑", "STHeiti", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 h1 {
   font-size: 1.8em;
@@ -125,7 +123,7 @@ a:hover {
   margin-top: 10px;
 }
 #header #main-nav {
-  font-family: "微软雅黑", "STHeiti", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 2.5em;
 }
 #header #main-nav ul {
@@ -259,7 +257,7 @@ article header .icon:before {
 }
 article header time {
   color: #999;
-  font: 0.9em "微软雅黑", "STHeiti", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 0.9em "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-bottom: 5px;
   display: block;
   line-height: 1;
@@ -494,7 +492,7 @@ article footer .addthis iframe {
   padding: 5px 10px;
   background: #ddd;
   color: #999;
-  font-family: "微软雅黑", "STHeiti", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
   margin-bottom: 50px;
 }
@@ -593,7 +591,7 @@ article footer .addthis iframe {
 }
 #sidebar .search input {
   background: #fff;
-  font-family: "微软雅黑", "STHeiti", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-style: italic;
   font-size: 1em;
   padding: 10px 15px;
@@ -645,7 +643,7 @@ article footer .addthis iframe {
 #footer {
   color: #999;
   margin-bottom: 50px;
-  font: 0.9em/1.6 "微软雅黑", "STHeiti", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 0.9em/1.6 "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
 }
 .entry .gist {
@@ -798,4 +796,55 @@ pre .clojure .title {
 }
 pre .deletion {
   color: #dc322f;
+}
+#goTopBtn {
+  POSITION: fixed;
+  TEXT-ALIGN: center;
+  LINE-HEIGHT: 30px;
+  WIDTH: 45px;
+  BOTTOM: 35px;
+  HEIGHT: 47px;
+  FONT-SIZE: 12px;
+  CURSOR: pointer;
+  RIGHT: 10px;
+  _position: absolute;
+  _right: auto;
+}
+.Calendar {
+  font-size: 0.9em;
+  background-color: #fff;
+  text-align: center;
+  padding: 15px 20px;
+  line-height: 1.5em;
+}
+.Calendar a {
+  color: #258fb8;
+}
+.Calendar table {
+  width: 100%;
+  border: 0;
+}
+.Calendar table thead {
+  color: #888;
+}
+.Calendar table td {
+  font-size: 11px;
+  padding: 1px;
+}
+#idCalendarPre {
+  cursor: pointer;
+  float: left;
+  padding-right: 5px;
+}
+#idCalendarNext {
+  cursor: pointer;
+  float: right;
+  padding-right: 5px;
+}
+#idCalendar td.onToday {
+  font-weight: bold;
+  color: #c60;
+}
+#idCalendar td.onSelect {
+  font-weight: bold;
 }
