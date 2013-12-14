@@ -1,6 +1,6 @@
 title: markdown语法
 date: 2013-12-11 01:12:44
-tags: [markdown, syntax]
+tags: [markdown, syntax, translate]
 categories: coding
 ---
 Markdown学习练习笔记/兼文档
@@ -22,16 +22,12 @@ Markdown学习练习笔记/兼文档
     这还是一个一级标题 header1
     ===========
 
-# 这是一个一级标题 header1
-    
 ### 二级标题 H2
 
     ## 这是一个二级标题 H2
     
     这还是一个二级标题 H2
     --------
-
-## 这是一个二级标题 H2
 
 ### 三级-六级标题
 
@@ -41,7 +37,7 @@ Markdown学习练习笔记/兼文档
 
 只有一种写法了。
 
-### 引用 Blockquotes
+## 引用 Blockquotes
     > Smile, breathe and go slowly.
 
 > Smile, breathe and go slowly.
@@ -67,9 +63,23 @@ Markdown学习练习笔记/兼文档
 
 ## 链接
 
+### 行内式
+
     [曼珠沙华](http://blog.wileam.com/ "生活博客")
 
 [曼珠沙华](http://blog.wileam.com/ "生活博客")
+
+### 参考式
+
+    [曼珠沙华][1], [技术博客][2]
+    [1]: http://blog.wileam.com/ "(此处可选)生活博客"
+    [2]: http://code.wileam.com/ "(此处可选)技术博客"
+
+[曼珠沙华][1], [技术博客][2]
+[1]: http://blog.wileam.com/ "(此处可选)生活博客"
+[2]: http://code.wileam.com/ "(此处可选)技术博客"
+
+注意最下面的参考链接是直接不会出现的。
 
 ## 代码块 CODE BLOCKS
 
@@ -82,12 +92,47 @@ Markdown学习练习笔记/兼文档
         </div>
     </div>
 
-## 加粗/斜体
+## 加粗/斜体 EMPHASIS
 
     **加粗**
     *斜体*
 
 **加粗**
 *斜体*
-    
+
+## 图像 IMAGES
+
+###行内式
+
+    ![Avatar](../uploads/avatar.jpg "Optional title")
+
+![Avatar](../uploads/avatar.jpg "Optional title")
+
+### 参考式
+
+    ![Avatar-gavatar][3]
+    [3]: ../uploads/avatar.jpg "(optional)avatar-1"
+
+![Avatar-gavatar][3]
+[3]: ../uploads/avatar.jpg "(optional)avatar-1"
+
+目前markdown还不能更改大小，如果需要设置宽高需要写html \<img\>代码。
+
+其他
+--------
+
+### 电子邮件 email
+
+    <abc@gmail.com>
+
+<abc@gmail.com>
+
+### 反斜杠
+
+    \*我就是想显示星号不想斜体\*
+
+\*我就是想显示星号不想斜体\*
+
+----
 reference: [markdown syntax](http://daringfireball.net/projects/markdown/syntax)
+本文源码：https://github.com/wileam/code/blob/master/source/_posts/markdown-syntax.md
