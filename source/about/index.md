@@ -4,9 +4,7 @@ date: 2013-12-10 23:01:54
 
 <img src="/uploads/avatar-reading.jpg" width="180px" height="180px" alt="">
 
-小雪、Joanna。
-
-<!-- <a href="https://www.facebook.com/Joanna.Wu.0326"><img src="/uploads/icon/facebook.png" width="28px" height="28px" alt=""></a> -->
+小雪、Joanna。id wileam(since 1999).
 
 Contact: 
 <img src="/uploads/email.gif" alt="">
@@ -20,11 +18,6 @@ Based in Beijing, China.
 Enjoy coding, playing chess, soduko, rubik's cube...etc
 
 Enjoy reading, writing, travelling...etc
-
-<a href="http://wileam.com" target="_BLANK">Homepage</a>(Coming soon...)
-<a href="http://blog.wileam.com" target="_BLANK">Life Blog</a></p>
-
-<a href="https://github.com/wileam/">Github</a>、<a href="http://www.douban.com/people/wileam/">douban</a>、<a href="https://weibo.com/wileam/">weibo</a></p>
 
 
 旧版/中文版关于
