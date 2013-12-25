@@ -7,7 +7,6 @@ widgets:
 - search
 - about_me
 - calendar
-- category
 - tag
 - recent_posts
 - weibo

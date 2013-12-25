@@ -8,7 +8,7 @@ tags:
 categories: coding
 ---
 
-首先，**这不是一篇详尽的完整的教程**，只是记录大致的hexo建站流程以及自己折腾的过程。因为网上关于hexo的教程已经太多，一搜一大把。但是我还是推荐英文尚可的直接阅读hexo作者的**[文档](http://zespia.tw/hexo/docs/)**，因为很多教程也只是一知半解，还是看作者文档来的比较彻底。另外，hexo源代码开源，实在不行还可以去hexo的[github](https://github.com/tommy351/hexo)去提[issue](https://github.com/tommy351/hexo/issues)。
+首先，*这不是一篇详尽的完整的教程*，只是记录大致的hexo建站流程以及自己折腾的过程。因为网上关于hexo的教程已经太多，一搜一大把。但是我还是推荐英文尚可的直接阅读hexo作者的**[文档](http://zespia.tw/hexo/docs/)**，因为很多教程也只是一知半解，还是看作者文档来的比较彻底。另外，hexo源代码开源，实在不行还可以去hexo的[github](https://github.com/tommy351/hexo)去提[issue](https://github.com/tommy351/hexo/issues)。
 
 折腾的成果就是你现在看到的这个博客，所以这里本身就是一个demo。^_^
 
@@ -121,8 +121,8 @@ References:
 - 字体微调 [1]
 
 优化调整参考了：
-[1] [jim-liu的优化版light theme] (https://github.com/LiuJi-Jim/hexo-theme-light)
-[2] [净土howiefh] (https://github.com/howiefh/howiefh.github.io/)
+[1] [jim-liu的优化版light theme](https://github.com/LiuJi-Jim/hexo-theme-light)
+[2] [净土howiefh](https://github.com/howiefh/howiefh.github.io/)
 [3] [微博开放平台](http://app.weibo.com/tool/weiboshow)
 
 其他

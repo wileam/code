@@ -8,7 +8,7 @@ Markdown学习练习笔记/兼文档
 哲学 philosophy
 ---------
 
-咳咳。简单说就是“易读”，“易写”。深得我心呀。
+咳咳。简单说就是“易读”，“易写”。
 
 > Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
 <!-- more -->
