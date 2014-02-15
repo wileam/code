@@ -1,0 +1,40 @@
+<div class="widget" id="octocard"></div>
+<script>
+OCTOCARD = {
+  // [required][string] Username.
+  name: 'wileam',
+
+  // [optional][string|Element]
+  // element or elementId, `octocard` as default.
+  element: 'octocard',
+
+  // [optional][string]
+  // Used module names, default is:
+  //   `base,details,stats,repos,contributions,orgs`.
+  // You can change the order or remove module if you don't want.
+  modules: 'base,details,stats,orgs,eventsStatis',
+
+  // [optional][number] Number of repos to be shown.
+  // `3` as default
+  // reposNum: 4,
+
+  // [optional][number]repos which will not be shown
+  // '' as default
+  // reposIgnored: 'jcisoft.com,2013',
+
+  // [optional][number] Number of organizations to be shown.
+  // `-1` as default, represent showing all organizations.
+  // orgsNum: -1,
+
+  // [optional][string]url of jsonp api
+  // `http://octocard.info/api` as default.
+  // If your use your own octocard-server, change it.
+  // api: 'http://your-octocard-server.com/api',
+
+  // [optional][boolean]show footer or not
+  // 'false' as default
+  // noFooter: false
+};
+</script>
+<script src="http://nodejs.in/octocard/bin/octocard.js"></script>
+<br>

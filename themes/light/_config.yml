@@ -3,9 +3,9 @@ menu:
   About: /about
   RSS: /atom.xml
 
-widgets: 
+widgets:
 - search
-- about_me
+- octocard
 - calendar
 - tag
 - recent_posts
@@ -41,6 +41,8 @@ links:
   link: http://jimliu.net/
 - name: icyleaf's blog
   link: http://icyleaf.com/
+- name: twinsant
+  link: http://twinsant.com/
 
 duoshuo: wileamcode
 
