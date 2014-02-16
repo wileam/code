@@ -37,7 +37,7 @@ tags:
 
 参考链接：
 
-[1] [CSS display: inline-Block: Why It Rocks, And Why It Sucks](http://robertnyman.com/2010/02/24/css-display-inline-block-why-it-rocks-and-why-it-sucks/
+[1] [CSS display: inline-Block: Why It Rocks, And Why It Sucks](http://robertnyman.com/2010/02/24/css-display-inline-block-why-it-rocks-and-why-it-sucks/)
 
 [2] [About inline-blocks](http://webdesigner-webdeveloper.com/weblog/about-inline-blocks/)
 
