@@ -1,7 +1,11 @@
 title: markdown语法
 date: 2013-12-11 01:12:44
-tags: [markdown, syntax, translate]
-categories: coding
+tags:
+- markdown
+- syntax
+- translate
+categories: other
+
 ---
 Markdown学习练习笔记/兼文档
 
@@ -18,14 +22,14 @@ Markdown学习练习笔记/兼文档
 ### 一级标题 H1
 
     # 这是一个一级标题 header1
-    
+
     这还是一个一级标题 header1
     ===========
 
 ### 二级标题 H2
 
     ## 这是一个二级标题 H2
-    
+
     这还是一个二级标题 H2
     --------
 

@@ -5,13 +5,13 @@ menu:
 
 widgets:
 - search
-- octocard
+- about_me
 - calendar
-- tag
+- category
+- tagcloud
 - recent_posts
-- weibo
-- duoshuo_recent_comments
 - links
+- duoshuo_recent_comments
 
 highlightjs: monokai_sublime
 

@@ -5,6 +5,8 @@ tags:
 - css
 - design
 - openparty
+category: frontend
+
 ---
 
 2013.12.21我在[Beijing Open Party](http://www.beijing-open-party.org/)2013年的最后一期，2013嘉年华活动中做了一个小分享，主题就是Icon Font的好处及应用。
