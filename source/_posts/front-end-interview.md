@@ -82,8 +82,6 @@ category: frontend
 
 - ** 如果让你从头开始搭建一个类似Bootstrap的框架，你会怎么实现？ **
 
-答：答的很差，之前没想过。
-
 - ** Git里删除一个远程分支的命令是？ **
 
 答：这个问题好坑爹，我回答是<code>git branch -d origin branch-name</code>，回头一查应该是<code>git push origin :branch-name</code>
