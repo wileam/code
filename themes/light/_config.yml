@@ -34,9 +34,11 @@ fancybox: true
 google_analytics: UA-41676519-1
 rss: /atom.xml
 
-links:
+Links:
 - name: Life Blog
   link: http://blog.wileam.com
+- name: popotang
+  link: http://popotang.com/
 - name: Jim-Liu's blog
   link: http://jimliu.net/
 - name: icyleaf's blog
