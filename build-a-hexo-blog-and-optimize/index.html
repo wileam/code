@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Joanna&#39;s coding blog</title>
+  <title>hexo搭建静态博客以及优化 | Joanna&#39;s coding blog</title>
   <meta name="author" content="Joanna Wu">
   
   <meta name="description" content="Joanna&#39;s coding blog，">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="hexo搭建静态博客以及优化"/>
   <meta property="og:site_name" content="Joanna&#39;s coding blog"/>
 
   
@@ -76,105 +76,7 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-02-15T09:22:01.000Z"><a href="/front-end-interview/">Feb 15 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/front-end-interview/">一些前端面试题</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>前一阵时间找工作，面试了一些公司，这里也总结一下遇到的前端技术相关的问题，做个记录，也看看自己缺那块，以后要往什么方向继续努力。以下面试题都不指明公司名称了。</p>
-<h2 id="Html/CSS方面">Html/CSS方面</h2>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/front-end-interview/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-22T07:30:17.000Z"><a href="/icon-font-intro/">Dec 22 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/icon-font-intro/">Icon Font的好处及应用</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>2013.12.21我在<a href="http://www.beijing-open-party.org/" target="_blank" rel="external">Beijing Open Party</a>2013年的最后一期，2013嘉年华活动中做了一个小分享，主题就是Icon Font的好处及应用。</p>
-<p>现在把相关的demo和幻灯片也放在这里：<br>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/icon-font-intro/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
     <div class="gallery">
   <div class="photoset">
@@ -196,7 +98,7 @@
       
       
   
-    <h1 class="title"><a href="/build-a-hexo-blog-and-optimize/">hexo搭建静态博客以及优化</a></h1>
+    <h1 class="title">hexo搭建静态博客以及优化</h1>
   
 
     </header>
@@ -207,16 +109,129 @@
 <p><em>p.s. hexo作者据说是台湾的一名在校学生…… T_T 努力吧少年…… </em></p>
 <h2 id="建站流程">建站流程</h2>
 <h3 id="1-_安装node-js以及git">1. 安装node.js以及git</h3>
+<a id="more"></a>
+
+<h3 id="2-_安装hexo">2. 安装hexo</h3>
+<pre><code><span class="variable">$ </span>npm install -g hexo
+</code></pre><h3 id="3-_部署github_pages">3. 部署github pages</h3>
+<h4 id="3-1_github建立repo">3.1 github建立repo</h4>
+<p>以下二选一。</p>
+<ul>
+<li>建立一个 username.github.com 的repo，username为你的github用户名，每个用户只能有一个这样的repo，则直接发布到master分支即可。</li>
+<li>建立一个项目repo，发布的branch是gh-pages.</li>
+</ul>
+<p>自定义域名</p>
+<p>如果你用自定义域名的话，github pages需要你建立一个名称为CNAME的文件，里面放入你的域名地址。如我的<a href="https://github.com/wileam/code/blob/gh-pages/CNAME" target="_blank" rel="external">CNAME文件</a>.</p>
+<p>因为每次deploy的时候hexo都会重新生成文件，所以直接加在github是不好使的，<strong>这个文件需要放在 hexo folder/source文件夹根目录下。</strong></p>
+<h4 id="3-2_hexo配置deploy信息：">3.2 hexo配置deploy信息：</h4>
+<p>修改在blog根目录下的_config.yml，添加repo地址：</p>
+<pre><code>deploy:
+  <span class="class"><span class="keyword">type</span>: <span class="title">github</span></span>
+  repository: https:<span class="comment">//github.com/[username]/[reponame].git</span>
+</code></pre><p>References:<br>[1] <a href="https://help.github.com/categories/20/articles" target="_blank" rel="external">github pages help</a><br>[2] <a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank" rel="external">hexo Deployment Docs</a><br>[3] 想用BAE的可以看这篇：<a href="http://jimliu.net/2013/11/20/use-hexo-on-bae/" target="_blank" rel="external">在BAE上使用hexo搭建博客</a></p>
+<h3 id="4-_hexo基本操作">4. hexo基本操作</h3>
+<ul>
+<li><p>新建博客</p>
+<pre><code><span class="variable">$ </span>hexo init &lt;folder&gt;
+</code></pre></li>
+</ul>
+<p>在该目录下就建立了你的hexo blog.</p>
+<ul>
+<li><p>新建文章</p>
+<pre><code><span class="variable">$ </span>hexo init &lt;title&gt;
+</code></pre></li>
+</ul>
+<p>会在source/_post新建一个名为 title.md 的文章，用喜欢的编辑器打开就可以用markdown语法写文章了。</p>
+<ul>
+<li><p>server</p>
+<pre><code><span class="variable">$ </span>hexo server
+</code></pre></li>
+</ul>
+<p>就可以在 localhost:4000/ 查看你的博客。</p>
+<ul>
+<li><p>generate &amp; deploy</p>
+<pre><code><span class="variable">$ </span>hexo generate
+<span class="variable">$ </span>hexo deploy
+</code></pre></li>
+</ul>
+<p>或者（以下这俩效果是完全一样的）</p>
+<pre><code>$ hexo <span class="keyword">generate</span> <span class="comment">--deploy</span>
+$ hexo deploy <span class="comment">--generate</span>
+</code></pre><h2 id="折腾">折腾</h2>
+<h3 id="插件_plugins">插件 plugins</h3>
+<ul>
+<li>rss生成 hexo-generator-feed</li>
+<li>sitemap hexo-generator-sitemap</li>
+</ul>
+<p>添加插件的基本操作是：</p>
+<pre><code><span class="input"><span class="prompt">$ npm install &lt;plugin-name&gt;</span> --save</span>
+<span class="variable">$ </span>npm update
+</code></pre><p>然后修改blog根目录下的_config.yml，添加：</p>
+<pre><code>plugin<span class="variable">s:</span>
+- plugin-name
+</code></pre><p>插件部分详见：<a href="https://github.com/tommy351/hexo/wiki/Plugins" target="_blank" rel="external">https://github.com/tommy351/hexo/wiki/Plugins</a></p>
+<h3 id="组件_widgets">组件 widgets</h3>
+<ul>
+<li>关于 about me [1]</li>
+<li>日历 calendar [2]</li>
+<li>返回页面顶部 Scrolltop [2]</li>
+<li>微博秀 weibo show [3]</li>
+</ul>
+<h3 id="其他调整">其他调整</h3>
+<ul>
+<li>去掉addthis和Disqus</li>
+<li>添加多说 [1]</li>
+<li>添加百度统计 [1] 和Google Analytics<br>原先一直用GA然后现在两个都用是打算对比一下。。</li>
+<li>自动附上博客文章源码的github地址</li>
+<li><strong>添加social icons</strong></li>
+<li>样式微调</li>
+<li>字体微调 [1]</li>
+</ul>
+<p>优化调整参考了：<br>[1] <a href="https://github.com/LiuJi-Jim/hexo-theme-light" target="_blank" rel="external">jim-liu的优化版light theme</a><br>[2] <a href="https://github.com/howiefh/howiefh.github.io/" target="_blank" rel="external">净土howiefh</a><br>[3] <a href="http://app.weibo.com/tool/weiboshow" target="_blank" rel="external">微博开放平台</a></p>
+<h2 id="其他">其他</h2>
+<h3 id="源代码管理">源代码管理</h3>
+<p>由于我用的github pages所以发布是会发布到gh-pages分支，而我用这个博客repo的master分支管理整个博客的源代码。这样就可以轻松的实现不同电脑的同步了。<br>本博客的源代码：<a href="https://github.com/wileam/code/" target="_blank" rel="external">https://github.com/wileam/code/</a></p>
+<h3 id="发布显示更多">发布显示更多</h3>
+<p>在你觉得适合的位置插入</p>
+<pre><code><span class="comment">&lt;!-- more --&gt;</span>
+</code></pre><p>就会将之前的部分生成摘要。点击”阅读全文“才会看到全文。</p>
+<h3 id="YAML">YAML</h3>
+<p>hexo文章的头部文件是用<a href="http://en.wikipedia.org/wiki/YAML" target="_blank" rel="external">YAML</a>来写的，比如文章要同时标记多个tags，就需要用</p>
+<pre><code><span class="keyword">tag</span><span class="variable">s:</span> [tag1, tag2]
+</code></pre><p>或者</p>
+<pre><code>tags:
+-<span class="ruby"> tag1
+</span>-<span class="ruby"> tag2</span>
+</code></pre><p>这样的语法来写，详见YAML的<a href="http://en.wikipedia.org/wiki/YAML" target="_blank" rel="external">wikipedia</a>.</p>
+<h3 id="ejs和stylus">ejs和stylus</h3>
+<p>hexo是用的ejs和stylus。同样如果习惯用LESS之类也可以装相应的plugins.</p>
+<p>ejs是embedded javascript，从js文件中抽取出html结构，使代码结构清晰简洁易读。(其实我还不太明白所以没怎么改ejs……)<br>文档存备用：<a href="https://code.google.com/p/embeddedjavascript/w/list" target="_blank" rel="external">https://code.google.com/p/embeddedjavascript/w/list</a></p>
+<p>stylus是和less/sass类似的一个css processor，比原生的css更简洁一些。<br>同样文档存备用：<a href="http://learnboost.github.io/stylus/" target="_blank" rel="external">http://learnboost.github.io/stylus/</a></p>
+<h3 id="markdown">markdown</h3>
+<p>参见<a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">markdown syntax</a>，或者我之前的博客，<a href="http://code.wileam.com/markdown-syntax/" target="_blank" rel="external">markdown语法</a></p>
+<h3 id="疑似bug">疑似bug</h3>
+<p>如果更新了css文件，那么需要把public的css文件删除，然后</p>
+<pre><code><span class="comment">$</span> <span class="comment">hexo</span> <span class="comment">deploy</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">generate</span>
+</code></pre><p>这样才会重新生成新的文件。我试了好几次都是这样，不知道是不是bug……</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/build-a-hexo-blog-and-optimize.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/build-a-hexo-blog-and-optimize.md</a></p>
 
       
     </div>
     <footer>
       
         
-          <div class="alignleft">
-            <a href="/build-a-hexo-blog-and-optimize/#more" class="more-link">阅读全文</a>
-          </div>
+  
+  <div class="categories">
+    <a href="/categories/other/">other</a>
+  </div>
+
         
+  
+  <div class="tags">
+    <a href="/tags/hexo/">hexo</a>, <a href="/tags/blog/">blog</a>
+  </div>
+
         
       
       <div class="clearfix"></div>
@@ -226,63 +241,22 @@
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-10T17:12:44.000Z"><a href="/markdown-syntax/">Dec 11 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/markdown-syntax/">markdown语法</a></h1>
-  
 
-    </header>
-    <div class="entry">
-      
-        <p>Markdown学习练习笔记/兼文档</p>
-<h2 id="哲学_philosophy">哲学 philosophy</h2>
-<p>咳咳。简单说就是“易读”，“易写”。</p>
-<blockquote>
-<p>Markdown is intended to be as easy-to-read and easy-to-write as is feasible.<br>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/markdown-syntax/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-<nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav></div></div>
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="hexo搭建静态博客以及优化" data-url="http://code.wileam.com/build-a-hexo-blog-and-optimize/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wileamcode"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- Duoshuo Comment END -->
+</div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">

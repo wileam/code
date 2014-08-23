@@ -1,3 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://code.wileam.com/icon-font-intro/</loc>
+    <lastmod>2014-08-23T17:28:49.000Z</lastmod>
+  </url>
+  <url>
+    <loc>http://code.wileam.com/front-end-interview/</loc>
+    <lastmod>2014-08-23T17:28:49.000Z</lastmod>
+  </url>
+  <url>
+    <loc>http://code.wileam.com/markdown-syntax/</loc>
+    <lastmod>2014-08-23T17:28:49.000Z</lastmod>
+  </url>
+  <url>
+    <loc>http://code.wileam.com/build-a-hexo-blog-and-optimize/</loc>
+    <lastmod>2014-08-23T17:28:49.000Z</lastmod>
+  </url>
+  <url>
+    <loc>http://code.wileam.com/about/index.html</loc>
+    <lastmod>2014-08-23T17:28:49.000Z</lastmod>
+  </url>
 </urlset>

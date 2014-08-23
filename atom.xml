@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Joanna's coding blog]]></title>
+  <subtitle><![CDATA[WILEAM = WILdest+drEAM.]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://code.wileam.com/"/>
+  <updated>2014-08-23T17:45:09.402Z</updated>
+  <id>http://code.wileam.com/</id>
+  
+  <author>
+    <name><![CDATA[Joanna Wu]]></name>
+    <email><![CDATA[joanna_wu@live.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[一些前端面试题]]></title>
+    <link href="http://code.wileam.com/front-end-interview/"/>
+    <id>http://code.wileam.com/front-end-interview/</id>
+    <published>2014-02-15T09:22:01.000Z</published>
+    <updated>2014-08-23T17:28:49.000Z</updated>
+    <content type="html"><![CDATA[<p>前一阵时间找工作，面试了一些公司，这里也总结一下遇到的前端技术相关的问题，做个记录，也看看自己缺那块，以后要往什么方向继续努力。以下面试题都不指明公司名称了。</p>
+<h2 id="Html/CSS方面">Html/CSS方面</h2>
+<a id="more"></a>
+
+<ul>
+<li><strong> IE有几种渲染模式？ </strong></li>
+</ul>
+<p>答：标准模式(Standards mode)和兼容模式(Quirks mode)。</p>
+<p>详见：<a href="https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode</a></p>
+<ul>
+<li><strong> 遇到过IE 6/7 下元素消失的情况吗？ </strong></li>
+</ul>
+<p>所有IE低版本兼容相关问题都被我忽略了，真心没怎么处理过。硬伤。 TT</p>
+<p>后来查了些资料，大概是IE6/7下绝对定位元素的bug。</p>
+<p>详见：<a href="http://www.positioniseverything.net/explorer/ienondisappearcontentbugPIE/index.htm" target="_blank" rel="external">http://www.positioniseverything.net/explorer/ienondisappearcontentbugPIE/index.htm</a></p>
+<ul>
+<li><strong> CSS怎么实现相对定位？ </strong></li>
+</ul>
+<p>答：父元素<code>position:relative</code> 子元素 <code>position:absolute</code></p>
+<ul>
+<li><strong> <code>inline-block</code>和<code>Float</code>的对比，优缺点，如何选择。 </strong></li>
+</ul>
+<p>答：<code>inline-block</code>需要处理空白问题，<code>float</code>需要清除浮动。</p>
+<p>参考链接：</p>
+<p>[1] <a href="http://robertnyman.com/2010/02/24/css-display-inline-block-why-it-rocks-and-why-it-sucks/" target="_blank" rel="external">CSS display: inline-Block: Why It Rocks, And Why It Sucks</a></p>
+<p>[2] <a href="http://webdesigner-webdeveloper.com/weblog/about-inline-blocks/" target="_blank" rel="external">About inline-blocks</a></p>
+<p>[3] <a href="http://www.impressivewebs.com/inline-block/" target="_blank" rel="external">What is inline-block</a></p>
+<p>[4] <a href="http://coding.smashingmagazine.com/2007/05/01/css-float-theory-things-you-should-know/" target="_blank" rel="external">CSS Float Theory: Things You Should Know</a></p>
+<ul>
+<li><strong> 清除浮动的方式，优缺点。 </strong></li>
+</ul>
+<p>见：</p>
+<p>[1] <a href="http://www.quirksmode.org/css/clearing.html" target="_blank" rel="external">http://www.quirksmode.org/css/clearing.html</a></p>
+<p>[2] <a href="http://www.positioniseverything.net/easyclearing.html" target="_blank" rel="external">http://www.positioniseverything.net/easyclearing.html</a></p>
+<ul>
+<li><p><strong> 对响应式设计的理解。 </strong></p>
+</li>
+<li><p><strong> 用CSS实现三角形。 </strong></p>
+</li>
+</ul>
+<p>见：<a href="http://css-tricks.com/snippets/css/css-triangle/" target="_blank" rel="external">CSS Triangle</a></p>
+<h2 id="_JS/jQuery方面：">　JS/jQuery方面：</h2>
+<ul>
+<li><strong> <code>document.ready</code>和<code>window.onload</code>有什么区别？ </strong></li>
+</ul>
+<p>答得不好，查了下资料，是酱紫：document.ready 是DOM加载完毕，onload是所有页面元素加载完毕。onload比ready晚一些。</p>
+<p>见：<a href="http://stackoverflow.com/questions/3698200/window-onload-vs-document-ready" target="_blank" rel="external">http://stackoverflow.com/questions/3698200/window-onload-vs-document-ready</a></p>
+<ul>
+<li><p><strong> 了解哪些前端的MVC，怎么理解前端MVC？ </strong></p>
+</li>
+<li><p><strong> 用jQuery如何选择一个元素的兄弟节点？ </strong></p>
+</li>
+<li><p><strong> 关于Ajax回调函数的。 </strong></p>
+</li>
+<li><p><strong> 写一个slides的效果。 </strong></p>
+</li>
+</ul>
+<h2 id="综合/其他：">综合/其他：</h2>
+<ul>
+<li><p><strong> 有哪些熟悉的前端html/css框架？ </strong></p>
+</li>
+<li><p><strong> 如果让你从头开始搭建一个类似Bootstrap的框架，你会怎么实现？ </strong></p>
+</li>
+<li><p><strong> Git里删除一个远程分支的命令是？ </strong></p>
+</li>
+</ul>
+<p>答：这个问题好坑爹，我回答是<code>git branch -d origin branch-name</code>，回头一查应该是<code>git push origin :branch-name</code></p>
+<ul>
+<li><p><strong> 平时关注哪些站点，从什么渠道获得资讯？ </strong></p>
+</li>
+<li><p><strong> 最近读过的一篇印象最深的文章 </strong></p>
+</li>
+<li><p><strong> 对代码风格的理解。 </strong></p>
+</li>
+</ul>
+<p>说些题外话，其实面试是一个双向选择，从面试题也可以看出一个公司的风格，侧重点。这样就可以考虑一下和你自己想要的方向是否一致，环境氛围是否契合。在一个舒服的契合的环境里工作，至少对我还是非常重要的。</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/front-end-interview.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/front-end-interview.md</a></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>前一阵时间找工作，面试了一些公司，这里也总结一下遇到的前端技术相关的问题，做个记录，也看看自己缺那块，以后要往什么方向继续努力。以下面试题都不指明公司名称了。</p>
+<h2 id="Html/CSS方面">Html/CSS方面</h2>
+]]></summary>
+    
+      <category term="frontend" scheme="http://code.wileam.com/tags/frontend/"/>
+    
+      <category term="interview" scheme="http://code.wileam.com/tags/interview/"/>
+    
+      <category term="career" scheme="http://code.wileam.com/tags/career/"/>
+    
+      <category term="frontend" scheme="http://code.wileam.com/categories/frontend/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Icon Font的好处及应用]]></title>
+    <link href="http://code.wileam.com/icon-font-intro/"/>
+    <id>http://code.wileam.com/icon-font-intro/</id>
+    <published>2013-12-22T07:30:17.000Z</published>
+    <updated>2014-08-23T17:28:49.000Z</updated>
+    <content type="html"><![CDATA[<p>2013.12.21我在<a href="http://www.beijing-open-party.org/" target="_blank" rel="external">Beijing Open Party</a>2013年的最后一期，2013嘉年华活动中做了一个小分享，主题就是Icon Font的好处及应用。</p>
+<p>现在把相关的demo和幻灯片也放在这里：<br><a id="more"></a></p>
+<p><a href="http://demo.wileam.com/iconfont.html" target="_blank" rel="external">Demo</a></p>
+<p><a href="http://wileam.com/slides/iconfont.html" target="_blank" rel="external">Slide</a><br>作为一名前端，自然想到能否用html来实现，尤其是涉及代码高亮的一些问题，如果用ppt可能会比较麻烦。<br>于是最后选择了revealjs来做幻灯片，效果也是还不错。</p>
+<p><img src="../uploads/op-small.jpg" height="" width="600" alt="Open Party"></p>
+<p>分享这个主题，一是因为了解和使用之后确实觉得iconfont是一个非常好的值得推广使用的东西，尤其是在当前的扁平化的大趋势下，iconfont的单色甚至也不会成为一个很大的缺陷。二是和OP的团队也认识挺多年了，自己也作为听众参与了几次，很喜欢这样开放的理念。也很高兴自己也可以贡献话题与大家分享和交流。</p>
+<p>就酱紫，可以先demo感受一下，然后ppt看具体原理和实现方法。幻灯片上下左右快捷键操作，也支持手机或者触屏设备访问。</p>
+<p>有问题欢迎交流。</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/icon-font-intro.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/icon-font-intro.md</a></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>2013.12.21我在<a href="http://www.beijing-open-party.org/" target="_blank" rel="external">Beijing Open Party</a>2013年的最后一期，2013嘉年华活动中做了一个小分享，主题就是Icon Font的好处及应用。</p>
+<p>现在把相关的demo和幻灯片也放在这里：<br>]]></summary>
+    
+      <category term="iconfont" scheme="http://code.wileam.com/tags/iconfont/"/>
+    
+      <category term="css" scheme="http://code.wileam.com/tags/css/"/>
+    
+      <category term="design" scheme="http://code.wileam.com/tags/design/"/>
+    
+      <category term="openparty" scheme="http://code.wileam.com/tags/openparty/"/>
+    
+      <category term="frontend" scheme="http://code.wileam.com/categories/frontend/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[hexo搭建静态博客以及优化]]></title>
+    <link href="http://code.wileam.com/build-a-hexo-blog-and-optimize/"/>
+    <id>http://code.wileam.com/build-a-hexo-blog-and-optimize/</id>
+    <published>2013-12-14T04:56:49.000Z</published>
+    <updated>2014-08-23T17:28:49.000Z</updated>
+    <content type="html"><![CDATA[<p>首先，<em>这不是一篇详尽的完整的教程</em>，只是记录大致的hexo建站流程以及自己折腾的过程。因为网上关于hexo的教程已经太多，一搜一大把。但是我还是推荐英文尚可的直接阅读hexo作者的<strong><a href="http://zespia.tw/hexo/docs/" target="_blank" rel="external">文档</a></strong>，因为很多教程也只是一知半解，还是看作者文档来的比较彻底。另外，hexo源代码开源，实在不行还可以去hexo的<a href="https://github.com/tommy351/hexo" target="_blank" rel="external">github</a>去提<a href="https://github.com/tommy351/hexo/issues" target="_blank" rel="external">issue</a>。</p>
+<p>折腾的成果就是你现在看到的这个博客，所以这里本身就是一个demo。^_^</p>
+<p><em>p.s. hexo作者据说是台湾的一名在校学生…… T_T 努力吧少年…… </em></p>
+<h2 id="建站流程">建站流程</h2>
+<h3 id="1-_安装node-js以及git">1. 安装node.js以及git</h3>
+<a id="more"></a>
+
+<h3 id="2-_安装hexo">2. 安装hexo</h3>
+<pre><code><span class="variable">$ </span>npm install -g hexo
+</code></pre><h3 id="3-_部署github_pages">3. 部署github pages</h3>
+<h4 id="3-1_github建立repo">3.1 github建立repo</h4>
+<p>以下二选一。</p>
+<ul>
+<li>建立一个 username.github.com 的repo，username为你的github用户名，每个用户只能有一个这样的repo，则直接发布到master分支即可。</li>
+<li>建立一个项目repo，发布的branch是gh-pages.</li>
+</ul>
+<p>自定义域名</p>
+<p>如果你用自定义域名的话，github pages需要你建立一个名称为CNAME的文件，里面放入你的域名地址。如我的<a href="https://github.com/wileam/code/blob/gh-pages/CNAME" target="_blank" rel="external">CNAME文件</a>.</p>
+<p>因为每次deploy的时候hexo都会重新生成文件，所以直接加在github是不好使的，<strong>这个文件需要放在 hexo folder/source文件夹根目录下。</strong></p>
+<h4 id="3-2_hexo配置deploy信息：">3.2 hexo配置deploy信息：</h4>
+<p>修改在blog根目录下的_config.yml，添加repo地址：</p>
+<pre><code>deploy:
+  <span class="class"><span class="keyword">type</span>: <span class="title">github</span></span>
+  repository: https:<span class="comment">//github.com/[username]/[reponame].git</span>
+</code></pre><p>References:<br>[1] <a href="https://help.github.com/categories/20/articles" target="_blank" rel="external">github pages help</a><br>[2] <a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank" rel="external">hexo Deployment Docs</a><br>[3] 想用BAE的可以看这篇：<a href="http://jimliu.net/2013/11/20/use-hexo-on-bae/" target="_blank" rel="external">在BAE上使用hexo搭建博客</a></p>
+<h3 id="4-_hexo基本操作">4. hexo基本操作</h3>
+<ul>
+<li><p>新建博客</p>
+<pre><code><span class="variable">$ </span>hexo init &lt;folder&gt;
+</code></pre></li>
+</ul>
+<p>在该目录下就建立了你的hexo blog.</p>
+<ul>
+<li><p>新建文章</p>
+<pre><code><span class="variable">$ </span>hexo init &lt;title&gt;
+</code></pre></li>
+</ul>
+<p>会在source/_post新建一个名为 title.md 的文章，用喜欢的编辑器打开就可以用markdown语法写文章了。</p>
+<ul>
+<li><p>server</p>
+<pre><code><span class="variable">$ </span>hexo server
+</code></pre></li>
+</ul>
+<p>就可以在 localhost:4000/ 查看你的博客。</p>
+<ul>
+<li><p>generate &amp; deploy</p>
+<pre><code><span class="variable">$ </span>hexo generate
+<span class="variable">$ </span>hexo deploy
+</code></pre></li>
+</ul>
+<p>或者（以下这俩效果是完全一样的）</p>
+<pre><code>$ hexo <span class="keyword">generate</span> <span class="comment">--deploy</span>
+$ hexo deploy <span class="comment">--generate</span>
+</code></pre><h2 id="折腾">折腾</h2>
+<h3 id="插件_plugins">插件 plugins</h3>
+<ul>
+<li>rss生成 hexo-generator-feed</li>
+<li>sitemap hexo-generator-sitemap</li>
+</ul>
+<p>添加插件的基本操作是：</p>
+<pre><code><span class="input"><span class="prompt">$ npm install &lt;plugin-name&gt;</span> --save</span>
+<span class="variable">$ </span>npm update
+</code></pre><p>然后修改blog根目录下的_config.yml，添加：</p>
+<pre><code>plugin<span class="variable">s:</span>
+- plugin-name
+</code></pre><p>插件部分详见：<a href="https://github.com/tommy351/hexo/wiki/Plugins" target="_blank" rel="external">https://github.com/tommy351/hexo/wiki/Plugins</a></p>
+<h3 id="组件_widgets">组件 widgets</h3>
+<ul>
+<li>关于 about me [1]</li>
+<li>日历 calendar [2]</li>
+<li>返回页面顶部 Scrolltop [2]</li>
+<li>微博秀 weibo show [3]</li>
+</ul>
+<h3 id="其他调整">其他调整</h3>
+<ul>
+<li>去掉addthis和Disqus</li>
+<li>添加多说 [1]</li>
+<li>添加百度统计 [1] 和Google Analytics<br>原先一直用GA然后现在两个都用是打算对比一下。。</li>
+<li>自动附上博客文章源码的github地址</li>
+<li><strong>添加social icons</strong></li>
+<li>样式微调</li>
+<li>字体微调 [1]</li>
+</ul>
+<p>优化调整参考了：<br>[1] <a href="https://github.com/LiuJi-Jim/hexo-theme-light" target="_blank" rel="external">jim-liu的优化版light theme</a><br>[2] <a href="https://github.com/howiefh/howiefh.github.io/" target="_blank" rel="external">净土howiefh</a><br>[3] <a href="http://app.weibo.com/tool/weiboshow" target="_blank" rel="external">微博开放平台</a></p>
+<h2 id="其他">其他</h2>
+<h3 id="源代码管理">源代码管理</h3>
+<p>由于我用的github pages所以发布是会发布到gh-pages分支，而我用这个博客repo的master分支管理整个博客的源代码。这样就可以轻松的实现不同电脑的同步了。<br>本博客的源代码：<a href="https://github.com/wileam/code/" target="_blank" rel="external">https://github.com/wileam/code/</a></p>
+<h3 id="发布显示更多">发布显示更多</h3>
+<p>在你觉得适合的位置插入</p>
+<pre><code><span class="comment">&lt;!-- more --&gt;</span>
+</code></pre><p>就会将之前的部分生成摘要。点击”阅读全文“才会看到全文。</p>
+<h3 id="YAML">YAML</h3>
+<p>hexo文章的头部文件是用<a href="http://en.wikipedia.org/wiki/YAML" target="_blank" rel="external">YAML</a>来写的，比如文章要同时标记多个tags，就需要用</p>
+<pre><code><span class="keyword">tag</span><span class="variable">s:</span> [tag1, tag2]
+</code></pre><p>或者</p>
+<pre><code>tags:
+-<span class="ruby"> tag1
+</span>-<span class="ruby"> tag2</span>
+</code></pre><p>这样的语法来写，详见YAML的<a href="http://en.wikipedia.org/wiki/YAML" target="_blank" rel="external">wikipedia</a>.</p>
+<h3 id="ejs和stylus">ejs和stylus</h3>
+<p>hexo是用的ejs和stylus。同样如果习惯用LESS之类也可以装相应的plugins.</p>
+<p>ejs是embedded javascript，从js文件中抽取出html结构，使代码结构清晰简洁易读。(其实我还不太明白所以没怎么改ejs……)<br>文档存备用：<a href="https://code.google.com/p/embeddedjavascript/w/list" target="_blank" rel="external">https://code.google.com/p/embeddedjavascript/w/list</a></p>
+<p>stylus是和less/sass类似的一个css processor，比原生的css更简洁一些。<br>同样文档存备用：<a href="http://learnboost.github.io/stylus/" target="_blank" rel="external">http://learnboost.github.io/stylus/</a></p>
+<h3 id="markdown">markdown</h3>
+<p>参见<a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">markdown syntax</a>，或者我之前的博客，<a href="http://code.wileam.com/markdown-syntax/" target="_blank" rel="external">markdown语法</a></p>
+<h3 id="疑似bug">疑似bug</h3>
+<p>如果更新了css文件，那么需要把public的css文件删除，然后</p>
+<pre><code><span class="comment">$</span> <span class="comment">hexo</span> <span class="comment">deploy</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">generate</span>
+</code></pre><p>这样才会重新生成新的文件。我试了好几次都是这样，不知道是不是bug……</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/build-a-hexo-blog-and-optimize.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/build-a-hexo-blog-and-optimize.md</a></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>首先，<em>这不是一篇详尽的完整的教程</em>，只是记录大致的hexo建站流程以及自己折腾的过程。因为网上关于hexo的教程已经太多，一搜一大把。但是我还是推荐英文尚可的直接阅读hexo作者的<strong><a href="http://zespia.tw/hexo/docs/" target="_blank" rel="external">文档</a></strong>，因为很多教程也只是一知半解，还是看作者文档来的比较彻底。另外，hexo源代码开源，实在不行还可以去hexo的<a href="https://github.com/tommy351/hexo" target="_blank" rel="external">github</a>去提<a href="https://github.com/tommy351/hexo/issues" target="_blank" rel="external">issue</a>。</p>
+<p>折腾的成果就是你现在看到的这个博客，所以这里本身就是一个demo。^_^</p>
+<p><em>p.s. hexo作者据说是台湾的一名在校学生…… T_T 努力吧少年…… </em></p>
+<h2 id="建站流程">建站流程</h2>
+<h3 id="1-_安装node-js以及git">1. 安装node.js以及git</h3>
+]]></summary>
+    
+      <category term="hexo" scheme="http://code.wileam.com/tags/hexo/"/>
+    
+      <category term="blog" scheme="http://code.wileam.com/tags/blog/"/>
+    
+      <category term="other" scheme="http://code.wileam.com/categories/other/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[markdown语法]]></title>
+    <link href="http://code.wileam.com/markdown-syntax/"/>
+    <id>http://code.wileam.com/markdown-syntax/</id>
+    <published>2013-12-10T17:12:44.000Z</published>
+    <updated>2014-08-23T17:28:49.000Z</updated>
+    <content type="html"><![CDATA[<p>Markdown学习练习笔记/兼文档</p>
+<h2 id="哲学_philosophy">哲学 philosophy</h2>
+<p>咳咳。简单说就是“易读”，“易写”。</p>
+<blockquote>
+<p>Markdown is intended to be as easy-to-read and easy-to-write as is feasible.<br><a id="more"></a></p>
+</blockquote>
+<h2 id="标题_HEADERS">标题 HEADERS</h2>
+<h3 id="一级标题_H1">一级标题 H1</h3>
+<pre><code># 这是一个一级标题 header1
+
+<span class="header">这还是一个一级标题 header1
+===========</span>
+</code></pre><h3 id="二级标题_H2">二级标题 H2</h3>
+<pre><code>## 这是一个二级标题 H2
+
+<span class="header">这还是一个二级标题 H2
+--------</span>
+</code></pre><h3 id="三级-六级标题">三级-六级标题</h3>
+<pre><code><span class="preprocessor">### 三级标题 H3</span>
+……
+<span class="preprocessor">###### 六级标题 H6</span>
+</code></pre><p>只有一种写法了。</p>
+<h2 id="引用_Blockquotes">引用 Blockquotes</h2>
+<pre><code>&gt; <span class="variable">Smile</span>, breathe <span class="keyword">and</span> go slowly.
+</code></pre><blockquote>
+<p>Smile, breathe and go slowly.</p>
+</blockquote>
+<h2 id="列表_LIST">列表 LIST</h2>
+<h3 id="无序列表_Unordered_lists">无序列表 Unordered lists</h3>
+<pre><code>-<span class="ruby"> 第一点
+</span>-<span class="ruby"> 第二点</span>
+</code></pre><ul>
+<li>第一点</li>
+<li>第二点</li>
+</ul>
+<h3 id="有序列表_Ordered_lists">有序列表 Ordered lists</h3>
+<pre><code><span class="bullet">3. </span>第一点
+<span class="bullet">2. </span>第二点
+</code></pre><p><em>有趣的是这里前面的数字不重要，无论写什么数字都会生成从1开始递增的有序列表。比如我上面这个例子。会生成。</em></p>
+<ol>
+<li>第一点</li>
+<li>第二点</li>
+</ol>
+<h2 id="链接">链接</h2>
+<h3 id="行内式">行内式</h3>
+<pre><code>[<span class="link_label">曼珠沙华</span>](<span class="link_url">http://blog.wileam.com/ "生活博客"</span>)
+</code></pre><p><a href="http://blog.wileam.com/" title="生活博客" target="_blank" rel="external">曼珠沙华</a></p>
+<h3 id="参考式">参考式</h3>
+<pre><code>[<span class="link_label">曼珠沙华</span>][<span class="link_reference">1</span>], [<span class="link_label">技术博客</span>][<span class="link_reference">2</span>]
+[<span class="link_reference">1</span>]:<span class="link_url"> http://blog.wileam.com/ "(此处可选)生活博客"</span><span class="link_url">
+[2]: http://code.wileam.com/ "(此处可选)技术博客"</span>
+</code></pre><p><a href="http://blog.wileam.com/" title="(此处可选)生活博客" target="_blank" rel="external">曼珠沙华</a>, <a href="http://code.wileam.com/" title="(此处可选)技术博客" target="_blank" rel="external">技术博客</a></p>
+<p>注意最下面的参考链接是直接不会出现的。</p>
+<h2 id="代码块_CODE_BLOCKS">代码块 CODE BLOCKS</h2>
+<p>缩进 4spaces/1Tab。</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"container"</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"row"</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"span4"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"span8"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+    &lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><h2 id="加粗/斜体_EMPHASIS">加粗/斜体 EMPHASIS</h2>
+<pre><code><span class="keyword">*</span><span class="keyword">*</span>加粗<span class="keyword">*</span><span class="keyword">*</span>
+<span class="keyword">*</span>斜体<span class="keyword">*</span>
+</code></pre><p><strong>加粗</strong><br><em>斜体</em></p>
+<h2 id="图像_IMAGES">图像 IMAGES</h2>
+<h3 id="行内式-1">行内式</h3>
+<pre><code>![<span class="link_label">Avatar</span>](<span class="link_url">../uploads/avatar.jpg "Optional title"</span>)
+</code></pre><p><img src="../uploads/avatar.jpg" alt="Avatar" title="Optional title"></p>
+<h3 id="参考式-1">参考式</h3>
+<pre><code>![<span class="link_label">Avatar-gavatar</span>][<span class="link_reference">3</span>]
+[<span class="link_reference">3</span>]:<span class="link_url"> ../uploads/avatar.jpg "(optional)avatar-1"</span>
+</code></pre><p><img src="../uploads/avatar.jpg" alt="Avatar-gavatar" title="(optional)avatar-1"></p>
+<p>目前markdown还不能更改大小，如果需要设置宽高需要写html \<img\>代码。</img\></p>
+<h2 id="其他">其他</h2>
+<h3 id="电子邮件_email">电子邮件 email</h3>
+<pre><code>&lt;abc@gmail.<span class="keyword">com</span>&gt;
+</code></pre><p><a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#97;&#x62;&#x63;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#97;&#x62;&#x63;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
+<h3 id="反斜杠">反斜杠</h3>
+<pre><code>\<span class="keyword">*</span>我就是想显示星号不想斜体\<span class="keyword">*</span>
+</code></pre><p>*我就是想显示星号不想斜体*</p>
+<hr>
+<p>reference: <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">markdown syntax</a><br>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/markdown-syntax.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/markdown-syntax.md</a></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>Markdown学习练习笔记/兼文档</p>
+<h2 id="哲学_philosophy">哲学 philosophy</h2>
+<p>咳咳。简单说就是“易读”，“易写”。</p>
+<blockquote>
+<p>Markdown is intended to be as easy-to-read and easy-to-write as is feasible.<br>]]></summary>
+    
+      <category term="markdown" scheme="http://code.wileam.com/tags/markdown/"/>
+    
+      <category term="syntax" scheme="http://code.wileam.com/tags/syntax/"/>
+    
+      <category term="translate" scheme="http://code.wileam.com/tags/translate/"/>
+    
+      <category term="other" scheme="http://code.wileam.com/categories/other/"/>
+    
+  </entry>
+  
+</feed>
