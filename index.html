@@ -95,108 +95,37 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-08-23T18:48:09.000Z"><a href="/post/">Aug 24 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/post/">post</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <hr>
-<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/post.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/post.md</a></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-08-23T18:47:07.000Z"><a href="/blog/">Aug 24 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/blog/">blog</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <hr>
-<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/blog.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/blog.md</a></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
         <time datetime="2014-08-23T17:46:13.000Z"><a href="/update-hexo/">Aug 24 2014</a></time>
       
       
   
-    <h1 class="title"><a href="/update-hexo/">update hexo</a></h1>
+    <h1 class="title"><a href="/update-hexo/">升级hexo的一些issue和坑</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <hr>
-<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/update" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/update</a> hexo.md</p>
+        <p>好久不用博客，转眼升级的时候已经各种报错了。原来hexo已经到了2.8.2版本，并且各种各种不兼容啊。</p>
+<h2 id="报错一_HexoError：">报错一 <code>HexoError</code>：</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[error] { name: <span class="string">'HexoError'</span>,</div><div class="line">reason: <span class="string">'incomplete explicit mapping pair; a key node is missed'</span>,</div><div class="line">mark:</div><div class="line">{ name: null,</div><div class="line">buffer: <span class="string">'categories: Kategorien\nsearch: Suche\ntags: Tags\ntagcloud: Tag-C</span></div><div class="line">loud\ntweets: Tweets\nprev: Vorherige Seite\nnext: Nächste Seite\ncomment: Komm</div><div class="line">entare\narchive_a: Archiv\narchive_b: Archiv: %s\npage: Seite %d\nrecent_posts:</div><div class="line">Neueste Artikel\n\u0000',</div><div class="line">position: <span class="number">180</span>,</div><div class="line">line: <span class="number">9</span>,</div><div class="line">column: <span class="number">17</span> },</div><div class="line">message: <span class="string">'Process failed: languages/de.yml'</span>,</div><div class="line">domain:</div><div class="line">{ domain: null,</div><div class="line">_events: { error: [Function] },</div><div class="line">_maxListeners: <span class="number">10</span>,</div><div class="line">members: [ [Object] ] },</div><div class="line">domainThrown: <span class="literal">true</span>,</div><div class="line">stack: undefined }</div></pre></td></tr></table></figure>
+
+<p>原因：<br>YAML格式规则改变，有空格的项都需要加上双引号。</p>
+<p><code>tag cloud</code> —&gt; <code>&quot;tag cloud&quot;</code></p>
+<p>解决方法：<br>将主题language下的有空格的项都需要加上双引号。</p>
+<p>如果用的默认主题light，可以直接拉取最新主题，覆盖language文件夹即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/tommy351/hexo-theme-light themes/light</div></pre></td></tr></table></figure>
+
+<h2 id="更新plugins">更新plugins</h2>
+<p>安装升级后必须的plugins:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ (<span class="built_in">sudo</span>) npm install hexo-renderer-ejs --save</div><div class="line">$ (<span class="built_in">sudo</span>) npm install hexo-renderer-marked --save</div><div class="line">$ (<span class="built_in">sudo</span>) npm install hexo-renderer-stylus --save</div></pre></td></tr></table></figure>
+
+<p>完成后的package.json类似这样：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"hexo"</span></span>,</div><div class="line">  "<span class="attribute">version</span>": <span class="value"><span class="string">"2.8.2"</span></span>,</div><div class="line">  "<span class="attribute">private</span>": <span class="value"><span class="literal">true</span></span>,</div><div class="line">  "<span class="attribute">dependencies</span>": <span class="value">{</span></div><div class="line">    "<span class="attribute">hexo-generator-feed</span>": <span class="value"><span class="string">"^0.2.0"</span></span>,</div><div class="line">    "<span class="attribute">hexo-generator-sitemap</span>": <span class="value"><span class="string">"0.0.6"</span></span>,</div><div class="line">    "<span class="attribute">hexo-renderer-ejs</span>": <span class="value"><span class="string">"^0.1.0"</span></span>,</div><div class="line">    "<span class="attribute">hexo-renderer-marked</span>": <span class="value"><span class="string">"^0.1.0"</span></span>,</div><div class="line">    "<span class="attribute">hexo-renderer-stylus</span>": <span class="value"><span class="string">"^0.1.0"</span></span></div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>这样之后应该就大功告成了。若有其他报错，可去hexo的github页面找一下issue。作者大多都有解答。</p>
+<p>以上。Happy blogging. :)</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/升级hexo的一些issue和坑.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/升级hexo的一些issue和坑.md</a></p>
 
       
     </div>
@@ -525,22 +454,10 @@ var cale = new Calendar("idCalendar", {
                 this.Days[day].innerHTML = "<a href='/build-a-hexo-blog-and-optimize/' title='hexo搭建静态博客以及优化'>" + day + "</a>";
             } 
     
-            var postdate = new Date("Sun Aug 24 2014 02:48:09 GMT+0800"); 
-            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
-                var day = postdate.getDate();
-                this.Days[day].innerHTML = "<a href='/post/' title='post'>" + day + "</a>";
-            } 
-    
             var postdate = new Date("Sun Aug 24 2014 01:46:13 GMT+0800"); 
             if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
                 var day = postdate.getDate();
-                this.Days[day].innerHTML = "<a href='/update-hexo/' title='update hexo'>" + day + "</a>";
-            } 
-    
-            var postdate = new Date("Sun Aug 24 2014 02:47:07 GMT+0800"); 
-            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
-                var day = postdate.getDate();
-                this.Days[day].innerHTML = "<a href='/blog/' title='blog'>" + day + "</a>";
+                this.Days[day].innerHTML = "<a href='/update-hexo/' title='升级hexo的一些issue和坑'>" + day + "</a>";
             } 
     
 
@@ -582,15 +499,7 @@ $("idCalendarNext").onclick = function(){ cale.NextMonth(); }
   <ul class="entry">
     
       <li>
-        <a href="/post/">post</a>
-      </li>
-    
-      <li>
-        <a href="/blog/">blog</a>
-      </li>
-    
-      <li>
-        <a href="/update-hexo/">update hexo</a>
+        <a href="/update-hexo/">升级hexo的一些issue和坑</a>
       </li>
     
       <li>
@@ -599,6 +508,14 @@ $("idCalendarNext").onclick = function(){ cale.NextMonth(); }
     
       <li>
         <a href="/icon-font-intro/">Icon Font的好处及应用</a>
+      </li>
+    
+      <li>
+        <a href="/build-a-hexo-blog-and-optimize/">hexo搭建静态博客以及优化</a>
+      </li>
+    
+      <li>
+        <a href="/markdown-syntax/">markdown语法</a>
       </li>
     
   </ul>

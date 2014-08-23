@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://code.wileam.com/post/</loc>
-    <lastmod>2014-08-23T18:48:09.000Z</lastmod>
-  </url>
-  <url>
-    <loc>http://code.wileam.com/blog/</loc>
-    <lastmod>2014-08-23T18:47:07.000Z</lastmod>
-  </url>
-  <url>
     <loc>http://code.wileam.com/update-hexo/</loc>
-    <lastmod>2014-08-23T17:46:13.000Z</lastmod>
+    <lastmod>2014-08-23T19:13:21.000Z</lastmod>
   </url>
   <url>
     <loc>http://code.wileam.com/icon-font-intro/</loc>
