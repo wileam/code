@@ -95,6 +95,141 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-08-23T18:48:09.000Z"><a href="/post/">Aug 24 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/post/">post</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/post.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/post.md</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-23T18:47:07.000Z"><a href="/blog/">Aug 24 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/">blog</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/blog.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/blog.md</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-08-23T17:46:13.000Z"><a href="/update-hexo/">Aug 24 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/update-hexo/">update hexo</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/update" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/update</a> hexo.md</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-02-15T09:22:01.000Z"><a href="/front-end-interview/">Feb 15 2014</a></time>
       
       
@@ -390,6 +525,24 @@ var cale = new Calendar("idCalendar", {
                 this.Days[day].innerHTML = "<a href='/build-a-hexo-blog-and-optimize/' title='hexo搭建静态博客以及优化'>" + day + "</a>";
             } 
     
+            var postdate = new Date("Sun Aug 24 2014 02:48:09 GMT+0800"); 
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/post/' title='post'>" + day + "</a>";
+            } 
+    
+            var postdate = new Date("Sun Aug 24 2014 01:46:13 GMT+0800"); 
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/update-hexo/' title='update hexo'>" + day + "</a>";
+            } 
+    
+            var postdate = new Date("Sun Aug 24 2014 02:47:07 GMT+0800"); 
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/blog/' title='blog'>" + day + "</a>";
+            } 
+    
 
         //howiefh
     }
@@ -429,19 +582,23 @@ $("idCalendarNext").onclick = function(){ cale.NextMonth(); }
   <ul class="entry">
     
       <li>
+        <a href="/post/">post</a>
+      </li>
+    
+      <li>
+        <a href="/blog/">blog</a>
+      </li>
+    
+      <li>
+        <a href="/update-hexo/">update hexo</a>
+      </li>
+    
+      <li>
         <a href="/front-end-interview/">一些前端面试题</a>
       </li>
     
       <li>
         <a href="/icon-font-intro/">Icon Font的好处及应用</a>
-      </li>
-    
-      <li>
-        <a href="/build-a-hexo-blog-and-optimize/">hexo搭建静态博客以及优化</a>
-      </li>
-    
-      <li>
-        <a href="/markdown-syntax/">markdown语法</a>
       </li>
     
   </ul>

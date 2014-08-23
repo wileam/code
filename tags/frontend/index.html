@@ -244,6 +244,24 @@ var cale = new Calendar("idCalendar", {
                 this.Days[day].innerHTML = "<a href='/build-a-hexo-blog-and-optimize/' title='hexo搭建静态博客以及优化'>" + day + "</a>";
             } 
     
+            var postdate = new Date("Sun Aug 24 2014 02:48:09 GMT+0800"); 
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/post/' title='post'>" + day + "</a>";
+            } 
+    
+            var postdate = new Date("Sun Aug 24 2014 01:46:13 GMT+0800"); 
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/update-hexo/' title='update hexo'>" + day + "</a>";
+            } 
+    
+            var postdate = new Date("Sun Aug 24 2014 02:47:07 GMT+0800"); 
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/blog/' title='blog'>" + day + "</a>";
+            } 
+    
 
         //howiefh
     }
@@ -283,19 +301,23 @@ $("idCalendarNext").onclick = function(){ cale.NextMonth(); }
   <ul class="entry">
     
       <li>
+        <a href="/post/">post</a>
+      </li>
+    
+      <li>
+        <a href="/blog/">blog</a>
+      </li>
+    
+      <li>
+        <a href="/update-hexo/">update hexo</a>
+      </li>
+    
+      <li>
         <a href="/front-end-interview/">一些前端面试题</a>
       </li>
     
       <li>
         <a href="/icon-font-intro/">Icon Font的好处及应用</a>
-      </li>
-    
-      <li>
-        <a href="/build-a-hexo-blog-and-optimize/">hexo搭建静态博客以及优化</a>
-      </li>
-    
-      <li>
-        <a href="/markdown-syntax/">markdown语法</a>
       </li>
     
   </ul>
