@@ -78,4 +78,4 @@ $ (sudo) npm install hexo-renderer-stylus --save
 
 
 ----
-本文源码：https://github.com/wileam/code/blob/master/source/_posts/{{ title }}.md
+本文源码：https://github.com/wileam/code/blob/master/source/_posts/update-hexo.md
