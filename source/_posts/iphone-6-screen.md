@@ -17,7 +17,7 @@ iPhone6发布了，纳尼？又是一个新尺寸，苦逼前端工又要加班�
 ---
 
 # iPhone 6 Screens Demystified
-# iPhone 6 屏幕详解
+# iPhone 6 屏幕揭秘
 
 Few days ago, Apple introduced iPhone 6 Plus. The new iPhone substantially changes the way graphics are rendered on screen. We've made an infographic to demystify this.
 几天前，Apple发布了iPhone 6 Plus. 新的iPhone大幅改变了图像在屏幕上渲染的方式。我们做了一个图表进行详细分析。
