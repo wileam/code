@@ -1,4 +1,4 @@
-title: iphone6屏幕详解
+title: iphone6屏幕揭秘
 date: 2014-09-14 19:47:52
 category:
 tags:
