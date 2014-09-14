@@ -15,6 +15,7 @@ Markdown学习练习笔记/兼文档
 咳咳。简单说就是“易读”，“易写”。
 
 > Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
+
 <!-- more -->
 
 ## 标题 HEADERS

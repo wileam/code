@@ -1,4 +1,4 @@
-title: 升级hexo的一些issue和坑
+title: 升级hexo的一些坑
 date: 2014-08-24 01:46:13
 category:
 tags:
@@ -44,6 +44,9 @@ YAML格式规则改变，有空格的项都需要加上双引号。
 ```sh
 $ git clone https://github.com/tommy351/hexo-theme-light themes/light
 ```
+
+<!-- more -->
+
 
 ## 更新plugins
 
