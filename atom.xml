@@ -4,7 +4,7 @@
   <subtitle><![CDATA[WILEAM = WILdest+drEAM.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://code.wileam.com/"/>
-  <updated>2014-09-14T12:42:31.776Z</updated>
+  <updated>2014-09-14T13:29:23.415Z</updated>
   <id>http://code.wileam.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://code.wileam.com/iphone-6-screen/"/>
     <id>http://code.wileam.com/iphone-6-screen/</id>
     <published>2014-09-14T11:47:52.000Z</published>
-    <updated>2014-09-14T12:42:16.000Z</updated>
+    <updated>2014-09-14T13:29:10.000Z</updated>
     <content type="html"><![CDATA[<p>iPhone6发布了，纳尼？又是一个新尺寸，苦逼前端工又要加班了呢。看到一篇很好的关于iPhone 6 屏幕显示的<a href="http://www.paintcodeapp.com/news/iphone-6-screens-demystified" target="_blank" rel="external">文章</a>，于是翻译了一下。</p>
 <p>访问：<a href="http://wileam.com/iphone-6-screen-cn/" target="_blank" rel="external">http://wileam.com/iphone-6-screen-cn/</a> 查看。</p>
 <p>图较多，而且大多是svg矢量图，在博客里排版比较麻烦，于是单独做了上面这个站点。这里是翻译原文的中英文对照，欢迎批评指正。</p>
@@ -27,7 +27,7 @@
 
 <hr>
 <h1 id="iPhone_6_Screens_Demystified">iPhone 6 Screens Demystified</h1>
-<h1 id="iPhone_6_屏幕详解">iPhone 6 屏幕详解</h1>
+<h1 id="iPhone_6_屏幕揭秘">iPhone 6 屏幕揭秘</h1>
 <p>Few days ago, Apple introduced iPhone 6 Plus. The new iPhone substantially changes the way graphics are rendered on screen. We’ve made an infographic to demystify this.<br>几天前，Apple发布了iPhone 6 Plus. 新的iPhone大幅改变了图像在屏幕上渲染的方式。我们做了一个图表进行详细分析。</p>
 <h2 id="Point">Point</h2>
 <h2 id="点">点</h2>
