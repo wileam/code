@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo | Joanna&#39;s coding blog</title>
+  <title>Archives: 2014/9 | Joanna&#39;s coding blog</title>
   <meta name="author" content="Joanna Wu">
   
   <meta name="description" content="Joanna&#39;s coding blog，">
@@ -77,7 +77,7 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">hexo</h2>
+<h2 class="archive-title">2014/9</h2>
 
 
   
@@ -99,30 +99,71 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-12-14T04:56:49.000Z"><a href="/build-a-hexo-blog-and-optimize/">Dec 14 2013</a></time>
+        <time datetime="2014-09-14T11:47:52.000Z"><a href="/iphone-6-screen/">Sep 14 2014</a></time>
       
       
   
-    <h1 class="title"><a href="/build-a-hexo-blog-and-optimize/">hexo搭建静态博客以及优化</a></h1>
+    <h1 class="title"><a href="/iphone-6-screen/">iphone6屏幕详解</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>首先，<em>这不是一篇详尽的完整的教程</em>，只是记录大致的hexo建站流程以及自己折腾的过程。因为网上关于hexo的教程已经太多，一搜一大把。但是我还是推荐英文尚可的直接阅读hexo作者的<strong><a href="http://zespia.tw/hexo/docs/" target="_blank" rel="external">文档</a></strong>，因为很多教程也只是一知半解，还是看作者文档来的比较彻底。另外，hexo源代码开源，实在不行还可以去hexo的<a href="https://github.com/tommy351/hexo" target="_blank" rel="external">github</a>去提<a href="https://github.com/tommy351/hexo/issues" target="_blank" rel="external">issue</a>。</p>
-<p>折腾的成果就是你现在看到的这个博客，所以这里本身就是一个demo。^_^</p>
-<p><em>p.s. hexo作者据说是台湾的一名在校学生…… T_T 努力吧少年…… </em></p>
-<h2 id="建站流程">建站流程</h2>
-<h3 id="1-_安装node-js以及git">1. 安装node.js以及git</h3>
+        <p>iPhone6发布了，纳尼？又是一个新尺寸，苦逼前端工又要加班了呢。看到一篇很好的关于iPhone 6 屏幕显示的<a href="http://www.paintcodeapp.com/news/iphone-6-screens-demystified" target="_blank" rel="external">文章</a>，于是翻译了一下。</p>
+<p>访问：<a href="http://wileam.com/iphone-6-screen-cn/" target="_blank" rel="external">http://wileam.com/iphone-6-screen-cn/</a> 查看。</p>
+<p>图较多，而且大多是svg矢量图，在博客里排版比较麻烦，于是单独做了上面这个站点。这里是翻译原文的中英文对照，欢迎批评指正。</p>
+<hr>
+<h1 id="iPhone_6_Screens_Demystified">iPhone 6 Screens Demystified</h1>
+<h1 id="iPhone_6_屏幕详解">iPhone 6 屏幕详解</h1>
+<p>Few days ago, Apple introduced iPhone 6 Plus. The new iPhone substantially changes the way graphics are rendered on screen. We’ve made an infographic to demystify this.<br>几天前，Apple介绍了iPhone 6 Plus. 新的iPhone大幅改变了图像在屏幕上渲染的方式。我们做了一个图表进行详细分析。</p>
+<h2 id="Point">Point</h2>
+<h2 id="点">点</h2>
+<p>At the beginning, coordinates of all drawings are specified in points.<br>最初，所有图像的坐标都是用点的方式确定的。</p>
+<p>Points are abstract units, they only make sense in this mathematical coordinate space.<br>点是绝对单位，他们只在数学的坐标空间里有意义。</p>
+<p>In the original iPhone, points corresponded perfectly to actual pixels on screen, but this is no longer true.<br>在最初的iPhone上，点和实际屏幕的像素是完全一致的，但现在不再是这样了。</p>
+<h2 id="Rendered_Pixels">Rendered Pixels</h2>
+<h2 id="渲染像素">渲染像素</h2>
+<p>Point-based drawings are rendered into pixels. This process is known as rasterization.<br>以点为基础的图像渲染成为像素，这个过程就是光栅化（rasterization）。</p>
+<p>Point coordinates are multiplied by scale factor to get pixel coordinates. Higher scale factors result in higher level of detail.<br>点坐标乘以一定的比例系数得到相应的像素坐标。更高的比例系数可以得到更好的细节呈现。</p>
+<p>Typical scale factors are 1×, 2× and 3×.<br>典型的比例系数有1倍，2倍和3倍。</p>
+<h2 id="Physical_Pixels">Physical Pixels</h2>
+<h2 id="物理像素">物理像素</h2>
+<p>iPhone 6 Plus has screen with lower pixel resolution than the image rendered in previous step.<br>iPhone 6 Plus的屏幕像素分辨率比之前步骤渲染的图像分辨率低。</p>
+<p>Before the image can be displayed on the screen, it must be downsampled (resized) to lower pixel resolution.<br>在图像显示在屏幕之前，图像必须重新调整大小到更低的像素分辨率。</p>
+<h2 id="Physical_Device">Physical Device</h2>
+<h2 id="物理设备">物理设备</h2>
+<p>The last step is to show the computed pixels on the physical screen.<br>最后一步是将计算的像素显示在物理屏幕上。</p>
+<p>Every screen has pixels-per-inch (PPI) characteristic. This number tells you how many pixels fit into one inch and thus how large the pixels appear in the real world.<br>每一个屏幕都有一个每英寸像素(PPI)的特性。这个数字告诉你一英寸显示多少像素，也就是一像素在真实世界里显示的大小。</p>
+<h2 id="Points">Points</h2>
+<h2 id="点-1">点</h2>
+<p>The content is defined mathematically using point coordinates.<br>内容是按照数学上的点坐标来定义的。</p>
+<h2 id="Rendered_Pixels-1">Rendered Pixels</h2>
+<h2 id="渲染像素-1">渲染像素</h2>
+<p>Content is rendered to pixels using scale factor. This process is called rasterization.<br>内容用比例系数渲染成像素，这个过程叫做光栅化（rasterization）。</p>
+<h2 id="Physical_Pixels-1">Physical Pixels</h2>
+<h2 id="物理像素-1">物理像素</h2>
+<p>iPhone 6 Plus downsamples the rendered image before displaying it on screen.<br>iPhone 6 Plus 在显示在屏幕上之前缩小了已渲染的图像。</p>
+<h2 id="Physical_Device-1">Physical Device</h2>
+<p>Rasterized drawings are displayed on the physical devices.<br>光栅化之后的图像显示在物理设备上。</p>
+<h2 id="Line_rendering">Line rendering</h2>
+<h2 id="一根线的渲染">一根线的渲染</h2>
+<p>To demonstrate different rendering of pixels on various devices, we compare how 1-point wide line is rendered on<br>为了说明多种设备的不同像素渲染情况，我们比较了一个一像素宽的线是怎样渲染的：</p>
+<ul>
+<li>Original iPhone - without retina display. Scaling factor is 1.</li>
+<li>iPhone 5 - with Retina display, scaling factor is 2.</li>
+<li>iPhone 6 Plus - with Retina display HD. Scaling factor is 3 and the image is afterwards downscaled from rendered 2208 × 1242 pixels to 1920 × 1080 pixels.</li>
+</ul>
+<ul>
+<li>最初的iPhone - 没有高清屏，比例系数是1。</li>
+<li>iPhone 5 - 有高清屏，比例系数是2。</li>
+<li>iPhone 6 Plus - 超高清屏（Retina display HD）。比例系数是3，并且图像会先渲染为2208 × 1242像素然后缩小为1920 × 1080像素。</li>
+</ul>
+<p>The downscaling ratio is 1920 / 2208 = 1080 / 1242 = 20 / 23. That means every 23 pixels from the original render have to be mapped to 20 physical pixels. In other words the image is scaled down to approximately 87% of its original size.<br>缩小的比例是1920 / 2208 = 1080 / 1242 = 20 / 23. 这意味着最初渲染的每23像素会分布到20物理像素中。换句话说图像会缩小为大约原尺寸的87%。</p>
 
       
     </div>
     <footer>
       
-        
-          <div class="alignleft">
-            <a href="/build-a-hexo-blog-and-optimize/#more" class="more-link">阅读全文</a>
-          </div>
         
         
       
