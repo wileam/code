@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[Joanna's coding blog]]></title>
-  <subtitle><![CDATA[WILEAM = WILdest+drEAM.]]></subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   <link href="http://code.wileam.com/"/>
-  <updated>2014-10-14T06:02:34.198Z</updated>
+  <updated>2014-10-14T06:23:33.278Z</updated>
   <id>http://code.wileam.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://code.wileam.com/iphone-6-screen/"/>
     <id>http://code.wileam.com/iphone-6-screen/</id>
     <published>2014-09-14T11:47:52.000Z</published>
-    <updated>2014-09-14T15:15:13.000Z</updated>
+    <updated>2014-10-14T06:07:27.000Z</updated>
     <content type="html"><![CDATA[<p>iPhone6发布了，纳尼？又是一个新尺寸，苦逼前端工又要加班了呢。看到一篇很好的关于iPhone 6 屏幕显示的<a href="http://www.paintcodeapp.com/news/iphone-6-screens-demystified" target="_blank" rel="external">文章</a>，于是翻译了一下。</p>
 <p>访问：<a href="http://wileam.com/iphone-6-screen-cn/" target="_blank" rel="external">http://wileam.com/iphone-6-screen-cn/</a> 查看。</p>
 <p>图较多，而且大多是svg矢量图，在博客里排版比较麻烦，于是单独做了上面这个站点。这里是翻译原文的中英文对照，欢迎批评指正。</p>
@@ -89,8 +89,11 @@
     <link href="http://code.wileam.com/update-hexo/"/>
     <id>http://code.wileam.com/update-hexo/</id>
     <published>2014-08-23T17:46:13.000Z</published>
-    <updated>2014-09-14T12:41:22.000Z</updated>
+    <updated>2014-10-14T06:21:04.000Z</updated>
     <content type="html"><![CDATA[<p>好久不用博客，转眼升级的时候已经各种报错了。原来hexo已经到了2.8.2版本，并且各种各种不兼容啊。</p>
+<a id="more"></a>
+
+
 <h2 id="报错一_HexoError：">报错一 <code>HexoError</code>：</h2>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[error] { name: <span class="string">'HexoError'</span>,</div><div class="line">reason: <span class="string">'incomplete explicit mapping pair; a key node is missed'</span>,</div><div class="line">mark:</div><div class="line">{ name: null,</div><div class="line">buffer: <span class="string">'categories: Kategorien\nsearch: Suche\ntags: Tags\ntagcloud: Tag-C</span></div><div class="line">loud\ntweets: Tweets\nprev: Vorherige Seite\nnext: Nächste Seite\ncomment: Komm</div><div class="line">entare\narchive_a: Archiv\narchive_b: Archiv: %s\npage: Seite %d\nrecent_posts:</div><div class="line">Neueste Artikel\n\u0000',</div><div class="line">position: <span class="number">180</span>,</div><div class="line">line: <span class="number">9</span>,</div><div class="line">column: <span class="number">17</span> },</div><div class="line">message: <span class="string">'Process failed: languages/de.yml'</span>,</div><div class="line">domain:</div><div class="line">{ domain: null,</div><div class="line">_events: { error: [Function] },</div><div class="line">_maxListeners: <span class="number">10</span>,</div><div class="line">members: [ [Object] ] },</div><div class="line">domainThrown: <span class="literal">true</span>,</div><div class="line">stack: undefined }</div></pre></td></tr></table></figure>
 
@@ -99,9 +102,6 @@
 <p>解决方法：<br>将主题language下的有空格的项都需要加上双引号。</p>
 <p>如果用的默认主题light，可以直接拉取最新主题，覆盖language文件夹即可。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/tommy351/hexo-theme-light themes/light</div></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
 
 <h2 id="更新plugins">更新plugins</h2>
 <p>安装升级后必须的plugins:</p>
@@ -116,15 +116,6 @@
 <p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/update-hexo.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/update-hexo.md</a></p>
 ]]></content>
     <summary type="html"><![CDATA[<p>好久不用博客，转眼升级的时候已经各种报错了。原来hexo已经到了2.8.2版本，并且各种各种不兼容啊。</p>
-<h2 id="报错一_HexoError：">报错一 <code>HexoError</code>：</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[error] { name: <span class="string">'HexoError'</span>,</div><div class="line">reason: <span class="string">'incomplete explicit mapping pair; a key node is missed'</span>,</div><div class="line">mark:</div><div class="line">{ name: null,</div><div class="line">buffer: <span class="string">'categories: Kategorien\nsearch: Suche\ntags: Tags\ntagcloud: Tag-C</span></div><div class="line">loud\ntweets: Tweets\nprev: Vorherige Seite\nnext: Nächste Seite\ncomment: Komm</div><div class="line">entare\narchive_a: Archiv\narchive_b: Archiv: %s\npage: Seite %d\nrecent_posts:</div><div class="line">Neueste Artikel\n\u0000',</div><div class="line">position: <span class="number">180</span>,</div><div class="line">line: <span class="number">9</span>,</div><div class="line">column: <span class="number">17</span> },</div><div class="line">message: <span class="string">'Process failed: languages/de.yml'</span>,</div><div class="line">domain:</div><div class="line">{ domain: null,</div><div class="line">_events: { error: [Function] },</div><div class="line">_maxListeners: <span class="number">10</span>,</div><div class="line">members: [ [Object] ] },</div><div class="line">domainThrown: <span class="literal">true</span>,</div><div class="line">stack: undefined }</div></pre></td></tr></table></figure>
-
-<p>原因：<br>YAML格式规则改变，有空格的项都需要加上双引号。</p>
-<p><code>tag cloud</code> —&gt; <code>&quot;tag cloud&quot;</code></p>
-<p>解决方法：<br>将主题language下的有空格的项都需要加上双引号。</p>
-<p>如果用的默认主题light，可以直接拉取最新主题，覆盖language文件夹即可。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/tommy351/hexo-theme-light themes/light</div></pre></td></tr></table></figure>
-
 ]]></summary>
     
   </entry>

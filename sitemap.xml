@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://code.wileam.com/iphone-6-screen/</loc>
-    <lastmod>2014-09-14T15:15:13.000Z</lastmod>
+    <loc>http://code.wileam.com/about/index.html</loc>
+    <lastmod>2014-10-14T06:22:05.000Z</lastmod>
   </url>
   <url>
     <loc>http://code.wileam.com/update-hexo/</loc>
-    <lastmod>2014-09-14T12:41:22.000Z</lastmod>
+    <lastmod>2014-10-14T06:21:04.000Z</lastmod>
+  </url>
+  <url>
+    <loc>http://code.wileam.com/iphone-6-screen/</loc>
+    <lastmod>2014-10-14T06:07:27.000Z</lastmod>
   </url>
   <url>
     <loc>http://code.wileam.com/markdown-syntax/</loc>
@@ -22,10 +26,6 @@
   </url>
   <url>
     <loc>http://code.wileam.com/build-a-hexo-blog-and-optimize/</loc>
-    <lastmod>2014-08-23T17:28:49.000Z</lastmod>
-  </url>
-  <url>
-    <loc>http://code.wileam.com/about/index.html</loc>
     <lastmod>2014-08-23T17:28:49.000Z</lastmod>
   </url>
 </urlset>
