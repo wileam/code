@@ -1,4 +1,4 @@
-var $ = function (id) {
+var $$ = function (id) {
     return "string" == typeof id ? document.getElementById(id) : id;
 };
 
@@ -20,18 +20,18 @@ Object.extend = function(destination, source) {
 var Calendar = Class.create();
 Calendar.prototype = {
   initialize: function(container, options) {
-    this.Container = $(container);//容器(table结构)
+    this.Container = $$(container);//容器(table结构)
     this.Days = [];//日期对象列表
-   
+
     this.SetOptions(options);
-   
+
     this.Year = this.options.Year;
     this.Month = this.options.Month;
     this.SelectDay = this.options.SelectDay ? new Date(this.options.SelectDay) : null;
     this.onSelectDay = this.options.onSelectDay;
     this.onToday = this.options.onToday;
-    this.onFinish = this.options.onFinish;   
-   
+    this.onFinish = this.options.onFinish;
+
     this.Draw();
   },
   //设置默认属性
@@ -55,7 +55,7 @@ Calendar.prototype = {
     this.Month = d.getMonth() + 1;
     //重新画日历
     this.Draw();
-  }, 
+  },
   //下一个月
   NextMonth: function() {
     var d = new Date(this.Year, this.Month, 1);
@@ -71,11 +71,11 @@ Calendar.prototype = {
     for(var i = 1, firstDay = new Date(this.Year, this.Month - 1, 1).getDay(); i <= firstDay; i++){ arr.push("&nbsp;"); }
     //用当月最后一天在一个月中的日期值作为当月的天数
     for(var i = 1, monthDay = new Date(this.Year, this.Month, 0).getDate(); i <= monthDay; i++){ arr.push(i); }
-   
+
     var frag = document.createDocumentFragment();
-   
+
     this.Days = [];
-   
+
     while(arr.length > 0){
         //每个星期插入一个tr
         var row = document.createElement("tr");
@@ -83,7 +83,7 @@ Calendar.prototype = {
         for(var i = 1; i <= 7; i++){
             var cell = document.createElement("td");
             cell.innerHTML = "&nbsp;";
-           
+
             if(arr.length > 0){
                 var d = arr.shift();
                 cell.innerHTML = d;
@@ -99,11 +99,11 @@ Calendar.prototype = {
         }
         frag.appendChild(row);
     }
-   
+
     //先清空内容再插入(ie的table不能用innerHTML)
     while(this.Container.hasChildNodes()){ this.Container.removeChild(this.Container.firstChild); }
     this.Container.appendChild(frag);
-   
+
     this.onFinish();
   },
   //判断是否同一日
