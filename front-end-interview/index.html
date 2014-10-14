@@ -283,7 +283,8 @@ var duoshuoQuery = {short_name:"wileamcode"};
       </table>
     </div>
 </div>
-<script language="JavaScript">
+
+<script>
 var cale = new Calendar("idCalendar", {
     //howiefh
     /* SelectDay: new Date().setDate(10), */
@@ -292,65 +293,68 @@ var cale = new Calendar("idCalendar", {
     //howiefh
     onToday: function(o){ o.className = "onToday"; },
     onFinish: function(){
+        debugger;
         //howiefh
         // $("idCalendarYear").innerHTML = this.Year; $("idCalendarMonth").innerHTML = this.Month;
-        $("idCalendarYear").innerHTML = "<a href='/" + "archives/" + this.Year + "/'>" + this.Year + " "+ "</a>"; 
+        $$("idCalendarYear").innerHTML = "<a href='/" + "archives/" + this.Year + "/'>" + this.Year + " "+ "</a>";
         if (this.Month < 10) {
-            $("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + "0" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
+            debugger;
+            $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + "0" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
         } else {
-            $("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
+            debugger;
+            $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
         }
 
-        // var flag = [10,15,20]; 
-        // for(var i = 0, len = flag.length; i < len; i++){ 
-            // this.Days[flag[i]].innerHTML = "<a href='javascript:void(0);' onclick=\"alert('日期是:"+this.Year+"/"+this.Month+"/"+flag[i]+"');return false;\">" + flag[i] + "</a>"; 
-        // } 
+        // var flag = [10,15,20];
+        // for(var i = 0, len = flag.length; i < len; i++){
+            // this.Days[flag[i]].innerHTML = "<a href='javascript:void(0);' onclick=\"alert('日期是:"+this.Year+"/"+this.Month+"/"+flag[i]+"');return false;\">" + flag[i] + "</a>";
+        // }
 
         
-            var postdate = new Date("Sun Dec 22 2013 15:30:17 GMT+0800"); 
-            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+            var postdate = new Date("Sun Dec 22 2013 15:30:17 GMT+0800");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
                 var day = postdate.getDate();
                 this.Days[day].innerHTML = "<a href='/icon-font-intro/' title='Icon Font的好处及应用'>" + day + "</a>";
-            } 
+            }
     
-            var postdate = new Date("Sat Feb 15 2014 17:22:01 GMT+0800"); 
-            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+            var postdate = new Date("Sat Feb 15 2014 17:22:01 GMT+0800");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
                 var day = postdate.getDate();
                 this.Days[day].innerHTML = "<a href='/front-end-interview/' title='一些前端面试题'>" + day + "</a>";
-            } 
+            }
     
-            var postdate = new Date("Wed Dec 11 2013 01:12:44 GMT+0800"); 
-            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+            var postdate = new Date("Wed Dec 11 2013 01:12:44 GMT+0800");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
                 var day = postdate.getDate();
                 this.Days[day].innerHTML = "<a href='/markdown-syntax/' title='markdown语法'>" + day + "</a>";
-            } 
+            }
     
-            var postdate = new Date("Sat Dec 14 2013 12:56:49 GMT+0800"); 
-            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+            var postdate = new Date("Sat Dec 14 2013 12:56:49 GMT+0800");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
                 var day = postdate.getDate();
                 this.Days[day].innerHTML = "<a href='/build-a-hexo-blog-and-optimize/' title='hexo搭建静态博客以及优化'>" + day + "</a>";
-            } 
+            }
     
-            var postdate = new Date("Sun Aug 24 2014 01:46:13 GMT+0800"); 
-            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+            var postdate = new Date("Sun Aug 24 2014 01:46:13 GMT+0800");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
                 var day = postdate.getDate();
                 this.Days[day].innerHTML = "<a href='/update-hexo/' title='升级hexo的一些坑'>" + day + "</a>";
-            } 
+            }
     
-            var postdate = new Date("Sun Sep 14 2014 19:47:52 GMT+0800"); 
-            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) { 
+            var postdate = new Date("Sun Sep 14 2014 19:47:52 GMT+0800");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
                 var day = postdate.getDate();
                 this.Days[day].innerHTML = "<a href='/iphone-6-screen/' title='iphone6屏幕揭秘'>" + day + "</a>";
-            } 
+            }
     
 
         //howiefh
     }
 });
 
-$("idCalendarPre").onclick = function(){ cale.PreMonth(); }
-$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
-</SCRIPT>
+$$("idCalendarPre").onclick = function(){ cale.PreMonth(); }
+$$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
+</script>
 
 
 
