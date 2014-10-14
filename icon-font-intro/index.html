@@ -225,15 +225,15 @@ var cale = new Calendar("idCalendar", {
     //howiefh
     onToday: function(o){ o.className = "onToday"; },
     onFinish: function(){
-        debugger;
+        // debugger;
         //howiefh
         // $("idCalendarYear").innerHTML = this.Year; $("idCalendarMonth").innerHTML = this.Month;
         $$("idCalendarYear").innerHTML = "<a href='/" + "archives/" + this.Year + "/'>" + this.Year + " "+ "</a>";
         if (this.Month < 10) {
-            debugger;
+            // debugger;
             $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + "0" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
         } else {
-            debugger;
+            // debugger;
             $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
         }
 
@@ -343,7 +343,7 @@ $$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
 
   
 <div class="widget links">
-  <h3 class="title">links</h3>
+  <h3 class="title">Links</h3>
   <ul class="entry">
     
     <li><a href="http://blog.wileam.com" target="_BLANK">Life Blog</a></li>
@@ -362,7 +362,7 @@ $$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
 
   
 <div class="widget duoshuo_recent_comments">
-  <h3 class="title">duoshuo_recent_comments</h3>
+  <h3 class="title">Recent Comments</h3>
   <ul class="entry ds-recent-comments" data-num-items="5" data-show-avatars="0" data-show-title="1" data-show-time="1"></ul>
 </div>
 <!--多说js加载开始，一个页面只需要加载一次 -->
