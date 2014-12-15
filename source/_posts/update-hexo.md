@@ -6,6 +6,8 @@ tags:
 
 好久不用博客，转眼升级的时候已经各种报错了。原来hexo已经到了2.8.2版本，并且各种各种不兼容啊。
 
+<!-- more -->
+
 
 ## 报错一 `HexoError`：
 
@@ -44,9 +46,6 @@ YAML格式规则改变，有空格的项都需要加上双引号。
 ```sh
 $ git clone https://github.com/tommy351/hexo-theme-light themes/light
 ```
-
-<!-- more -->
-
 
 ## 更新plugins
 
