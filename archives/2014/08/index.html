@@ -46,7 +46,7 @@
   _gaq.push(['_setAccount', 'UA-41676519-1']);
   _gaq.push(['_trackPageview']);
   (function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
   ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
 
@@ -69,6 +69,8 @@
     
       <li><a href="/about">About</a></li>
     
+      <li><a href="/archives">Archive</a></li>
+    
       <li><a href="/atom.xml">RSS</a></li>
     
   </ul>
@@ -80,61 +82,21 @@
 <h2 class="archive-title">2014/8</h2>
 
 
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
+  <div class="archive">
     
-      <img src="">
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2014-08-23T17:46:13.000Z"><a href="/update-hexo/">Aug 24 2014</a></time>
+            
+              <h1 class="title"><a href="/update-hexo/">升级hexo的一些坑</a></h1>
+            
+          </header>
+        </div>
+      </article>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-08-23T17:46:13.000Z"><a href="/update-hexo/">Aug 24 2014</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/update-hexo/">升级hexo的一些坑</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>好久不用博客，转眼升级的时候已经各种报错了。原来hexo已经到了2.8.2版本，并且各种各种不兼容啊。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/update-hexo/#more" class="more-link">Read More...</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
@@ -195,8 +157,7 @@
       </table>
     </div>
 </div>
-
-<script>
+<script language="JavaScript">
 var cale = new Calendar("idCalendar", {
     //howiefh
     /* SelectDay: new Date().setDate(10), */
@@ -205,15 +166,12 @@ var cale = new Calendar("idCalendar", {
     //howiefh
     onToday: function(o){ o.className = "onToday"; },
     onFinish: function(){
-        // debugger;
         //howiefh
         // $("idCalendarYear").innerHTML = this.Year; $("idCalendarMonth").innerHTML = this.Month;
         $$("idCalendarYear").innerHTML = "<a href='/" + "archives/" + this.Year + "/'>" + this.Year + " "+ "</a>";
         if (this.Month < 10) {
-            // debugger;
             $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + "0" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
         } else {
-            // debugger;
             $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
         }
 
@@ -266,7 +224,7 @@ var cale = new Calendar("idCalendar", {
 
 $$("idCalendarPre").onclick = function(){ cale.PreMonth(); }
 $$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
-</script>
+</SCRIPT>
 
 
 
@@ -287,14 +245,14 @@ $$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/blog/" style="font-size: 10.00px;">blog</a><a href="/tags/career/" style="font-size: 10.00px;">career</a><a href="/tags/css/" style="font-size: 10.00px;">css</a><a href="/tags/design/" style="font-size: 10.00px;">design</a><a href="/tags/frontend/" style="font-size: 10.00px;">frontend</a><a href="/tags/hexo/" style="font-size: 10.00px;">hexo</a><a href="/tags/iconfont/" style="font-size: 10.00px;">iconfont</a><a href="/tags/interview/" style="font-size: 10.00px;">interview</a><a href="/tags/markdown/" style="font-size: 10.00px;">markdown</a><a href="/tags/mobile/" style="font-size: 10.00px;">mobile</a><a href="/tags/openparty/" style="font-size: 10.00px;">openparty</a><a href="/tags/syntax/" style="font-size: 10.00px;">syntax</a><a href="/tags/translate/" style="font-size: 20.00px;">translate</a>
+    <a href="/tags/blog/" style="font-size: 15.00px;">blog</a><a href="/tags/career/" style="font-size: 15.00px;">career</a><a href="/tags/conference/" style="font-size: 10.00px;">conference</a><a href="/tags/css/" style="font-size: 15.00px;">css</a><a href="/tags/design/" style="font-size: 15.00px;">design</a><a href="/tags/frontend/" style="font-size: 15.00px;">frontend</a><a href="/tags/hexo/" style="font-size: 15.00px;">hexo</a><a href="/tags/iconfont/" style="font-size: 15.00px;">iconfont</a><a href="/tags/interview/" style="font-size: 15.00px;">interview</a><a href="/tags/markdown/" style="font-size: 15.00px;">markdown</a><a href="/tags/mobile/" style="font-size: 15.00px;">mobile</a><a href="/tags/openparty/" style="font-size: 15.00px;">openparty</a><a href="/tags/syntax/" style="font-size: 15.00px;">syntax</a><a href="/tags/translate/" style="font-size: 20.00px;">translate</a>
   </div>
 </div>
 
 
   
 <div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
+  <h3 class="title">Recent Posts<a href="/archives" class="more-link">More...</a></h3>
   <ul class="entry">
     
       <li>
@@ -315,6 +273,10 @@ $$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
     
       <li>
         <a href="/build-a-hexo-blog-and-optimize/">hexo搭建静态博客以及优化</a>
+      </li>
+    
+      <li>
+        <a href="/markdown-syntax/">markdown语法</a>
       </li>
     
   </ul>
@@ -396,7 +358,7 @@ var duoshuoQuery = {short_name:"wileamcode"};
   _gaq.push(['_setAccount', 'UA-41676519-1']);
   _gaq.push(['_trackPageview']);
   (function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
   ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
 
