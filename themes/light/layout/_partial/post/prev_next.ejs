@@ -1,0 +1,14 @@
+<% if (page.prev || page.next){ %>
+<div class="prev_next clearfix">
+  <% if (page.prev){ %>
+  <a href="<%- config.root %><%- page.prev.path %>" class="prev" title="<%= page.prev.title %>">上一篇<span class="xs-hidden">：<%= page.prev.title %></span></a>
+  <% } else { %>
+    <a href="javascript:;" class="prev disabled" title="没有上一篇了">已经是第一篇了</a>
+  <% } %>
+  <% if (page.next){ %>
+  <a href="<%- config.root %><%- page.next.path %>" class="next" title="<%= page.next.title %>">下一篇<span class="xs-hidden">：<%= page.next.title %></span></a>
+  <% } else { %>
+    <a href="javascript:;" class="next disabled" title="没有下一篇了">已经是最后一篇了</a>
+  <% } %>
+</div>
+<% } %>
