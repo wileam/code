@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://code.wileam.com/"/>
-  <updated>2014-12-15T09:53:07.346Z</updated>
+  <updated>2015-01-14T02:08:36.927Z</updated>
   <id>http://code.wileam.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://code.wileam.com/iphone-6-screen/"/>
     <id>http://code.wileam.com/iphone-6-screen/</id>
     <published>2014-09-14T11:47:52.000Z</published>
-    <updated>2014-10-14T06:07:27.000Z</updated>
+    <updated>2014-12-16T03:14:35.000Z</updated>
     <content type="html"><![CDATA[<p>iPhone6发布了，纳尼？又是一个新尺寸，苦逼前端工又要加班了呢。看到一篇很好的关于iPhone 6 屏幕显示的<a href="http://www.paintcodeapp.com/news/iphone-6-screens-demystified" target="_blank" rel="external">文章</a>，于是翻译了一下。</p>
 <p>访问：<a href="http://wileam.com/iphone-6-screen-cn/" target="_blank" rel="external">http://wileam.com/iphone-6-screen-cn/</a> 查看。</p>
 <p>图较多，而且大多是svg矢量图，在博客里排版比较麻烦，于是单独做了上面这个站点。这里是翻译原文的中英文对照，欢迎批评指正。</p>
@@ -89,7 +89,7 @@
     <link href="http://code.wileam.com/update-hexo/"/>
     <id>http://code.wileam.com/update-hexo/</id>
     <published>2014-08-23T17:46:13.000Z</published>
-    <updated>2014-10-14T06:21:04.000Z</updated>
+    <updated>2014-12-16T03:14:35.000Z</updated>
     <content type="html"><![CDATA[<p>好久不用博客，转眼升级的时候已经各种报错了。原来hexo已经到了2.8.2版本，并且各种各种不兼容啊。</p>
 <a id="more"></a>
 
@@ -125,7 +125,7 @@
     <link href="http://code.wileam.com/front-end-interview/"/>
     <id>http://code.wileam.com/front-end-interview/</id>
     <published>2014-02-15T09:22:01.000Z</published>
-    <updated>2014-08-23T17:28:49.000Z</updated>
+    <updated>2014-12-16T03:14:35.000Z</updated>
     <content type="html"><![CDATA[<p>前一阵时间找工作，面试了一些公司，这里也总结一下遇到的前端技术相关的问题，做个记录，也看看自己缺那块，以后要往什么方向继续努力。以下面试题都不指明公司名称了。</p>
 <h2 id="Html/CSS方面">Html/CSS方面</h2>
 <a id="more"></a>
@@ -224,7 +224,7 @@
     <link href="http://code.wileam.com/icon-font-intro/"/>
     <id>http://code.wileam.com/icon-font-intro/</id>
     <published>2013-12-22T07:30:17.000Z</published>
-    <updated>2014-08-23T17:28:49.000Z</updated>
+    <updated>2014-12-16T03:14:35.000Z</updated>
     <content type="html"><![CDATA[<p>2013.12.21我在<a href="http://www.beijing-open-party.org/" target="_blank" rel="external">Beijing Open Party</a>2013年的最后一期，2013嘉年华活动中做了一个小分享，主题就是Icon Font的好处及应用。</p>
 <p>现在把相关的demo和幻灯片也放在这里：<br><a id="more"></a></p>
 <p><a href="http://demo.wileam.com/iconfont.html" target="_blank" rel="external">Demo</a></p>
@@ -256,7 +256,7 @@
     <link href="http://code.wileam.com/build-a-hexo-blog-and-optimize/"/>
     <id>http://code.wileam.com/build-a-hexo-blog-and-optimize/</id>
     <published>2013-12-14T04:56:49.000Z</published>
-    <updated>2014-08-23T17:28:49.000Z</updated>
+    <updated>2014-12-16T03:14:35.000Z</updated>
     <content type="html"><![CDATA[<p>首先，<em>这不是一篇详尽的完整的教程</em>，只是记录大致的hexo建站流程以及自己折腾的过程。因为网上关于hexo的教程已经太多，一搜一大把。但是我还是推荐英文尚可的直接阅读hexo作者的<strong><a href="http://zespia.tw/hexo/docs/" target="_blank" rel="external">文档</a></strong>，因为很多教程也只是一知半解，还是看作者文档来的比较彻底。另外，hexo源代码开源，实在不行还可以去hexo的<a href="https://github.com/tommy351/hexo" target="_blank" rel="external">github</a>去提<a href="https://github.com/tommy351/hexo/issues" target="_blank" rel="external">issue</a>。</p>
 <p>折腾的成果就是你现在看到的这个博客，所以这里本身就是一个demo。^_^</p>
 <p><em>p.s. hexo作者据说是台湾的一名在校学生…… T_T 努力吧少年…… </em></p>
@@ -389,7 +389,7 @@ $ hexo deploy <span class="comment">--generate</span>
     <link href="http://code.wileam.com/markdown-syntax/"/>
     <id>http://code.wileam.com/markdown-syntax/</id>
     <published>2013-12-10T17:12:44.000Z</published>
-    <updated>2014-09-14T12:41:07.000Z</updated>
+    <updated>2014-12-16T03:14:35.000Z</updated>
     <content type="html"><![CDATA[<p>Markdown学习练习笔记/兼文档</p>
 <h2 id="哲学_philosophy">哲学 philosophy</h2>
 <p>咳咳。简单说就是“易读”，“易写”。</p>
@@ -469,7 +469,7 @@ $ hexo deploy <span class="comment">--generate</span>
 <h2 id="其他">其他</h2>
 <h3 id="电子邮件_email">电子邮件 email</h3>
 <pre><code>&lt;abc@gmail.<span class="keyword">com</span>&gt;
-</code></pre><p><a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#x61;&#x62;&#x63;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x61;&#x62;&#x63;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
+</code></pre><p><a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#97;&#x62;&#x63;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#97;&#x62;&#x63;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;</a></p>
 <h3 id="反斜杠">反斜杠</h3>
 <pre><code>\<span class="keyword">*</span>我就是想显示星号不想斜体\<span class="keyword">*</span>
 </code></pre><p>*我就是想显示星号不想斜体*</p>
