@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://code.wileam.com/"/>
-  <updated>2015-01-14T02:08:36.927Z</updated>
+  <updated>2015-01-22T12:44:08.949Z</updated>
   <id>http://code.wileam.com/</id>
   
   <author>
@@ -13,6 +13,166 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[CSS CONF小记]]></title>
+    <link href="http://code.wileam.com/css-conf/"/>
+    <id>http://code.wileam.com/css-conf/</id>
+    <published>2015-01-21T14:05:40.000Z</published>
+    <updated>2015-01-22T12:41:49.000Z</updated>
+    <content type="html"><![CDATA[<p>1月10号去北京参加了<a href="http://css.w3ctech.com/" target="_blank" rel="external">CSS CONF</a>中国首届CSS开发者大会，总体感觉还不错。了解了更多关于css未来可能的发展方向，现在的新技术，以及应用情况，不足之处可能是时间安排过于紧张，有些消化不了，以及后期由于时间紧张导致的没有互动和交流环节。以及资料整理滞后，两周了官网还没有更新slides资料……</p>
+<p>下面就挨个讲每个分享我记得的要点、感受及资料分享吧。(这次大会慕课网有录制视频，应该会在晚些日子放出来。可以关注一下。)</p>
+<a id="more"></a>
+
+<h1 id="Bert_Bos_-_The_future_of_CSS">Bert Bos - The future of CSS</h1>
+<blockquote>
+<p>Slides: <a href="http://www.w3.org/Talks/2015/0110-CSS-Beijing/" target="_blank" rel="external">http://www.w3.org/Talks/2015/0110-CSS-Beijing/</a></p>
+</blockquote>
+<p>Bert Bos是CSS的联合创始人，也是重量级人物。这次主要就是介绍了W3C标准的工作流程，以及CSS未来的发展方向。</p>
+<p>题外话：现场邀请了高博老师来翻译，之前w3ctech有个投票说是否需要翻译，80%＋是需要，但是其实现场说的很简单根本不需要翻译嘛（逃</p>
+<h3 id="W3C的文稿状态：">W3C的文稿状态：</h3>
+<p>WD: working draft草案<br>CR: Candidate Recommendation<br>PR: Proposed Recommendation<br>REC: Recommendation</p>
+<p>这四种是从WD-CR-PR-REC的顺序，所以看到一个标准先看它目前所处的状态，一般越靠后越稳定。REC就是最终定稿了。</p>
+<h3 id="level_NOT_version">level NOT version</h3>
+<p>扩展：level 3包括level2全部内容。<br>not change, only extent.<br>add new feature, not change existing one.</p>
+<p>1994-1996: 1 spec.<br>1998: 1 spec.<br>1999+: 60 modules, each have independent level.</p>
+<p>1999年之后一个重要的变化就是把整体的一个标准拆分成60个模块，每一个模块都有自己的level，也就是不存在CSS3、CSS4，只有某个处在CSS level 3的模块，或者是CSS level 1的模块。</p>
+<h3 id="where_does_the_w3c_wg_get_ideas">where does the w3c wg get ideas</h3>
+<ul>
+<li>company: w3c members</li>
+<li>join other group.</li>
+<li><strong>join the w3c email group <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#119;&#x77;&#x77;&#45;&#x73;&#x74;&#x79;&#108;&#x65;&#x40;&#x77;&#x33;&#x2e;&#x6f;&#114;&#x67;">&#119;&#x77;&#x77;&#45;&#x73;&#x74;&#x79;&#108;&#x65;&#x40;&#x77;&#x33;&#x2e;&#x6f;&#114;&#x67;</a></strong></li>
+<li>conferences, personal communication i.e. w3c agenda</li>
+</ul>
+<p>参与W3C的方式：1和2都需要公司层面的参与，3是所有人都可以加入邮件组，也是bert比较推荐的方式。另外中文也有一个邮件组，叫 W3C HTML5 中文興趣小組 <a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#x70;&#x75;&#98;&#108;&#x69;&#99;&#x2d;&#104;&#x74;&#x6d;&#108;&#45;&#105;&#103;&#x2d;&#x7a;&#104;&#64;&#119;&#51;&#46;&#111;&#114;&#x67;">&#x70;&#x75;&#98;&#108;&#x69;&#99;&#x2d;&#104;&#x74;&#x6d;&#108;&#45;&#105;&#103;&#x2d;&#x7a;&#104;&#64;&#119;&#51;&#46;&#111;&#114;&#x67;</a>，有兴趣的同学也欢迎加入。</p>
+<h3 id="development_areas">development areas</h3>
+<ul>
+<li>语音识别</li>
+<li>电子书格式标准化 Pager</li>
+<li>GUI layout ( include user interaction)</li>
+<li>Graphics</li>
+</ul>
+<h3 id="总结">总结</h3>
+<ul>
+<li>CSS虽然已经18年了但仍然在活跃的开发中，是很有活力的语言</li>
+<li>未来关注ebooks &amp; paper books领域CSS标准的发展</li>
+<li>打印排版的解决方式，尤其是非西方字体的排版，Bert也是呼吁中文开发者们需要加快行动，进行中文排版的优化。</li>
+</ul>
+<h1 id="winter_重识CSS">winter 重识CSS</h1>
+<p>计子winter老师用geek的方式去学习css，他觉得学习一个语言有三步：学习语法、学习表达式、如何去用。他期待看到的是一个css的语法的列表，表达式的列表，但现状是这些都是零散的散落在w3c的文档里。于是他拉取了css所有syntax和semantic的Json串……方便有一个整体的认识还有做二次开发。<br>（问了一下寒老师json地址，他说回头会放到github上。到时候再更新。</p>
+<h1 id="点头猪_移动时代CSS对用户体验的影响">点头猪 移动时代CSS对用户体验的影响</h1>
+<blockquote>
+<p>Slides: keynote <a href="http://pan.baidu.com/s/1mgA6Unu" target="_blank" rel="external">http://pan.baidu.com/s/1mgA6Unu</a><br>PDF: <a href="http://pan.baidu.com/s/1dDo035n" target="_blank" rel="external">http://pan.baidu.com/s/1dDo035n</a><br>PDF带注释：<a href="http://pan.baidu.com/s/1sjO9Olf" target="_blank" rel="external">http://pan.baidu.com/s/1sjO9Olf</a></p>
+</blockquote>
+<p>CSS女神前携程现平安付的点头猪分享了她的一些思考，台风很赞，有内容有深度思考也有恰到好处的幽默，强烈推荐。等视频出来也不要错过。</p>
+<ul>
+<li>关于交互的很多细节和思考。</li>
+<li>设计师工程师的职责划分。<br>  设计师和工程师不同的角色，以及开发者个人的知识结构的影响。理想状态大概是豆瓣的克军老师提到的“产品工程师”。</li>
+<li>CSS动画性能：招财猫的动画。</li>
+</ul>
+<h1 id="灭灭_豆瓣阅读在_WebFont_上的探索和实践">灭灭 豆瓣阅读在 WebFont 上的探索和实践</h1>
+<blockquote>
+<p>Slides: <a href="https://speakerdeck.com/houkanshan/web-fonts-at-douban-read" target="_blank" rel="external">https://speakerdeck.com/houkanshan/web-fonts-at-douban-read</a> （需翻墙）</p>
+</blockquote>
+<p>灭灭是豆瓣阅读的前端，关注已久但是一直没见过。据说我在帝都的时候去open party那场他也在，只是当时我不知道。这回也算是终于见面了。</p>
+<p>这场有蛮多干货，对web字体排版有兴趣的强烈推荐去看slides。但是讲的非常非常快，有点跟不上节奏。事后沟通得知是安排时间太紧张了，只有15分钟。很多对于文字处理的细节，非常细致到近乎处女座。下面只是简单记的几个问题，重点还是去看slides，制作也很精致。</p>
+<h3 id="Itatic_Type">Itatic Type</h3>
+<p>中文斜体的处理：楷体。</p>
+<p>中英文混排时对italic type的处理，期望的效果：中文楷体，正体。英文斜体。</p>
+<h3 id="bitmap">bitmap</h3>
+<p>unicode-range: 强制对中文使用中文引号。</p>
+<h3 id="Kerning">Kerning</h3>
+<p>OpenType中也用到了kerning，来调整字符间距。</p>
+<h3 id="标点挤压">标点挤压</h3>
+<p>制作了一套标点挤压的字体Mojikumi。</p>
+<p>解决方案：<br><strong>自己做字体，选取异常的字符做成字体，并且放在声明的最前面。</strong></p>
+<h3 id="坑">坑</h3>
+<p>line-height<br>不同字体的base-line位置，ascend height和descend height不同。slides里面有各个系统的这些数据汇总表。</p>
+<h3 id="hint">hint</h3>
+<p>webfont替换本地字体 闪动</p>
+<p>webfont无法加载，影响整个页面加载。如google font。<br>解决：检测加载，超时不加载，采用本地字体。</p>
+<p>中文排版优化：<a href="http://css.hanzi.co/" target="_blank" rel="external">漢字標準格式</a></p>
+<h1 id="Jaychsu_Flexbox更优雅的布局">Jaychsu Flexbox更优雅的布局</h1>
+<blockquote>
+<p>Slides: <a href="https://gitcafe.com/jaychsu/flex" target="_blank" rel="external">https://gitcafe.com/jaychsu/flex</a></p>
+</blockquote>
+<h3 id="功能">功能</h3>
+<p>垂直居中的实现：</p>
+<p>1 固定宽高的容器<br>parent:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">position</span><span class="pseudo">:relative</span></div></pre></td></tr></table></figure>
+
+<p>child:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">position:absolute;</div><div class="line">left:50%;</div><div class="line">top:50%;</div><div class="line">margin-left:-width/2;</div><div class="line">margin-top:-height/2;</div></pre></td></tr></table></figure>
+
+<p>2<br>parent:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">text-align</span>: <span class="tag">center</span>;</div></pre></td></tr></table></figure>
+
+<p>child:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">display</span><span class="pseudo">:inline-block</span>;</div><div class="line"><span class="tag">vertical-align</span><span class="pseudo">:middle</span>;</div></pre></td></tr></table></figure>
+
+<p>3 flexbox</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">display:flexbox;</div><div class="line">justify-content:center; //水平居中</div><div class="line">align-items:center; //垂直居中</div></pre></td></tr></table></figure>
+
+<h3 id="兼容性">兼容性</h3>
+<p>见<a href="http://caniuse.com/#feat=flexbox" target="_blank" rel="external">caniuse</a><br>兼容性还并不好，安卓4.4+, IE11 目前还无法广泛使用。</p>
+<h3 id="flexbox原理">flexbox原理</h3>
+<ul>
+<li>flexbox宽度的计算：<br>flex-grow: 没有充满的时候充满宽度<br>flex-shrink: 超过宽度的时候缩小宽度<br>flex-basis:没有flex-grow和flex-shrink时的宽度</li>
+</ul>
+<p>default:<br>flex: 1 0 auto;</p>
+<h1 id="hax（贺师俊）_myth_of_css_frameworks">hax（贺师俊） myth of css frameworks</h1>
+<blockquote>
+<p>Slides: <a href="http://johnhax.net/2015/myth-of-css-frameworks/" target="_blank" rel="external">http://johnhax.net/2015/myth-of-css-frameworks/</a></p>
+</blockquote>
+<p>Hax的主题是对CSS框架的迷(pi)思(pan)，关于各种CSS的组织方式(OOCSS/SMACSS/ACSS/BEM)的思(pi)考(pan)。</p>
+<p>这个问题其实我之前有蛮多思考，CSS本身不难，但涉及到命名、规范、可维护性，就变的复杂起来。Hax看了很多很多相关文章，其中不少我也看过。Hax用了很久来说BEM，OOCSS这些方案的缺陷，和css的初衷背离，得出的结论是semantic（语义化） css是没有意义的，只有semantic html。而这些实践事实上都是在解决一个block/widget/ui components层面的问题，这个问题有很多的方案，hax更认同的是html层面的，比如html5的一些自定义标签，role=”xx”乃至未来的web components。而这个问题在实际中更加复杂，会受到项目历史的代码规范、工期等等的影响，BEM等方案并不能提高可维护性反而可能更差。</p>
+<p>贺老的最终观点就是：<br>There’s no such thing as semantic CSS. There’s only semantic HTML and its visible form.</p>
+<p>我觉得web components自然是很好的，可是目前我们还很不成熟，没办法投入生产，甚至h5的自定义标签使用也需要hack的引入一段js来兼容旧版浏览器。那么对于一个block/widget/ui components，总需要一种方式去解决，虽然bem很丑，但是它也是一种实践中比较有效的解决方案。避免了多层嵌套，实现了复用。至于过长的书写，也都有比较成熟的工具比如html中emmet+bem, css中scss/less+bem都可以大大的简化书写复杂度，实现了一个比较清晰的组件和较好的可维护性，同时并没有增加工作量。</p>
+<p>所以我觉得在新项目中，之前没有代码规范的情况下，还是可以使用这些方式去组织css和html的，只要项目成员达成一致。我觉得可能任何方案都会有问题，重要的是总是要有一种相对统一的规范来解决问题。</p>
+<p>（如有错误欢迎指出，求hax大神轻喷</p>
+<h1 id="一丝_CSS工作流">一丝 CSS工作流</h1>
+<p>因为之前一丝姐姐来我们部门分享过类似的内容，这里就主要是复习一下+听段子了。武大头传奇、百家讲坛什么的，简直23333……讲了CSS后处理器的一些原理，虽然我至今也没完全明白postcss和css-preprocessor比如scss/less的区别，我理解的css grace大概就是紧跟W3C标准，如果标准没有实现，那么css grace会给一个hack的实现。虽然在生产中还不打算使用，但是回头打算在demo或个人项目里尝试一下。</p>
+<p>另外还提到了阿里妈妈那边对中文字体的处理 <a href="http://thx.github.io/cube/doc/type/" target="_blank" rel="external">Type.css</a>，也是针对中文做了一些优化。</p>
+<h1 id="尤雨溪_CSS与界面动效">尤雨溪 CSS与界面动效</h1>
+<p>前Google Creative Lab成员，Vue.js作者，尤小右。之前也来我厂做了vuejs的分享，这次的主题是关于界面动效的。有几点印象比较深的。</p>
+<ul>
+<li><p>命令式 vs 声明式<br>命令式：如jQuery<br>声明式：状态和动画分离，易于维护。如Angular/Vue</p>
+</li>
+<li><p>JS vs CSS 动画<br>JS：逐帧渲染<br>CSS: 避免触发reflow，repaint</p>
+</li>
+<li><p>动画 可能的未来：</p>
+<ul>
+<li><a href="http://famo.us/" target="_blank" rel="external">http://famo.us/</a></li>
+<li><a href="https://www.polymer-project.org/platform/web-animations.html" target="_blank" rel="external">web-animations at polymer</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="勾三股四（@勾股）_web_components">勾三股四（@勾股） web components</h1>
+<blockquote>
+<p><strong>Slides</strong>: <a href="http://jiongks.name/slides/css-scoping/" target="_blank" rel="external">http://jiongks.name/slides/css-scoping/</a> (勾股：由于本人比较骚包急于秀一下新技术，所以需要支持webcomponents的浏览器才可以正常打开，比如Chrome 36+)<br><strong>Video</strong>: 现场 <a href="http://www.tudou.com/programs/view/8bvwGHaL6T4/" target="_blank" rel="external">http://www.tudou.com/programs/view/8bvwGHaL6T4/</a><br>补充：<a href="http://www.tudou.com/programs/view/dz4aXjDFnLw/" target="_blank" rel="external">http://www.tudou.com/programs/view/dz4aXjDFnLw/</a><br>web components标准的翻译：<a href="http://w3c-html-ig-zh.github.io/webcomponents/" target="_blank" rel="external">http://w3c-html-ig-zh.github.io/webcomponents/</a></p>
+</blockquote>
+<p>勾股上场的时候离整场大会结束只剩20分钟了，于是噼里啪啦飞速的过了一遍还跳过了好多，见现场视频，之后又补录了一个视频把现场略过的章节细讲了一下。讲的很清楚，对web components有兴趣的严重推荐看视频。毕竟这是web可能的未来。</p>
+<h3 id="web_components">web components</h3>
+<ul>
+<li>组件化</li>
+<li>自定义标签</li>
+<li>隐藏内部结构 shadow-dom</li>
+</ul>
+<h1 id="吴小倩_CSS动画性能">吴小倩 CSS动画性能</h1>
+<p>之前都只是在邮件组里或者w3c的skype会议里听到小倩声音（很好听），这次见到真人，也是一个很美的小姑娘。她上场的时候只剩5分钟了几乎没什么时间，于是快速的过了一些CSS动画的demo，对比他们的速度和性能，主要是说做CSS动画的时候要避免repaint和reflow，这两个是比较耗性能的。</p>
+<p>另外小倩还介绍了动画控制相关的新的API，<a href="http://www.w3.org/TR/animation-timing/" target="_blank" rel="external">RequestAnimationFrame</a> &amp; <a href="http://dev.w3.org/csswg/css-will-change/" target="_blank" rel="external">will-change</a>。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>1月10号去北京参加了<a href="http://css.w3ctech.com/" target="_blank" rel="external">CSS CONF</a>中国首届CSS开发者大会，总体感觉还不错。了解了更多关于css未来可能的发展方向，现在的新技术，以及应用情况，不足之处可能是时间安排过于紧张，有些消化不了，以及后期由于时间紧张导致的没有互动和交流环节。以及资料整理滞后，两周了官网还没有更新slides资料……</p>
+<p>下面就挨个讲每个分享我记得的要点、感受及资料分享吧。(这次大会慕课网有录制视频，应该会在晚些日子放出来。可以关注一下。)</p>
+]]></summary>
+    
+      <category term="conference" scheme="http://code.wileam.com/tags/conference/"/>
+    
+      <category term="css" scheme="http://code.wileam.com/tags/css/"/>
+    
+      <category term="frontend" scheme="http://code.wileam.com/tags/frontend/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[iphone6屏幕揭秘]]></title>
@@ -469,7 +629,7 @@ $ hexo deploy <span class="comment">--generate</span>
 <h2 id="其他">其他</h2>
 <h3 id="电子邮件_email">电子邮件 email</h3>
 <pre><code>&lt;abc@gmail.<span class="keyword">com</span>&gt;
-</code></pre><p><a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#97;&#x62;&#x63;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#97;&#x62;&#x63;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;</a></p>
+</code></pre><p><a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x61;&#x62;&#x63;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x61;&#x62;&#x63;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
 <h3 id="反斜杠">反斜杠</h3>
 <pre><code>\<span class="keyword">*</span>我就是想显示星号不想斜体\<span class="keyword">*</span>
 </code></pre><p>*我就是想显示星号不想斜体*</p>

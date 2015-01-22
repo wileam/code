@@ -198,7 +198,7 @@
 <h2 id="其他">其他</h2>
 <h3 id="电子邮件_email">电子邮件 email</h3>
 <pre><code>&lt;abc@gmail.<span class="keyword">com</span>&gt;
-</code></pre><p><a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#97;&#x62;&#x63;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#97;&#x62;&#x63;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;</a></p>
+</code></pre><p><a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x61;&#x62;&#x63;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x61;&#x62;&#x63;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
 <h3 id="反斜杠">反斜杠</h3>
 <pre><code>\<span class="keyword">*</span>我就是想显示星号不想斜体\<span class="keyword">*</span>
 </code></pre><p>*我就是想显示星号不想斜体*</p>
@@ -350,6 +350,12 @@ var cale = new Calendar("idCalendar", {
                 this.Days[day].innerHTML = "<a href='/front-end-interview/' title='一些前端面试题'>" + day + "</a>";
             }
     
+            var postdate = new Date("Wed Jan 21 2015 22:05:40 GMT+0800");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/css-conf/' title='CSS CONF小记'>" + day + "</a>";
+            }
+    
             var postdate = new Date("Sun Dec 22 2013 15:30:17 GMT+0800");
             if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
                 var day = postdate.getDate();
@@ -402,7 +408,7 @@ $$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/blog/" style="font-size: 10.00px;">blog</a><a href="/tags/career/" style="font-size: 10.00px;">career</a><a href="/tags/css/" style="font-size: 10.00px;">css</a><a href="/tags/design/" style="font-size: 10.00px;">design</a><a href="/tags/frontend/" style="font-size: 10.00px;">frontend</a><a href="/tags/hexo/" style="font-size: 10.00px;">hexo</a><a href="/tags/iconfont/" style="font-size: 10.00px;">iconfont</a><a href="/tags/interview/" style="font-size: 10.00px;">interview</a><a href="/tags/markdown/" style="font-size: 10.00px;">markdown</a><a href="/tags/mobile/" style="font-size: 10.00px;">mobile</a><a href="/tags/openparty/" style="font-size: 10.00px;">openparty</a><a href="/tags/syntax/" style="font-size: 10.00px;">syntax</a><a href="/tags/translate/" style="font-size: 20.00px;">translate</a>
+    <a href="/tags/blog/" style="font-size: 10.00px;">blog</a><a href="/tags/career/" style="font-size: 10.00px;">career</a><a href="/tags/conference/" style="font-size: 10.00px;">conference</a><a href="/tags/css/" style="font-size: 20.00px;">css</a><a href="/tags/design/" style="font-size: 10.00px;">design</a><a href="/tags/frontend/" style="font-size: 20.00px;">frontend</a><a href="/tags/hexo/" style="font-size: 10.00px;">hexo</a><a href="/tags/iconfont/" style="font-size: 10.00px;">iconfont</a><a href="/tags/interview/" style="font-size: 10.00px;">interview</a><a href="/tags/markdown/" style="font-size: 10.00px;">markdown</a><a href="/tags/mobile/" style="font-size: 10.00px;">mobile</a><a href="/tags/openparty/" style="font-size: 10.00px;">openparty</a><a href="/tags/syntax/" style="font-size: 10.00px;">syntax</a><a href="/tags/translate/" style="font-size: 20.00px;">translate</a>
   </div>
 </div>
 
@@ -411,6 +417,10 @@ $$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
 <div class="widget tag">
   <h3 class="title">Recent Posts<a href="/archives" class="more-link">More...</a></h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/css-conf/">CSS CONF小记</a>
+      </li>
     
       <li>
         <a href="/iphone-6-screen/">iphone6屏幕揭秘</a>

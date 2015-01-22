@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://code.wileam.com/css-conf/</loc>
+    <lastmod>2015-01-22T12:41:49.000Z</lastmod>
+  </url>
+  <url>
     <loc>http://code.wileam.com/build-a-hexo-blog-and-optimize/</loc>
     <lastmod>2014-12-16T03:14:35.000Z</lastmod>
   </url>
