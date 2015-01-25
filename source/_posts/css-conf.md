@@ -209,6 +209,7 @@ There's no such thing as semantic CSS. There's only semantic HTML and its visibl
 
 尤雨溪 CSS与界面动效
 ==========
+> Slides: http://feppt.qiniudn.com/浅谈CSS与web界面动效开发模式.pdf
 
 前Google Creative Lab成员，Vue.js作者，尤小右。之前也来我厂做了vuejs的分享，这次的主题是关于界面动效的。有几点印象比较深的。
 
