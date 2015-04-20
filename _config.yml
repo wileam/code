@@ -82,7 +82,11 @@ theme: light
 exclude_generator:
 
 # Deployment
-## Docs: http://zespia.tw/hexo/docs/deploy.html
+## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type: github
-  repository: git@github.com:wileam/code.git
+- type: git
+  repo: git@github.com:wileam/code.git
+  branch: gh-pages
+- type: git
+  repo: git@gitcafe.com:wileam/code.git
+  branch: gitcafe-pages
