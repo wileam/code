@@ -5,3 +5,4 @@ debug.log
 npm-debug.log
 public
 .deploy/
+.deploy_git/

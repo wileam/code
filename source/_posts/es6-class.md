@@ -32,8 +32,8 @@ class Person {
     }
 }
 
-var allen = new Person('allen',21);
-allen.sayHi(); //'Hi, my name is allen'
+var ray = new Person('ray',21);
+ray.sayHi(); //'Hi, my name is ray'
 ```
 
 ### 以前的方式
@@ -47,8 +47,8 @@ Person.prototype.sayHi = function() {
     console.log('Hi, my name is '+ this.name);
 }
 
-var allen = new Person('allen', 21);
-allen.sayHi(); //'Hi, my name is allen'
+var ray = new Person('ray', 21);
+ray.sayHi(); //'Hi, my name is ray'
 ```
 
 ## Class实现继承
@@ -69,6 +69,25 @@ class Female extends Person {
         // add a new log
         console.log('meow');
     }
+}
+
+var joanna = new Female('joanna', 26);
+joanna.sayHi();
+//'Hi, my name is joanna'
+//'meow'
+```
+
+ES5的写法
+```
+var Female = function (name, age) {
+    Person.call(name, age);
+    this.name  = name;
+    this.age = age;
+};
+Female.prototype = Object.create(Person.prototype);
+Female.prototype.sayHi = function() {
+    Person.prototype.sayHi.call(this);
+    console.log('meow');
 }
 
 var joanna = new Female('joanna', 26);
