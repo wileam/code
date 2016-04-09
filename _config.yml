@@ -87,6 +87,6 @@ deploy:
 - type: git
   repo: git@github.com:wileam/code.git
   branch: gh-pages
-- type: git
-  repo: git@gitcafe.com:wileam/code.git
-  branch: gitcafe-pages
+# - type: git
+#   repo: git@gitcafe.com:wileam/code.git
+#   branch: gitcafe-pages
