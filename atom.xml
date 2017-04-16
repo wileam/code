@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Joanna&#39;s coding blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://code.wileam.com/"/>
+  <updated>2017-04-16T10:19:28.000Z</updated>
+  <id>http://code.wileam.com/</id>
+  
+  <author>
+    <name>Joanna Wu</name>
+    <email>joanna_wu@live.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>params default value &amp; params environment &amp; TDZ</title>
+    <link href="http://code.wileam.com/default-value-n-params-env/"/>
+    <id>http://code.wileam.com/default-value-n-params-env/</id>
+    <published>2016-07-30T12:27:32.000Z</published>
+    <updated>2017-04-16T10:19:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>看 ES6 parameter default value 的时候，发现一些很困惑的现象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> y = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = y, y</span>) </span>&#123;&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
+<p>结果是 reference error: y is not defined. 因为这里 y 是处在 <code>TDZ</code>(Temporal Dead Zone)。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(x); <span class="comment">// TDZ</span></div><div class="line"><span class="keyword">let</span> x;</div></pre></td></tr></table></figure>
+<p>可是为什么呢，明明全局有定义 y 呀，为什么未定义？难道参数默认值有单独的作用域？继续试验：</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> y = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = function(</span>)</span>&#123;<span class="built_in">console</span>.log(y)&#125;, y = <span class="number">2</span>) &#123;</div><div class="line">  x(); <span class="comment">// 2</span></div><div class="line">  y = <span class="number">3</span>;</div><div class="line">  x(); <span class="comment">// 3</span></div><div class="line">&#125;</div><div class="line">foo();</div><div class="line"><span class="built_in">console</span>.log(y); <span class="comment">//1</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> y = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = function(</span>)</span>&#123;<span class="built_in">console</span>.log(y)&#125;) &#123;</div><div class="line">  <span class="keyword">let</span> y = <span class="number">3</span>;</div><div class="line">  x(); <span class="comment">// 1</span></div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = function(</span>)</span>&#123;<span class="built_in">console</span>.log(y)&#125;) &#123;</div><div class="line">  <span class="keyword">let</span> y = <span class="number">3</span>;</div><div class="line">  x(); <span class="comment">// ReferenceError: y is not defined</span></div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
+<p>很让人困惑，感觉是存在3个作用域，全局/参数/函数体。参数默认值的函数，可以访问参数中定义的，和参数外定义(outer/global)的变量，不能访问函数体中定义的变量。</p>
+<p>于是去找ES标准中的定义，找到了</p>
+<blockquote>
+<p>9.2.12 FunctionDeclarationInstantiation<br>If the function’s formal parameters do not include any default value initializers then the body declarations are instantiated in the same Environment Record as the parameters. If default value parameter initializers exist, a second Environment Record is created for the body declarations. Formal parameters and functions are initialized as part of FunctionDeclarationInstantiation. All other bindings are initialized during evaluation of the function body.</p>
+</blockquote>
+<p>豁然开朗，果然就是这样。</p>
+<p>结论:</p>
+<p>如果参数存在默认值，则有三个环境 environment( <code>environment</code> in ES6 = <code>scope</code> in ES5). Outer environment / parameters environment / function body environment.<br>parameters environment 可以访问自己和外层，不能访问函数体内的变量。<br>函数体内可以修改 parameters env 里定义的 formal parameters 的值，不能重新定义（除非用<code>var</code>……）。</p>
+<p>关于<code>var</code>可以看一个更晕的例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> y =<span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = function(</span>)</span>&#123;<span class="built_in">console</span>.log(y)&#125;,y=<span class="number">2</span>) &#123;</div><div class="line">  x(); <span class="comment">// 2</span></div><div class="line">  <span class="keyword">var</span> y = <span class="number">3</span>; <span class="comment">// if use let, then throw error: y is already declared, which is much more clear.</span></div><div class="line">  <span class="built_in">console</span>.log(y); <span class="comment">//3</span></div><div class="line">  x(); <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line">foo();</div><div class="line"><span class="built_in">console</span>.log(y); <span class="comment">//1</span></div></pre></td></tr></table></figure>
+<p>so，个人建议:</p>
+<ul>
+<li>参数变量、函数体内变量、全局变量别用一样的名字</li>
+<li>不要用 var 来定义变量，总是用 <code>let</code> 或 <code>const</code></li>
+</ul>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let" target="_blank" rel="external">TDZ</a></li>
+<li><a href="http://dmitrysoshnikov.com/ecmascript/es6-notes-default-values-of-parameters/" target="_blank" rel="external">ES6 Notes: Default values of parameters</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看 ES6 parameter default value 的时候，发现一些很困惑的现象。&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; y = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;x = y, y&lt;/span&gt;) &lt;/span&gt;&amp;#123;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;foo();&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;结果是 reference error: y is not defined. 因为这里 y 是处在 &lt;code&gt;TDZ&lt;/code&gt;(Temporal Dead Zone)。&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(x); &lt;span class=&quot;comment&quot;&gt;// TDZ&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; x;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;可是为什么呢，明明全局有定义 y 呀，为什么未定义？难道参数默认值有单独的作用域？继续试验：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="frontend" scheme="http://code.wileam.com/categories/frontend/"/>
+    
+    
+      <category term="ES6" scheme="http://code.wileam.com/tags/ES6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>The beauty of CSS (animation)</title>
+    <link href="http://code.wileam.com/css-beauty/"/>
+    <id>http://code.wileam.com/css-beauty/</id>
+    <published>2016-07-22T12:27:32.000Z</published>
+    <updated>2017-04-16T10:19:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>去 Google Women Techmaker 做了一个小分享，关于一些趣味的动效的。</p>
+<p>Slides 在这里：</p>
+<p><a href="http://wileam.com/the_beauty_of_css" target="_blank" rel="external">http://wileam.com/the_beauty_of_css</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;去 Google Women Techmaker 做了一个小分享，关于一些趣味的动效的。&lt;/p&gt;
+&lt;p&gt;Slides 在这里：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://wileam.com/the_beauty_of_css&quot; target=&quot;_blank&quot; rel=
+    
+    </summary>
+    
+      <category term="frontend" scheme="http://code.wileam.com/categories/frontend/"/>
+    
+    
+      <category term="slides" scheme="http://code.wileam.com/tags/slides/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第二届 CSS CONF 小记</title>
+    <link href="http://code.wileam.com/css-conf-shanghai/"/>
+    <id>http://code.wileam.com/css-conf-shanghai/</id>
+    <published>2015-08-12T14:59:42.000Z</published>
+    <updated>2017-04-16T06:37:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>周末去上海参加了第二届 CSS CONF，收获颇多，很开心。这里记录一些笔记和经历。</p>
+<a id="more"></a>
+<p>============ 先说正事，技术分享笔记 ============</p>
+<h2 id="手机淘宝CSS实践启示录-勾股"><a href="#手机淘宝CSS实践启示录-勾股" class="headerlink" title="手机淘宝CSS实践启示录 勾股"></a>手机淘宝CSS实践启示录 勾股</h2><blockquote>
+<p>slides: <a href="http://jiongks.name/slides/css-memos/" target="_blank" rel="external">http://jiongks.name/slides/css-memos/</a></p>
+</blockquote>
+<p>我司勾股老师讲手淘在CSS领域的一些实践，理念，开源产品以及工作流。</p>
+<ul>
+<li>zorro开源 <a href="http://zorro.io/" target="_blank" rel="external">http://zorro.io/</a></li>
+<li>推荐本书 flexible web design</li>
+<li>lib-flexible <a href="https://github.com/amfe/lib-flexible" target="_blank" rel="external">https://github.com/amfe/lib-flexible</a></li>
+<li>responsive vs. flexible</li>
+<li>高度设断点 vertical responsive</li>
+<li><a href="https://github.com/amfe/article/issues/8" target="_blank" rel="external">手机淘宝前端的图片相关工作流程梳理</a></li>
+</ul>
+<h2 id="New-CSS-Checker-Mike-Smith"><a href="#New-CSS-Checker-Mike-Smith" class="headerlink" title="New CSS Checker - Mike Smith"></a>New CSS Checker - Mike Smith</h2><blockquote>
+<p>slides: <a href="http://img2.w3ctech.com/css-checker.pdf" target="_blank" rel="external">http://img2.w3ctech.com/css-checker.pdf</a><br>New css checker repo: <a href="http://github.com/w3c/css-checker" target="_blank" rel="external">http://github.com/w3c/css-checker</a></p>
+</blockquote>
+<p>一句话总结：<br>请关注css-checker，我会用rust写哦。rust这个可有意思啦，是新语言，有很多很好的特性。比如函数式编程。应当尝试一下。</p>
+<p>花絮：虽然其实现场的语速和信息量翻译并不是十分必要，但 @高博 老师翻译的很好哇，比如问到现场有多少人知道rust，会场有一些人举手。Mike: You guys rock! 高博译：给你们点赞~</p>
+<h2 id="企业CSS应用-展新"><a href="#企业CSS应用-展新" class="headerlink" title="企业CSS应用 - 展新"></a>企业CSS应用 - 展新</h2><blockquote>
+<p>slides: <a href="http://www.zhanxin.info/ppt/cssconf/" target="_blank" rel="external">http://www.zhanxin.info/ppt/cssconf/</a></p>
+</blockquote>
+<p>大概介绍了下支付宝的UI层面的产品，譬如之前的<a href="Alice - 写样式的更好方式">AliceUI</a>以及最新的<a href="http://ant.design/" target="_blank" rel="external">Ant Design</a>，当然ant design只是一张ppt带过，在演讲前我还以为会重点讲一下，期间还说到css的attribute选择器的使用，这一点倒是蛮少人会使用。</p>
+<h2 id="CSS-预处理器老调新谈-郑海波"><a href="#CSS-预处理器老调新谈-郑海波" class="headerlink" title="CSS 预处理器老调新谈 - @郑海波"></a>CSS 预处理器老调新谈 - @郑海波</h2><blockquote>
+<p>slides: <a href="http://leeluolee.github.io/css-conf/" target="_blank" rel="external">http://leeluolee.github.io/css-conf/</a></p>
+</blockquote>
+<p>觉得海波老师讲的很清楚，关于预处理器解决的核心问题，以及遇到的问题，以及预处理器和所谓的postcss的关系。当然信息量很大需要慢慢消化。</p>
+<h2 id="高性能-CSS-动画-黄薇"><a href="#高性能-CSS-动画-黄薇" class="headerlink" title="高性能 CSS 动画 - 黄薇"></a>高性能 CSS 动画 - 黄薇</h2><blockquote>
+<p>slides: <a href="http://melonh.com/sharing/slides.html?file=high_performance_animation#/" target="_blank" rel="external">http://melonh.com/sharing/slides.html?file=high_performance_animation#/</a><br>video: <a href="http://v.youku.com/v_show/id_XNzQ4MDE3ODQw.html?from=y1.7-2" target="_blank" rel="external">http://v.youku.com/v_show/id_XNzQ4MDE3ODQw.html?from=y1.7-2</a></p>
+</blockquote>
+<p>这个错过了，主要在外面和人聊天，只听了一会儿，感觉确实讲的很清晰，大家的反馈也是好评如潮。回头补ppt。</p>
+<h2 id="重拾-CSS-的乐趣-CSS魔法"><a href="#重拾-CSS-的乐趣-CSS魔法" class="headerlink" title="重拾 CSS 的乐趣 - @CSS魔法"></a>重拾 CSS 的乐趣 - @CSS魔法</h2><p>这个现场很赞啊，设计师出身的CSS魔法，ppt本身风格很赞，现场演讲技巧也很好。讲了一些所谓「奇技淫巧」，然而也是最初接触CSS最让人着迷的一些小快乐。比如用CSS画图标，画圆角，实现一些奇奇怪怪的小东西。</p>
+<h2 id="移动下的CSS布局-施丰丰"><a href="#移动下的CSS布局-施丰丰" class="headerlink" title="移动下的CSS布局 - 施丰丰"></a>移动下的CSS布局 - 施丰丰</h2><p>这个也错过了，回头补ppt。</p>
+<h2 id="中文排版需求-刘庆"><a href="#中文排版需求-刘庆" class="headerlink" title="中文排版需求 - 刘庆"></a>中文排版需求 - 刘庆</h2><blockquote>
+<p>slides: <a href="http://img2.w3ctech.com/中文排版需求-cssconf.pdf" target="_blank" rel="external">http://img2.w3ctech.com/中文排版需求-cssconf.pdf</a></p>
+</blockquote>
+<p>这个是惊喜，之前就在 @林小志 推荐下买了西文字体1，很吸引我，觉得字体特别有趣，开启了一个新世界的感觉。这次的分享也是感受到了很多字体的奥妙和玄机。很有意思。而且我是会后才知道刘庆老师就是西文字体的译者，于是吃饭的时候也找刘老师聊了一下表达了景仰之情，刘老师告诉我西文字体2出版的消息，以及小林章本人今年可能会来中国分享，大概会在深圳或广州。</p>
+<p>============ 以下开始水文 ============</p>
+<p>周五晚上，8点多到的上海。忘带面包没吃晚饭已饿晕， @徐飞 蜀黍告诉我地铁口有小杨生煎，于是就先去解决晚饭，正好第二天的讲师郑海波也在那里，于是三个人面基+聊天。我们仨住的不远，小杨生煎吃完晚饭，他俩送我回去。 </p>
+<p>之前就跟@林小志 约好了夜宵（小志哥说请吃小龙虾喵喵~），于是我们仨就去和他们会和。也许是台风影响，当天晚上上海很凉爽，看了下地图目的地不算太远，加上刚吃完饭，就决定散步消食走过去。到了地方，见了一众人，其中有见过好几次的大漠老师，还有第一次见的”网友”小志、情封和（美美的）轨迹妹子，以及初次见面的林毅老师。说是吃小龙虾，其实大家都是晚餐后过来的第二轮，还是聊天为主，聊天扯淡很开心，一不小心就聊到12点多，然后大家各自回家。</p>
+<p>周六早上，和郑海波一起打车去会场（为什么没有徐蜀黍？因为他起的太早先走了……），路过携程新楼凌空soho，很气派嘛。遇到好多熟人，比如坐我旁边的@yuanyuanVivian ，比如米粽，还比如我司的几个同学，比如手淘的chard，巧的是还有我团队的小鲜肉也去了……总之好多人，中午和chard一起吃了饭，盒饭还挺不错的，而且安排得很好，没有出现想象中的排长队的情况。辛苦主办方 @裕波 。</p>
+<p>下午听完郑海波的分享，女神 @点头猪 说她到了，于是到后面去面基，遇到 @一丝 ，一丝姐姐居然跟我情侣衫哦（就是第一届css conf发的衣服啦），给他回顾了下海波老师说的「基情难续」，然后听一丝和hax扯了一些关于postcss的东西，因为我也没实际用过postcss，只是听听了。然后还见到了小志、大漠、温特老湿、以及我司新来的张女神@羡辙，男神@早弦等……</p>
+<p>后来五花肉来了，然后在她介绍下第一次见到 @寸志 ，第一次见面：我没认出来寸老师，寸老师不记得微信加过我。也算是扯平……</p>
+<p>后来看 Mike 一个人坐在那边玩手机，于是鼓起勇气去搭讪，问了一些上午分享之后的疑惑，比如我觉得 CSS Checker 应当和 gulp/grunt 之类工作流结合起来才更好，他给我推荐了两个 w3c 的工具：<a href="https://github.com/w3c/web-platform-tests" target="_blank" rel="external">w3c/web-platform-tests</a> 和 <a href="https://github.com/w3c/csswg-test" target="_blank" rel="external">w3c/csswg-test</a>。然后说到 Rust ，我说我觉得函数式编程很难懂， Mike 倒是很热心的推荐我尝试一下，他说开始是会有点困难，但这是一种新的编程思想，值得一试。反正就聊了蛮久，也比较顺畅，还挺开心的。</p>
+<p>之后去和徐飞、寸志、郭达峰聊了一会儿，然后时间就不知不觉过去了，一天的会议结束，大家合影留念。这时候很意外的是 Mike 忽然过来跟我说：“我跟小倩说你她居然不认识你，我一定要介绍你们认识。”然后就介绍我俩认识。觉得很神奇啦，其实我和小倩早就微博互粉，我也曾多次旁听 w3c 中国工作组的 skype 电话会议，但和她一直没有正式见面认识彼此这样。</p>
+<p>然后大家一起吃晚饭。晚饭的时候又认识了梁杰，就是久仰的当初翻译 swift 的那位，以及一众携程厂工。期间搭讪了刘庆老师，前文已经说过，此处略过不表。小花絮是去中间桌敬酒，Mike 说：“To PHP”，一桌码农顿时 get 了笑点（也算是笑点很奇怪吧……）</p>
+<p>吃完饭和海波老师一起打车回酒店，又继续跟徐飞聊天，又聊到深夜，聊得也是很愉快又很感慨。作为小辈，真的蛮庆幸在这个开放的时代，可以有很多的机会和前辈大拿交流，乃至成为朋友，从他们身上看到很多值得学习的地方，让他们所以成为大拿的地方。</p>
+<p>去之前，我跟老板说我要去 CSS CONF ，他问这是你未来的方向吗？我说我还没想好诶，感觉 CSS 领域并没有太多东西，我个人还是希望发展的更全面一些。老板说其实还蛮多东西的可以研究的。这次 CSS CONF 还是很开心的，听到了很棒的分享，见到了一些老朋友，认识了一些新朋友。我希望，自己可以更努力，成长的更快一些，做一个好的码农。</p>
+<p>p.s. 真的是很圆满很开心的一次旅程啊，除了……会议结束当天晚上就有点不舒服，开始有轻微的咳嗽。于是晚上聊天的时候大部分时间都在听以及一直在喝热水。然而还是挺严重的，咳嗽加嗓子疼加晕晕沉沉的，到今天还没完全好。。。太开心所以人品守恒吗 ಥ_ಥ</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;周末去上海参加了第二届 CSS CONF，收获颇多，很开心。这里记录一些笔记和经历。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="conference" scheme="http://code.wileam.com/tags/conference/"/>
+    
+      <category term="css" scheme="http://code.wileam.com/tags/css/"/>
+    
+      <category term="frontend" scheme="http://code.wileam.com/tags/frontend/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6 Class一瞥</title>
+    <link href="http://code.wileam.com/es6-class/"/>
+    <id>http://code.wileam.com/es6-class/</id>
+    <published>2015-04-05T12:27:32.000Z</published>
+    <updated>2017-04-16T06:37:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>ES6的<code>class</code>提供了一个简洁的语法糖来实现之前通过原型链来实现的Class的功能。</p>
+<h2 id="可用性"><a href="#可用性" class="headerlink" title="可用性"></a>可用性</h2><p>截止目前（2015-04-05)，Class目前还基本没有浏览器支持，除了Firefox39最新版已经实现了。具体的支持情况可以在这里看到：<a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="external">ECMAScript compatibility table</a></p>
+<p>可以通过<a href="https://github.com/google/traceur-compiler" target="_blank" rel="external">Traceur</a>来试验Class的功能。</p>
+<a id="more"></a>
+<h2 id="Class语法"><a href="#Class语法" class="headerlink" title="Class语法"></a>Class语法</h2><h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name,age) &#123;</div><div class="line">        <span class="keyword">this</span>.name = name,</div><div class="line">        <span class="keyword">this</span>.age = age</div><div class="line">    &#125;</div><div class="line">    sayHi() &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'Hi, my name is '</span>+ <span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> ray = <span class="keyword">new</span> Person(<span class="string">'ray'</span>,<span class="number">21</span>);</div><div class="line">ray.sayHi(); <span class="comment">//'Hi, my name is ray'</span></div></pre></td></tr></table></figure>
+<h3 id="以前的方式"><a href="#以前的方式" class="headerlink" title="以前的方式"></a>以前的方式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Hi, my name is '</span>+ <span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> ray = <span class="keyword">new</span> Person(<span class="string">'ray'</span>, <span class="number">21</span>);</div><div class="line">ray.sayHi(); <span class="comment">//'Hi, my name is ray'</span></div></pre></td></tr></table></figure>
+<h2 id="Class实现继承"><a href="#Class实现继承" class="headerlink" title="Class实现继承"></a>Class实现继承</h2><p>继承是通过<code>extends</code>关键字和<code>super</code>实现的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//inheritance</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Female</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name, age) &#123;</div><div class="line">        <span class="keyword">super</span>(name, age);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    sayHi() &#123;</div><div class="line">        <span class="comment">// call Person.sayHi()</span></div><div class="line">        <span class="keyword">super</span>.sayHi();</div><div class="line"></div><div class="line">        <span class="comment">// add a new log</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'meow'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> joanna = <span class="keyword">new</span> Female(<span class="string">'joanna'</span>, <span class="number">26</span>);</div><div class="line">joanna.sayHi();</div><div class="line"><span class="comment">//'Hi, my name is joanna'</span></div><div class="line"><span class="comment">//'meow'</span></div></pre></td></tr></table></figure>
+<p>ES5的写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var Female = function (name, age) &#123;</div><div class="line">    Person.call(name, age);</div><div class="line">    this.name  = name;</div><div class="line">    this.age = age;</div><div class="line">&#125;;</div><div class="line">Female.prototype = Object.create(Person.prototype);</div><div class="line">Female.prototype.sayHi = function() &#123;</div><div class="line">    Person.prototype.sayHi.call(this);</div><div class="line">    console.log(&apos;meow&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var joanna = new Female(&apos;joanna&apos;, 26);</div><div class="line">joanna.sayHi();</div><div class="line">//&apos;Hi, my name is joanna&apos;</div><div class="line">//&apos;meow&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="external">ECMAScript compatibility table</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_6_support_in_Mozilla" target="_blank" rel="external">ECMAScript 6 support in Mozilla</a></li>
+<li><a href="http://javascriptplayground.com/blog/2014/07/introduction-to-es6-classes-tutorial/" target="_blank" rel="external">An introduction to ES6 classes</a></li>
+<li><a href="https://github.com/google/traceur-compiler/wiki/Getting-Started" target="_blank" rel="external">Traceur - Getting Started</a></li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>啊我为什么会写ES6 Class呢，因为好玩呗 <del>其实这是一篇命题作文</del> (逃</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Class&quot;&gt;&lt;a href=&quot;#Class&quot; class=&quot;headerlink&quot; title=&quot;Class&quot;&gt;&lt;/a&gt;Class&lt;/h2&gt;&lt;p&gt;ES6的&lt;code&gt;class&lt;/code&gt;提供了一个简洁的语法糖来实现之前通过原型链来实现的Class的功能。&lt;/p&gt;
+&lt;h2 id=&quot;可用性&quot;&gt;&lt;a href=&quot;#可用性&quot; class=&quot;headerlink&quot; title=&quot;可用性&quot;&gt;&lt;/a&gt;可用性&lt;/h2&gt;&lt;p&gt;截止目前（2015-04-05)，Class目前还基本没有浏览器支持，除了Firefox39最新版已经实现了。具体的支持情况可以在这里看到：&lt;a href=&quot;http://kangax.github.io/compat-table/es6/&quot;&gt;ECMAScript compatibility table&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以通过&lt;a href=&quot;https://github.com/google/traceur-compiler&quot;&gt;Traceur&lt;/a&gt;来试验Class的功能。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="ES6" scheme="http://code.wileam.com/tags/ES6/"/>
+    
+      <category term="Javascript" scheme="http://code.wileam.com/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS CONF小记</title>
+    <link href="http://code.wileam.com/css-conf/"/>
+    <id>http://code.wileam.com/css-conf/</id>
+    <published>2015-01-21T11:05:40.000Z</published>
+    <updated>2017-04-16T06:37:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1月10号去北京参加了<a href="http://css.w3ctech.com/" target="_blank" rel="external">CSS CONF</a>中国首届CSS开发者大会，总体感觉还不错。了解了更多关于css未来可能的发展方向，现在的新技术，以及应用情况，不足之处可能是时间安排过于紧张，有些消化不了，以及后期由于时间紧张导致的没有互动和交流环节。</p>
+<p>W3ctech已更新slides资料，见：<a href="http://www.w3ctech.com/topic/733" target="_blank" rel="external">http://www.w3ctech.com/topic/733</a></p>
+<p>下面就挨个讲每个分享我记得的要点、感受及资料分享吧。</p>
+<a id="more"></a>
+<h1 id="Bert-Bos-The-future-of-CSS"><a href="#Bert-Bos-The-future-of-CSS" class="headerlink" title="Bert Bos - The future of CSS"></a>Bert Bos - The future of CSS</h1><blockquote>
+<p>Slides: <a href="http://www.w3.org/Talks/2015/0110-CSS-Beijing/" target="_blank" rel="external">http://www.w3.org/Talks/2015/0110-CSS-Beijing/</a></p>
+</blockquote>
+<p>Bert Bos是CSS的联合创始人，也是重量级人物。这次主要就是介绍了W3C标准的工作流程，以及CSS未来的发展方向。</p>
+<p>题外话：现场邀请了高博老师来翻译，之前w3ctech有个投票说是否需要翻译，80%＋是需要，但是其实现场说的很简单根本不需要翻译嘛（逃</p>
+<h3 id="W3C的文稿状态："><a href="#W3C的文稿状态：" class="headerlink" title="W3C的文稿状态："></a>W3C的文稿状态：</h3><p>WD: working draft草案<br>CR: Candidate Recommendation<br>PR: Proposed Recommendation<br>REC: Recommendation</p>
+<p>这四种是从WD-CR-PR-REC的顺序，所以看到一个标准先看它目前所处的状态，一般越靠后越稳定。REC就是最终定稿了。</p>
+<h3 id="level-NOT-version"><a href="#level-NOT-version" class="headerlink" title="level NOT version"></a>level NOT version</h3><p>扩展：level 3包括level2全部内容。<br>not change, only extent.<br>add new feature, not change existing one.</p>
+<p>1994-1996: 1 spec.<br>1998: 1 spec.<br>1999+: 60 modules, each have independent level.</p>
+<p>1999年之后一个重要的变化就是把整体的一个标准拆分成60个模块，每一个模块都有自己的level，也就是不存在CSS3、CSS4，只有某个处在CSS level 3的模块，或者是CSS level 1的模块。</p>
+<h3 id="where-does-the-w3c-wg-get-ideas"><a href="#where-does-the-w3c-wg-get-ideas" class="headerlink" title="where does the w3c wg get ideas"></a>where does the w3c wg get ideas</h3><ul>
+<li>company: w3c members</li>
+<li>join other group.</li>
+<li><strong>join the w3c email group <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#119;&#x77;&#x77;&#x2d;&#x73;&#116;&#121;&#108;&#101;&#64;&#119;&#51;&#x2e;&#x6f;&#x72;&#x67;">&#119;&#x77;&#x77;&#x2d;&#x73;&#116;&#121;&#108;&#101;&#64;&#119;&#51;&#x2e;&#x6f;&#x72;&#x67;</a></strong></li>
+<li>conferences, personal communication i.e. w3c agenda</li>
+</ul>
+<p>参与W3C的方式：1和2都需要公司层面的参与，3是所有人都可以加入邮件组，也是bert比较推荐的方式。另外中文也有一个邮件组，叫 W3C HTML5 中文興趣小組 <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x70;&#117;&#98;&#x6c;&#105;&#99;&#45;&#x68;&#x74;&#109;&#108;&#x2d;&#105;&#103;&#x2d;&#122;&#x68;&#64;&#119;&#x33;&#x2e;&#x6f;&#x72;&#x67;">&#x70;&#117;&#98;&#x6c;&#105;&#99;&#45;&#x68;&#x74;&#109;&#108;&#x2d;&#105;&#103;&#x2d;&#122;&#x68;&#64;&#119;&#x33;&#x2e;&#x6f;&#x72;&#x67;</a>，有兴趣的同学也欢迎加入。</p>
+<h3 id="development-areas"><a href="#development-areas" class="headerlink" title="development areas"></a>development areas</h3><ul>
+<li>语音识别</li>
+<li>电子书格式标准化 Pager</li>
+<li>GUI layout ( include user interaction)</li>
+<li>Graphics</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>CSS虽然已经18年了但仍然在活跃的开发中，是很有活力的语言</li>
+<li>未来关注ebooks &amp; paper books领域CSS标准的发展</li>
+<li>打印排版的解决方式，尤其是非西方字体的排版，Bert也是呼吁中文开发者们需要加快行动，进行中文排版的优化。</li>
+</ul>
+<h1 id="winter-重识CSS"><a href="#winter-重识CSS" class="headerlink" title="winter 重识CSS"></a>winter 重识CSS</h1><p>计子winter老师用geek的方式去学习css，他觉得学习一个语言有三步：学习语法、学习表达式、如何去用。他期待看到的是一个css的语法的列表，表达式的列表，但现状是这些都是零散的散落在w3c的文档里。于是他拉取了css所有syntax和semantic的Json串……方便有一个整体的认识还有做二次开发。<br>（问了一下寒老师json地址，他说回头会放到github上。到时候再更新。</p>
+<h1 id="点头猪-移动时代CSS对用户体验的影响"><a href="#点头猪-移动时代CSS对用户体验的影响" class="headerlink" title="点头猪 移动时代CSS对用户体验的影响"></a>点头猪 移动时代CSS对用户体验的影响</h1><blockquote>
+<p>Slides: keynote <a href="http://pan.baidu.com/s/1mgA6Unu" target="_blank" rel="external">http://pan.baidu.com/s/1mgA6Unu</a><br>PDF: <a href="http://pan.baidu.com/s/1dDo035n" target="_blank" rel="external">http://pan.baidu.com/s/1dDo035n</a><br>PDF带注释：<a href="http://pan.baidu.com/s/1sjO9Olf" target="_blank" rel="external">http://pan.baidu.com/s/1sjO9Olf</a></p>
+</blockquote>
+<p>CSS女神前携程现平安付的点头猪分享了她的一些思考，台风很赞，有内容有深度思考也有恰到好处的幽默，强烈推荐。等视频出来也不要错过。</p>
+<ul>
+<li>关于交互的很多细节和思考。</li>
+<li>设计师工程师的职责划分。<br>  设计师和工程师不同的角色，以及开发者个人的知识结构的影响。理想状态大概是豆瓣的克军老师提到的“产品工程师”。</li>
+<li>CSS动画性能：招财猫的动画。</li>
+</ul>
+<h1 id="灭灭-豆瓣阅读在-WebFont-上的探索和实践"><a href="#灭灭-豆瓣阅读在-WebFont-上的探索和实践" class="headerlink" title="灭灭 豆瓣阅读在 WebFont 上的探索和实践"></a>灭灭 豆瓣阅读在 WebFont 上的探索和实践</h1><blockquote>
+<p>Slides: <a href="https://speakerdeck.com/houkanshan/web-fonts-at-douban-read" target="_blank" rel="external">https://speakerdeck.com/houkanshan/web-fonts-at-douban-read</a> （需翻墙）</p>
+</blockquote>
+<p>灭灭是豆瓣阅读的前端，关注已久但是一直没见过。据说我在帝都的时候去open party那场他也在，只是当时我不知道。这回也算是终于见面了。</p>
+<p>这场有蛮多干货，对web字体排版有兴趣的强烈推荐去看slides。但是讲的非常非常快，有点跟不上节奏。事后沟通得知是安排时间太紧张了，只有15分钟。很多对于文字处理的细节，非常细致到近乎处女座。下面只是简单记的几个问题，重点还是去看slides，制作也很精致。</p>
+<h3 id="Itatic-Type"><a href="#Itatic-Type" class="headerlink" title="Itatic Type"></a>Itatic Type</h3><p>中文斜体的处理：楷体。</p>
+<p>中英文混排时对italic type的处理，期望的效果：中文楷体，正体。英文斜体。</p>
+<h3 id="bitmap"><a href="#bitmap" class="headerlink" title="bitmap"></a>bitmap</h3><p>unicode-range: 强制对中文使用中文引号。</p>
+<h3 id="Kerning"><a href="#Kerning" class="headerlink" title="Kerning"></a>Kerning</h3><p>OpenType中也用到了kerning，来调整字符间距。</p>
+<h3 id="标点挤压"><a href="#标点挤压" class="headerlink" title="标点挤压"></a>标点挤压</h3><p>制作了一套标点挤压的字体Mojikumi。</p>
+<p>解决方案：<br><strong>自己做字体，选取异常的字符做成字体，并且放在声明的最前面。</strong></p>
+<h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><p>line-height<br>不同字体的base-line位置，ascend height和descend height不同。slides里面有各个系统的这些数据汇总表。</p>
+<h3 id="hint"><a href="#hint" class="headerlink" title="hint"></a>hint</h3><p>webfont替换本地字体 闪动</p>
+<p>webfont无法加载，影响整个页面加载。如google font。<br>解决：检测加载，超时不加载，采用本地字体。</p>
+<p>中文排版优化：<a href="http://css.hanzi.co/" target="_blank" rel="external">漢字標準格式</a></p>
+<h1 id="Jaychsu-Flexbox更优雅的布局"><a href="#Jaychsu-Flexbox更优雅的布局" class="headerlink" title="Jaychsu Flexbox更优雅的布局"></a>Jaychsu Flexbox更优雅的布局</h1><blockquote>
+<p>Slides: <a href="https://gitcafe.com/jaychsu/flex" target="_blank" rel="external">https://gitcafe.com/jaychsu/flex</a></p>
+</blockquote>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>垂直居中的实现：</p>
+<p>1 固定宽高的容器<br>parent:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span><span class="selector-pseudo">:relative</span></div></pre></td></tr></table></figure></p>
+<p>child:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">position:absolute;</div><div class="line">left:50%;</div><div class="line">top:50%;</div><div class="line">margin-left:-width/2;</div><div class="line">margin-top:-height/2;</div></pre></td></tr></table></figure></p>
+<p>2<br>parent:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">text-align</span>: <span class="selector-tag">center</span>;</div></pre></td></tr></table></figure></p>
+<p>child:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>;</div><div class="line"><span class="selector-tag">vertical-align</span><span class="selector-pseudo">:middle</span>;</div></pre></td></tr></table></figure></p>
+<p>3 flexbox<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">display:flexbox;</div><div class="line">justify-content:center; //水平居中</div><div class="line">align-items:center; //垂直居中</div></pre></td></tr></table></figure></p>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p>见<a href="http://caniuse.com/#feat=flexbox" target="_blank" rel="external">caniuse</a><br>兼容性还并不好，安卓4.4+, IE11 目前还无法广泛使用。</p>
+<h3 id="flexbox原理"><a href="#flexbox原理" class="headerlink" title="flexbox原理"></a>flexbox原理</h3><ul>
+<li>flexbox宽度的计算：<br>flex-grow: 没有充满的时候充满宽度<br>flex-shrink: 超过宽度的时候缩小宽度<br>flex-basis:没有flex-grow和flex-shrink时的宽度</li>
+</ul>
+<p>default:<br>flex: 1 0 auto;</p>
+<h1 id="hax（贺师俊）-myth-of-css-frameworks"><a href="#hax（贺师俊）-myth-of-css-frameworks" class="headerlink" title="hax（贺师俊） myth of css frameworks"></a>hax（贺师俊） myth of css frameworks</h1><blockquote>
+<p>Slides: <a href="http://johnhax.net/2015/myth-of-css-frameworks/" target="_blank" rel="external">http://johnhax.net/2015/myth-of-css-frameworks/</a></p>
+</blockquote>
+<p>Hax的主题是对CSS框架的迷(pi)思(pan)，关于各种CSS的组织方式(OOCSS/SMACSS/ACSS/BEM)的思(pi)考(pan)。</p>
+<p>这个问题其实我之前有蛮多思考，CSS本身不难，但涉及到命名、规范、可维护性，就变的复杂起来。Hax看了很多很多相关文章，其中不少我也看过。Hax用了很久来说BEM，OOCSS这些方案的缺陷，和css的初衷背离，得出的结论是semantic（语义化） css是没有意义的，只有semantic html。而这些实践事实上都是在解决一个block/widget/ui components层面的问题，这个问题有很多的方案，hax更认同的是html层面的，比如html5的一些自定义标签，role=”xx”乃至未来的web components。而这个问题在实际中更加复杂，会受到项目历史的代码规范、工期等等的影响，BEM等方案并不能提高可维护性反而可能更差。</p>
+<p>贺老的最终观点就是：<br>There’s no such thing as semantic CSS. There’s only semantic HTML and its visible form.</p>
+<p>我觉得web components自然是很好的，可是目前我们还很不成熟，没办法投入生产，甚至h5的自定义标签使用也需要hack的引入一段js来兼容旧版浏览器。那么对于一个block/widget/ui components，总需要一种方式去解决，虽然bem很丑，但是它也是一种实践中比较有效的解决方案。避免了多层嵌套，实现了复用。至于过长的书写，也都有比较成熟的工具比如html中emmet+bem, css中scss/less+bem都可以大大的简化书写复杂度，实现了一个比较清晰的组件和较好的可维护性，同时并没有增加工作量。</p>
+<p>所以我觉得在新项目中，之前没有代码规范的情况下，还是可以使用这些方式去组织css和html的，只要项目成员达成一致。我觉得可能任何方案都会有问题，重要的是总是要有一种相对统一的规范来解决问题。</p>
+<p>（如有错误欢迎指出，求hax大神轻喷</p>
+<h1 id="一丝-CSS工作流"><a href="#一丝-CSS工作流" class="headerlink" title="一丝 CSS工作流"></a>一丝 CSS工作流</h1><blockquote>
+<p>Slides: <a href="http://yisibl.github.io/share/css-workflow.html" target="_blank" rel="external">http://yisibl.github.io/share/css-workflow.html</a></p>
+</blockquote>
+<p>因为之前一丝姐姐来我们部门分享过类似的内容，这里就主要是复习一下+听段子了。武大头传奇、百家讲坛什么的，简直23333……讲了CSS后处理器的一些原理，虽然我至今也没完全明白postcss和css-preprocessor比如scss/less的区别，我理解的css grace大概就是紧跟W3C标准，如果标准没有实现，那么css grace会给一个hack的实现。虽然在生产中还不打算使用，但是回头打算在demo或个人项目里尝试一下。</p>
+<p>另外还提到了阿里妈妈那边对中文字体的处理 <a href="http://thx.github.io/cube/doc/type/" target="_blank" rel="external">Type.css</a>，也是针对中文做了一些优化。</p>
+<h1 id="尤雨溪-CSS与界面动效"><a href="#尤雨溪-CSS与界面动效" class="headerlink" title="尤雨溪 CSS与界面动效"></a>尤雨溪 CSS与界面动效</h1><blockquote>
+<p>Slides: <a href="http://feppt.qiniudn.com/浅谈CSS与web界面动效开发模式.pdf" target="_blank" rel="external">http://feppt.qiniudn.com/浅谈CSS与web界面动效开发模式.pdf</a></p>
+</blockquote>
+<p>前Google Creative Lab成员，Vue.js作者，尤小右。之前也来我厂做了vuejs的分享，这次的主题是关于界面动效的。有几点印象比较深的。</p>
+<ul>
+<li><p>命令式 vs 声明式<br>命令式：如jQuery<br>声明式：状态和动画分离，易于维护。如Angular/Vue</p>
+</li>
+<li><p>JS vs CSS 动画<br>JS：逐帧渲染<br>CSS: 避免触发reflow，repaint</p>
+</li>
+<li><p>动画 可能的未来：</p>
+<ul>
+<li><a href="http://famo.us/" target="_blank" rel="external">http://famo.us/</a></li>
+<li><a href="https://www.polymer-project.org/platform/web-animations.html" target="_blank" rel="external">web-animations at polymer</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="勾三股四（-勾股）-web-components"><a href="#勾三股四（-勾股）-web-components" class="headerlink" title="勾三股四（@勾股） web components"></a>勾三股四（@勾股） web components</h1><blockquote>
+<p><strong>Slides</strong>: <a href="http://jiongks.name/slides/css-scoping/" target="_blank" rel="external">http://jiongks.name/slides/css-scoping/</a> (勾股：由于本人比较骚包急于秀一下新技术，所以需要支持webcomponents的浏览器才可以正常打开，比如Chrome 36+)<br><strong>Video</strong>: 现场 <a href="http://www.tudou.com/programs/view/8bvwGHaL6T4/" target="_blank" rel="external">http://www.tudou.com/programs/view/8bvwGHaL6T4/</a><br>补充：<a href="http://www.tudou.com/programs/view/dz4aXjDFnLw/" target="_blank" rel="external">http://www.tudou.com/programs/view/dz4aXjDFnLw/</a><br>web components标准的翻译：<a href="http://w3c-html-ig-zh.github.io/webcomponents/" target="_blank" rel="external">http://w3c-html-ig-zh.github.io/webcomponents/</a></p>
+</blockquote>
+<p>勾股上场的时候离整场大会结束只剩20分钟了，于是噼里啪啦飞速的过了一遍还跳过了好多，见现场视频，之后又补录了一个视频把现场略过的章节细讲了一下。讲的很清楚，对web components有兴趣的严重推荐看视频。毕竟这是web可能的未来。</p>
+<h3 id="web-components"><a href="#web-components" class="headerlink" title="web components"></a>web components</h3><ul>
+<li>组件化</li>
+<li>自定义标签</li>
+<li>隐藏内部结构 shadow-dom</li>
+</ul>
+<h1 id="吴小倩-CSS动画性能"><a href="#吴小倩-CSS动画性能" class="headerlink" title="吴小倩 CSS动画性能"></a>吴小倩 CSS动画性能</h1><blockquote>
+<p>Slides: <a href="http://www.w3.org/2015/Talks/0109-CSSConf-xq/" target="_blank" rel="external">http://www.w3.org/2015/Talks/0109-CSSConf-xq/</a></p>
+</blockquote>
+<p>之前都只是在邮件组里或者w3c的skype会议里听到小倩声音（很好听），这次见到真人，也是一个很美的小姑娘。她上场的时候只剩5分钟了几乎没什么时间，于是快速的过了一些CSS动画的demo，对比他们的速度和性能，主要是说做CSS动画的时候要避免repaint和reflow，这两个是比较耗性能的。</p>
+<p>另外小倩还介绍了动画控制相关的新的API，<a href="http://www.w3.org/TR/animation-timing/" target="_blank" rel="external">RequestAnimationFrame</a> &amp; <a href="http://dev.w3.org/csswg/css-will-change/" target="_blank" rel="external">will-change</a>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1月10号去北京参加了&lt;a href=&quot;http://css.w3ctech.com/&quot;&gt;CSS CONF&lt;/a&gt;中国首届CSS开发者大会，总体感觉还不错。了解了更多关于css未来可能的发展方向，现在的新技术，以及应用情况，不足之处可能是时间安排过于紧张，有些消化不了，以及后期由于时间紧张导致的没有互动和交流环节。&lt;/p&gt;
+&lt;p&gt;W3ctech已更新slides资料，见：&lt;a href=&quot;http://www.w3ctech.com/topic/733&quot;&gt;http://www.w3ctech.com/topic/733&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下面就挨个讲每个分享我记得的要点、感受及资料分享吧。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="conference" scheme="http://code.wileam.com/tags/conference/"/>
+    
+      <category term="css" scheme="http://code.wileam.com/tags/css/"/>
+    
+      <category term="frontend" scheme="http://code.wileam.com/tags/frontend/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iphone6屏幕揭秘</title>
+    <link href="http://code.wileam.com/iphone-6-screen/"/>
+    <id>http://code.wileam.com/iphone-6-screen/</id>
+    <published>2014-09-14T09:47:52.000Z</published>
+    <updated>2017-04-16T06:37:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>iPhone6发布了，纳尼？又是一个新尺寸，苦逼前端工又要加班了呢。看到一篇很好的关于iPhone 6 屏幕显示的<a href="http://www.paintcodeapp.com/news/iphone-6-screens-demystified" target="_blank" rel="external">文章</a>，于是翻译了一下。</p>
+<p>访问：<a href="http://wileam.com/iphone-6-screen-cn/" target="_blank" rel="external">http://wileam.com/iphone-6-screen-cn/</a> 查看。</p>
+<p>图较多，而且大多是svg矢量图，在博客里排版比较麻烦，于是单独做了上面这个站点。这里是翻译原文的中英文对照，欢迎批评指正。</p>
+<a id="more"></a>
+<hr>
+<h1 id="iPhone-6-Screens-Demystified"><a href="#iPhone-6-Screens-Demystified" class="headerlink" title="iPhone 6 Screens Demystified"></a>iPhone 6 Screens Demystified</h1><h1 id="iPhone-6-屏幕揭秘"><a href="#iPhone-6-屏幕揭秘" class="headerlink" title="iPhone 6 屏幕揭秘"></a>iPhone 6 屏幕揭秘</h1><p>Few days ago, Apple introduced iPhone 6 Plus. The new iPhone substantially changes the way graphics are rendered on screen. We’ve made an infographic to demystify this.<br>几天前，Apple发布了iPhone 6 Plus. 新的iPhone大幅改变了图像在屏幕上渲染的方式。我们做了一个图表进行详细分析。</p>
+<h2 id="Point"><a href="#Point" class="headerlink" title="Point"></a>Point</h2><h2 id="点"><a href="#点" class="headerlink" title="点"></a>点</h2><p>At the beginning, coordinates of all drawings are specified in points.<br>最初，所有图像的坐标都是用点的方式确定的。</p>
+<p>Points are abstract units, they only make sense in this mathematical coordinate space.<br>点是绝对单位，他们只在数学的坐标空间里有意义。</p>
+<p>In the original iPhone, points corresponded perfectly to actual pixels on screen, but this is no longer true.<br>在最初的iPhone上，点和实际屏幕的像素是完全一致的，但现在不再是这样了。</p>
+<h2 id="Rendered-Pixels"><a href="#Rendered-Pixels" class="headerlink" title="Rendered Pixels"></a>Rendered Pixels</h2><h2 id="渲染像素"><a href="#渲染像素" class="headerlink" title="渲染像素"></a>渲染像素</h2><p>Point-based drawings are rendered into pixels. This process is known as rasterization.<br>以点为基础的图像渲染成为像素，这个过程就是光栅化（rasterization）。</p>
+<p>Point coordinates are multiplied by scale factor to get pixel coordinates. Higher scale factors result in higher level of detail.<br>点坐标乘以一定的比例系数得到相应的像素坐标。更高的比例系数可以得到更好的细节呈现。</p>
+<p>Typical scale factors are 1×, 2× and 3×.<br>典型的比例系数有1倍，2倍和3倍。</p>
+<h2 id="Physical-Pixels"><a href="#Physical-Pixels" class="headerlink" title="Physical Pixels"></a>Physical Pixels</h2><h2 id="物理像素"><a href="#物理像素" class="headerlink" title="物理像素"></a>物理像素</h2><p>iPhone 6 Plus has screen with lower pixel resolution than the image rendered in previous step.<br>iPhone 6 Plus的屏幕像素分辨率比之前步骤渲染的图像分辨率低。</p>
+<p>Before the image can be displayed on the screen, it must be downsampled (resized) to lower pixel resolution.<br>在图像显示在屏幕之前，图像必须重新调整大小到更低的像素分辨率。</p>
+<h2 id="Physical-Device"><a href="#Physical-Device" class="headerlink" title="Physical Device"></a>Physical Device</h2><h2 id="物理设备"><a href="#物理设备" class="headerlink" title="物理设备"></a>物理设备</h2><p>The last step is to show the computed pixels on the physical screen.<br>最后一步是将计算的像素显示在物理屏幕上。</p>
+<p>Every screen has pixels-per-inch (PPI) characteristic. This number tells you how many pixels fit into one inch and thus how large the pixels appear in the real world.<br>每一个屏幕都有一个每英寸像素(PPI)的特性。这个数字告诉你一英寸显示多少像素，也就是一像素在真实世界里显示的大小。</p>
+<h2 id="Points"><a href="#Points" class="headerlink" title="Points"></a>Points</h2><h2 id="点-1"><a href="#点-1" class="headerlink" title="点"></a>点</h2><p>The content is defined mathematically using point coordinates.<br>内容是按照数学上的点坐标来定义的。</p>
+<h2 id="Rendered-Pixels-1"><a href="#Rendered-Pixels-1" class="headerlink" title="Rendered Pixels"></a>Rendered Pixels</h2><h2 id="渲染像素-1"><a href="#渲染像素-1" class="headerlink" title="渲染像素"></a>渲染像素</h2><p>Content is rendered to pixels using scale factor. This process is called rasterization.<br>内容用比例系数渲染成像素，这个过程叫做光栅化（rasterization）。</p>
+<h2 id="Physical-Pixels-1"><a href="#Physical-Pixels-1" class="headerlink" title="Physical Pixels"></a>Physical Pixels</h2><h2 id="物理像素-1"><a href="#物理像素-1" class="headerlink" title="物理像素"></a>物理像素</h2><p>iPhone 6 Plus downsamples the rendered image before displaying it on screen.<br>iPhone 6 Plus 在显示在屏幕上之前缩小了已渲染的图像。</p>
+<h2 id="Physical-Device-1"><a href="#Physical-Device-1" class="headerlink" title="Physical Device"></a>Physical Device</h2><p>Rasterized drawings are displayed on the physical devices.<br>光栅化之后的图像显示在物理设备上。</p>
+<h2 id="Line-rendering"><a href="#Line-rendering" class="headerlink" title="Line rendering"></a>Line rendering</h2><h2 id="一根线的渲染"><a href="#一根线的渲染" class="headerlink" title="一根线的渲染"></a>一根线的渲染</h2><p>To demonstrate different rendering of pixels on various devices, we compare how 1-point wide line is rendered on<br>为了说明多种设备的不同像素渲染情况，我们比较了一个一像素宽的线是怎样渲染的：</p>
+<ul>
+<li>Original iPhone - without retina display. Scaling factor is 1.</li>
+<li>iPhone 5 - with Retina display, scaling factor is 2.</li>
+<li>iPhone 6 Plus - with Retina display HD. Scaling factor is 3 and the image is afterwards downscaled from rendered 2208 × 1242 pixels to 1920 × 1080 pixels.</li>
+</ul>
+<ul>
+<li>最初的iPhone - 没有高清屏，比例系数是1。</li>
+<li>iPhone 5 - 有高清屏，比例系数是2。</li>
+<li>iPhone 6 Plus - 超高清屏（Retina display HD）。比例系数是3，并且图像会先渲染为2208 × 1242像素然后缩小为1920 × 1080像素。</li>
+</ul>
+<p>The downscaling ratio is 1920 / 2208 = 1080 / 1242 = 20 / 23. That means every 23 pixels from the original render have to be mapped to 20 physical pixels. In other words the image is scaled down to approximately 87% of its original size.<br>缩小的比例是1920 / 2208 = 1080 / 1242 = 20 / 23. 这意味着最初渲染的每23像素会分布到20物理像素中。换句话说图像会缩小为大约原尺寸的87%。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iPhone6发布了，纳尼？又是一个新尺寸，苦逼前端工又要加班了呢。看到一篇很好的关于iPhone 6 屏幕显示的&lt;a href=&quot;http://www.paintcodeapp.com/news/iphone-6-screens-demystified&quot;&gt;文章&lt;/a&gt;，于是翻译了一下。&lt;/p&gt;
+&lt;p&gt;访问：&lt;a href=&quot;http://wileam.com/iphone-6-screen-cn/&quot;&gt;http://wileam.com/iphone-6-screen-cn/&lt;/a&gt; 查看。&lt;/p&gt;
+&lt;p&gt;图较多，而且大多是svg矢量图，在博客里排版比较麻烦，于是单独做了上面这个站点。这里是翻译原文的中英文对照，欢迎批评指正。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="translate" scheme="http://code.wileam.com/tags/translate/"/>
+    
+      <category term="mobile" scheme="http://code.wileam.com/tags/mobile/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>升级hexo的一些坑</title>
+    <link href="http://code.wileam.com/update-hexo/"/>
+    <id>http://code.wileam.com/update-hexo/</id>
+    <published>2014-08-23T15:46:13.000Z</published>
+    <updated>2017-04-16T06:37:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>好久不用博客，转眼升级的时候已经各种报错了。原来hexo已经到了2.8.2版本，并且各种各种不兼容啊。</p>
+<a id="more"></a>
+<h2 id="报错一-HexoError："><a href="#报错一-HexoError：" class="headerlink" title="报错一 HexoError："></a>报错一 <code>HexoError</code>：</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[error] &#123; name: <span class="string">'HexoError'</span>,</div><div class="line">reason: <span class="string">'incomplete explicit mapping pair; a key node is missed'</span>,</div><div class="line">mark:</div><div class="line">&#123; name: null,</div><div class="line">buffer: <span class="string">'categories: Kategorien\nsearch: Suche\ntags: Tags\ntagcloud: Tag-C</span></div><div class="line">loud\ntweets: Tweets\nprev: Vorherige Seite\nnext: Nächste Seite\ncomment: Komm</div><div class="line">entare\narchive_a: Archiv\narchive_b: Archiv: %s\npage: Seite %d\nrecent_posts:</div><div class="line">Neueste Artikel\n\u0000',</div><div class="line">position: 180,</div><div class="line">line: 9,</div><div class="line">column: 17 &#125;,</div><div class="line">message: <span class="string">'Process failed: languages/de.yml'</span>,</div><div class="line">domain:</div><div class="line">&#123; domain: null,</div><div class="line">_events: &#123; error: [Function] &#125;,</div><div class="line">_maxListeners: 10,</div><div class="line">members: [ [Object] ] &#125;,</div><div class="line">domainThrown: <span class="literal">true</span>,</div><div class="line">stack: undefined &#125;</div></pre></td></tr></table></figure>
+<p>原因：<br>YAML格式规则改变，有空格的项都需要加上双引号。</p>
+<p><code>tag cloud</code> –&gt; <code>&quot;tag cloud&quot;</code></p>
+<p>解决方法：<br>将主题language下的有空格的项都需要加上双引号。</p>
+<p>如果用的默认主题light，可以直接拉取最新主题，覆盖language文件夹即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/tommy351/hexo-theme-light themes/light</div></pre></td></tr></table></figure>
+<h2 id="更新plugins"><a href="#更新plugins" class="headerlink" title="更新plugins"></a>更新plugins</h2><p>安装升级后必须的plugins:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ (sudo) npm install hexo-renderer-ejs --save</div><div class="line">$ (sudo) npm install hexo-renderer-marked --save</div><div class="line">$ (sudo) npm install hexo-renderer-stylus --save</div></pre></td></tr></table></figure>
+<p>完成后的package.json类似这样：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"hexo"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"2.8.2"</span>,</div><div class="line">  <span class="attr">"private"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"dependencies"</span>: &#123;</div><div class="line">    <span class="attr">"hexo-generator-feed"</span>: <span class="string">"^0.2.0"</span>,</div><div class="line">    <span class="attr">"hexo-generator-sitemap"</span>: <span class="string">"0.0.6"</span>,</div><div class="line">    <span class="attr">"hexo-renderer-ejs"</span>: <span class="string">"^0.1.0"</span>,</div><div class="line">    <span class="attr">"hexo-renderer-marked"</span>: <span class="string">"^0.1.0"</span>,</div><div class="line">    <span class="attr">"hexo-renderer-stylus"</span>: <span class="string">"^0.1.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样之后应该就大功告成了。若有其他报错，可去hexo的<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">github页面</a>找一下issue或者提新的issue。作者大多都会解答。</p>
+<p>以上。Happy blogging. :)</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/update-hexo.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/update-hexo.md</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;好久不用博客，转眼升级的时候已经各种报错了。原来hexo已经到了2.8.2版本，并且各种各种不兼容啊。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一些前端面试题</title>
+    <link href="http://code.wileam.com/front-end-interview/"/>
+    <id>http://code.wileam.com/front-end-interview/</id>
+    <published>2014-02-15T06:22:01.000Z</published>
+    <updated>2017-04-16T06:37:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>前一阵时间找工作，面试了一些公司，这里也总结一下遇到的前端技术相关的问题，做个记录，也看看自己缺那块，以后要往什么方向继续努力。以下面试题都不指明公司名称了。</p>
+<h2 id="Html-CSS方面"><a href="#Html-CSS方面" class="headerlink" title="Html/CSS方面"></a>Html/CSS方面</h2><a id="more"></a>
+<ul>
+<li><strong> IE有几种渲染模式？ </strong></li>
+</ul>
+<p>答：标准模式(Standards mode)和兼容模式(Quirks mode)。</p>
+<p>详见：<a href="https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode</a></p>
+<ul>
+<li><strong> 遇到过IE 6/7 下元素消失的情况吗？ </strong></li>
+</ul>
+<p>所有IE低版本兼容相关问题都被我忽略了，真心没怎么处理过。硬伤。 TT</p>
+<p>后来查了些资料，大概是IE6/7下绝对定位元素的bug。</p>
+<p>详见：<a href="http://www.positioniseverything.net/explorer/ienondisappearcontentbugPIE/index.htm" target="_blank" rel="external">http://www.positioniseverything.net/explorer/ienondisappearcontentbugPIE/index.htm</a></p>
+<ul>
+<li><strong> CSS怎么实现相对定位？ </strong></li>
+</ul>
+<p>答：父元素<code>position:relative</code> 子元素 <code>position:absolute</code></p>
+<ul>
+<li><strong> <code>inline-block</code>和<code>Float</code>的对比，优缺点，如何选择。 </strong></li>
+</ul>
+<p>答：<code>inline-block</code>需要处理空白问题，<code>float</code>需要清除浮动。</p>
+<p>参考链接：</p>
+<p>[1] <a href="http://robertnyman.com/2010/02/24/css-display-inline-block-why-it-rocks-and-why-it-sucks/" target="_blank" rel="external">CSS display: inline-Block: Why It Rocks, And Why It Sucks</a></p>
+<p>[2] <a href="http://webdesigner-webdeveloper.com/weblog/about-inline-blocks/" target="_blank" rel="external">About inline-blocks</a></p>
+<p>[3] <a href="http://www.impressivewebs.com/inline-block/" target="_blank" rel="external">What is inline-block</a></p>
+<p>[4] <a href="http://coding.smashingmagazine.com/2007/05/01/css-float-theory-things-you-should-know/" target="_blank" rel="external">CSS Float Theory: Things You Should Know</a></p>
+<ul>
+<li><strong> 清除浮动的方式，优缺点。 </strong></li>
+</ul>
+<p>见：</p>
+<p>[1] <a href="http://www.quirksmode.org/css/clearing.html" target="_blank" rel="external">http://www.quirksmode.org/css/clearing.html</a></p>
+<p>[2] <a href="http://www.positioniseverything.net/easyclearing.html" target="_blank" rel="external">http://www.positioniseverything.net/easyclearing.html</a></p>
+<ul>
+<li><p><strong> 对响应式设计的理解。 </strong></p>
+</li>
+<li><p><strong> 用CSS实现三角形。 </strong></p>
+</li>
+</ul>
+<p>见：<a href="http://css-tricks.com/snippets/css/css-triangle/" target="_blank" rel="external">CSS Triangle</a></p>
+<p>##　JS/jQuery方面：</p>
+<ul>
+<li><strong> <code>document.ready</code>和<code>window.onload</code>有什么区别？ </strong></li>
+</ul>
+<p>答得不好，查了下资料，是酱紫：document.ready 是DOM加载完毕，onload是所有页面元素加载完毕。onload比ready晚一些。</p>
+<p>见：<a href="http://stackoverflow.com/questions/3698200/window-onload-vs-document-ready" target="_blank" rel="external">http://stackoverflow.com/questions/3698200/window-onload-vs-document-ready</a></p>
+<ul>
+<li><p><strong> 了解哪些前端的MVC，怎么理解前端MVC？ </strong></p>
+</li>
+<li><p><strong> 用jQuery如何选择一个元素的兄弟节点？ </strong></p>
+</li>
+<li><p><strong> 关于Ajax回调函数的。 </strong></p>
+</li>
+<li><p><strong> 写一个slides的效果。 </strong></p>
+</li>
+</ul>
+<h2 id="综合-其他："><a href="#综合-其他：" class="headerlink" title="综合/其他："></a>综合/其他：</h2><ul>
+<li><p><strong> 有哪些熟悉的前端html/css框架？ </strong></p>
+</li>
+<li><p><strong> 如果让你从头开始搭建一个类似Bootstrap的框架，你会怎么实现？ </strong></p>
+</li>
+<li><p><strong> Git里删除一个远程分支的命令是？ </strong></p>
+</li>
+</ul>
+<p>答：这个问题好坑爹，我回答是<code>git branch -d origin branch-name</code>，回头一查应该是<code>git push origin :branch-name</code></p>
+<ul>
+<li><p><strong> 平时关注哪些站点，从什么渠道获得资讯？ </strong></p>
+</li>
+<li><p><strong> 最近读过的一篇印象最深的文章 </strong></p>
+</li>
+<li><p><strong> 对代码风格的理解。 </strong></p>
+</li>
+</ul>
+<p>说些题外话，其实面试是一个双向选择，从面试题也可以看出一个公司的风格，侧重点。这样就可以考虑一下和你自己想要的方向是否一致，环境氛围是否契合。在一个舒服的契合的环境里工作，至少对我还是非常重要的。</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/front-end-interview.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/front-end-interview.md</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前一阵时间找工作，面试了一些公司，这里也总结一下遇到的前端技术相关的问题，做个记录，也看看自己缺那块，以后要往什么方向继续努力。以下面试题都不指明公司名称了。&lt;/p&gt;
+&lt;h2 id=&quot;Html-CSS方面&quot;&gt;&lt;a href=&quot;#Html-CSS方面&quot; class=&quot;headerlink&quot; title=&quot;Html/CSS方面&quot;&gt;&lt;/a&gt;Html/CSS方面&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="frontend" scheme="http://code.wileam.com/categories/frontend/"/>
+    
+    
+      <category term="frontend" scheme="http://code.wileam.com/tags/frontend/"/>
+    
+      <category term="interview" scheme="http://code.wileam.com/tags/interview/"/>
+    
+      <category term="career" scheme="http://code.wileam.com/tags/career/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Icon Font的好处及应用</title>
+    <link href="http://code.wileam.com/icon-font-intro/"/>
+    <id>http://code.wileam.com/icon-font-intro/</id>
+    <published>2013-12-22T04:30:17.000Z</published>
+    <updated>2017-04-16T06:37:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>2013.12.21我在<a href="http://www.beijing-open-party.org/" target="_blank" rel="external">Beijing Open Party</a>2013年的最后一期，2013嘉年华活动中做了一个小分享，主题就是Icon Font的好处及应用。</p>
+<p>现在把相关的demo和幻灯片也放在这里：<br><a id="more"></a></p>
+<p><a href="http://demo.wileam.com/iconfont.html" target="_blank" rel="external">Demo</a></p>
+<p><a href="http://wileam.com/slides/iconfont.html" target="_blank" rel="external">Slide</a><br>作为一名前端，自然想到能否用html来实现，尤其是涉及代码高亮的一些问题，如果用ppt可能会比较麻烦。<br>于是最后选择了revealjs来做幻灯片，效果也是还不错。</p>
+<p><img src="../uploads/op-small.jpg" height="" width="600" alt="Open Party"></p>
+<p>分享这个主题，一是因为了解和使用之后确实觉得iconfont是一个非常好的值得推广使用的东西，尤其是在当前的扁平化的大趋势下，iconfont的单色甚至也不会成为一个很大的缺陷。二是和OP的团队也认识挺多年了，自己也作为听众参与了几次，很喜欢这样开放的理念。也很高兴自己也可以贡献话题与大家分享和交流。</p>
+<p>就酱紫，可以先demo感受一下，然后ppt看具体原理和实现方法。幻灯片上下左右快捷键操作，也支持手机或者触屏设备访问。</p>
+<p>有问题欢迎交流。</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/icon-font-intro.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/icon-font-intro.md</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2013.12.21我在&lt;a href=&quot;http://www.beijing-open-party.org/&quot;&gt;Beijing Open Party&lt;/a&gt;2013年的最后一期，2013嘉年华活动中做了一个小分享，主题就是Icon Font的好处及应用。&lt;/p&gt;
+&lt;p&gt;现在把相关的demo和幻灯片也放在这里：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="frontend" scheme="http://code.wileam.com/categories/frontend/"/>
+    
+    
+      <category term="css" scheme="http://code.wileam.com/tags/css/"/>
+    
+      <category term="iconfont" scheme="http://code.wileam.com/tags/iconfont/"/>
+    
+      <category term="design" scheme="http://code.wileam.com/tags/design/"/>
+    
+      <category term="openparty" scheme="http://code.wileam.com/tags/openparty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo搭建静态博客以及优化</title>
+    <link href="http://code.wileam.com/build-a-hexo-blog-and-optimize/"/>
+    <id>http://code.wileam.com/build-a-hexo-blog-and-optimize/</id>
+    <published>2013-12-14T01:56:49.000Z</published>
+    <updated>2017-04-16T06:37:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先，<em>这不是一篇详尽的完整的教程</em>，只是记录大致的hexo建站流程以及自己折腾的过程。因为网上关于hexo的教程已经太多，一搜一大把。但是我还是推荐英文尚可的直接阅读hexo作者的<strong><a href="http://zespia.tw/hexo/docs/" target="_blank" rel="external">文档</a></strong>，因为很多教程也只是一知半解，还是看作者文档来的比较彻底。另外，hexo源代码开源，实在不行还可以去hexo的<a href="https://github.com/tommy351/hexo" target="_blank" rel="external">github</a>去提<a href="https://github.com/tommy351/hexo/issues" target="_blank" rel="external">issue</a>。</p>
+<p>折腾的成果就是你现在看到的这个博客，所以这里本身就是一个demo。^_^</p>
+<p><em>p.s. hexo作者据说是台湾的一名在校学生…… T_T 努力吧少年…… </em></p>
+<h2 id="建站流程"><a href="#建站流程" class="headerlink" title="建站流程"></a>建站流程</h2><h3 id="1-安装node-js以及git"><a href="#1-安装node-js以及git" class="headerlink" title="1. 安装node.js以及git"></a>1. 安装node.js以及git</h3><a id="more"></a>
+<h3 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h3><pre><code>$ npm install -g hexo
+</code></pre><h3 id="3-部署github-pages"><a href="#3-部署github-pages" class="headerlink" title="3. 部署github pages"></a>3. 部署github pages</h3><h4 id="3-1-github建立repo"><a href="#3-1-github建立repo" class="headerlink" title="3.1 github建立repo"></a>3.1 github建立repo</h4><p>以下二选一。</p>
+<ul>
+<li>建立一个 username.github.com 的repo，username为你的github用户名，每个用户只能有一个这样的repo，则直接发布到master分支即可。</li>
+<li>建立一个项目repo，发布的branch是gh-pages.</li>
+</ul>
+<p>自定义域名</p>
+<p>如果你用自定义域名的话，github pages需要你建立一个名称为CNAME的文件，里面放入你的域名地址。如我的<a href="https://github.com/wileam/code/blob/gh-pages/CNAME" target="_blank" rel="external">CNAME文件</a>.</p>
+<p>因为每次deploy的时候hexo都会重新生成文件，所以直接加在github是不好使的，<strong>这个文件需要放在 hexo folder/source文件夹根目录下。</strong></p>
+<h4 id="3-2-hexo配置deploy信息："><a href="#3-2-hexo配置deploy信息：" class="headerlink" title="3.2 hexo配置deploy信息："></a>3.2 hexo配置deploy信息：</h4><p>修改在blog根目录下的_config.yml，添加repo地址：</p>
+<pre><code>deploy:
+  type: github
+  repository: https://github.com/[username]/[reponame].git
+</code></pre><p>References:<br>[1] <a href="https://help.github.com/categories/20/articles" target="_blank" rel="external">github pages help</a><br>[2] <a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank" rel="external">hexo Deployment Docs</a><br>[3] 想用BAE的可以看这篇：<a href="http://jimliu.net/2013/11/20/use-hexo-on-bae/" target="_blank" rel="external">在BAE上使用hexo搭建博客</a></p>
+<h3 id="4-hexo基本操作"><a href="#4-hexo基本操作" class="headerlink" title="4. hexo基本操作"></a>4. hexo基本操作</h3><ul>
+<li><p>新建博客</p>
+<pre><code>$ hexo init &lt;folder&gt;
+</code></pre></li>
+</ul>
+<p>在该目录下就建立了你的hexo blog.</p>
+<ul>
+<li><p>新建文章</p>
+<pre><code>$ hexo init &lt;title&gt;
+</code></pre></li>
+</ul>
+<p>会在source/_post新建一个名为 title.md 的文章，用喜欢的编辑器打开就可以用markdown语法写文章了。</p>
+<ul>
+<li><p>server</p>
+<pre><code>$ hexo server
+</code></pre></li>
+</ul>
+<p>就可以在 localhost:4000/ 查看你的博客。</p>
+<ul>
+<li><p>generate &amp; deploy</p>
+<pre><code>$ hexo generate
+$ hexo deploy
+</code></pre></li>
+</ul>
+<p>或者（以下这俩效果是完全一样的）</p>
+<pre><code>$ hexo generate --deploy
+$ hexo deploy --generate
+</code></pre><h2 id="折腾"><a href="#折腾" class="headerlink" title="折腾"></a>折腾</h2><h3 id="插件-plugins"><a href="#插件-plugins" class="headerlink" title="插件 plugins"></a>插件 plugins</h3><ul>
+<li>rss生成 hexo-generator-feed</li>
+<li>sitemap hexo-generator-sitemap</li>
+</ul>
+<p>添加插件的基本操作是：</p>
+<pre><code>$ npm install &lt;plugin-name&gt; --save
+$ npm update
+</code></pre><p>然后修改blog根目录下的_config.yml，添加：</p>
+<pre><code>plugins:
+- plugin-name
+</code></pre><p>插件部分详见：<a href="https://github.com/tommy351/hexo/wiki/Plugins" target="_blank" rel="external">https://github.com/tommy351/hexo/wiki/Plugins</a></p>
+<h3 id="组件-widgets"><a href="#组件-widgets" class="headerlink" title="组件 widgets"></a>组件 widgets</h3><ul>
+<li>关于 about me [1]</li>
+<li>日历 calendar [2]</li>
+<li>返回页面顶部 Scrolltop [2]</li>
+<li>微博秀 weibo show [3]</li>
+</ul>
+<h3 id="其他调整"><a href="#其他调整" class="headerlink" title="其他调整"></a>其他调整</h3><ul>
+<li>去掉addthis和Disqus</li>
+<li>添加多说 [1]</li>
+<li>添加百度统计 [1] 和Google Analytics<br>原先一直用GA然后现在两个都用是打算对比一下。。</li>
+<li>自动附上博客文章源码的github地址</li>
+<li><strong>添加social icons</strong></li>
+<li>样式微调</li>
+<li>字体微调 [1]</li>
+</ul>
+<p>优化调整参考了：<br>[1] <a href="https://github.com/LiuJi-Jim/hexo-theme-light" target="_blank" rel="external">jim-liu的优化版light theme</a><br>[2] <a href="https://github.com/howiefh/howiefh.github.io/" target="_blank" rel="external">净土howiefh</a><br>[3] <a href="http://app.weibo.com/tool/weiboshow" target="_blank" rel="external">微博开放平台</a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="源代码管理"><a href="#源代码管理" class="headerlink" title="源代码管理"></a>源代码管理</h3><p>由于我用的github pages所以发布是会发布到gh-pages分支，而我用这个博客repo的master分支管理整个博客的源代码。这样就可以轻松的实现不同电脑的同步了。<br>本博客的源代码：<a href="https://github.com/wileam/code/" target="_blank" rel="external">https://github.com/wileam/code/</a></p>
+<h3 id="发布显示更多"><a href="#发布显示更多" class="headerlink" title="发布显示更多"></a>发布显示更多</h3><p>在你觉得适合的位置插入</p>
+<pre><code>&lt;!-- more --&gt;
+</code></pre><p>就会将之前的部分生成摘要。点击”阅读全文“才会看到全文。</p>
+<h3 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h3><p>hexo文章的头部文件是用<a href="http://en.wikipedia.org/wiki/YAML" target="_blank" rel="external">YAML</a>来写的，比如文章要同时标记多个tags，就需要用</p>
+<pre><code>tags: [tag1, tag2]
+</code></pre><p>或者</p>
+<pre><code>tags:
+- tag1
+- tag2
+</code></pre><p>这样的语法来写，详见YAML的<a href="http://en.wikipedia.org/wiki/YAML" target="_blank" rel="external">wikipedia</a>.</p>
+<h3 id="ejs和stylus"><a href="#ejs和stylus" class="headerlink" title="ejs和stylus"></a>ejs和stylus</h3><p>hexo是用的ejs和stylus。同样如果习惯用LESS之类也可以装相应的plugins.</p>
+<p>ejs是embedded javascript，从js文件中抽取出html结构，使代码结构清晰简洁易读。(其实我还不太明白所以没怎么改ejs……)<br>文档存备用：<a href="https://code.google.com/p/embeddedjavascript/w/list" target="_blank" rel="external">https://code.google.com/p/embeddedjavascript/w/list</a></p>
+<p>stylus是和less/sass类似的一个css processor，比原生的css更简洁一些。<br>同样文档存备用：<a href="http://learnboost.github.io/stylus/" target="_blank" rel="external">http://learnboost.github.io/stylus/</a></p>
+<h3 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h3><p>参见<a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">markdown syntax</a>，或者我之前的博客，<a href="http://code.wileam.com/markdown-syntax/">markdown语法</a></p>
+<h3 id="疑似bug"><a href="#疑似bug" class="headerlink" title="疑似bug"></a>疑似bug</h3><p>如果更新了css文件，那么需要把public的css文件删除，然后</p>
+<pre><code>$ hexo deploy --generate
+</code></pre><p>这样才会重新生成新的文件。我试了好几次都是这样，不知道是不是bug……</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/build-a-hexo-blog-and-optimize.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/build-a-hexo-blog-and-optimize.md</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先，&lt;em&gt;这不是一篇详尽的完整的教程&lt;/em&gt;，只是记录大致的hexo建站流程以及自己折腾的过程。因为网上关于hexo的教程已经太多，一搜一大把。但是我还是推荐英文尚可的直接阅读hexo作者的&lt;strong&gt;&lt;a href=&quot;http://zespia.tw/hexo/docs/&quot;&gt;文档&lt;/a&gt;&lt;/strong&gt;，因为很多教程也只是一知半解，还是看作者文档来的比较彻底。另外，hexo源代码开源，实在不行还可以去hexo的&lt;a href=&quot;https://github.com/tommy351/hexo&quot;&gt;github&lt;/a&gt;去提&lt;a href=&quot;https://github.com/tommy351/hexo/issues&quot;&gt;issue&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;折腾的成果就是你现在看到的这个博客，所以这里本身就是一个demo。^_^&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;p.s. hexo作者据说是台湾的一名在校学生…… T_T 努力吧少年…… &lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;建站流程&quot;&gt;&lt;a href=&quot;#建站流程&quot; class=&quot;headerlink&quot; title=&quot;建站流程&quot;&gt;&lt;/a&gt;建站流程&lt;/h2&gt;&lt;h3 id=&quot;1-安装node-js以及git&quot;&gt;&lt;a href=&quot;#1-安装node-js以及git&quot; class=&quot;headerlink&quot; title=&quot;1. 安装node.js以及git&quot;&gt;&lt;/a&gt;1. 安装node.js以及git&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="other" scheme="http://code.wileam.com/categories/other/"/>
+    
+    
+      <category term="hexo" scheme="http://code.wileam.com/tags/hexo/"/>
+    
+      <category term="blog" scheme="http://code.wileam.com/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown语法</title>
+    <link href="http://code.wileam.com/markdown-syntax/"/>
+    <id>http://code.wileam.com/markdown-syntax/</id>
+    <published>2013-12-10T14:12:44.000Z</published>
+    <updated>2017-04-16T06:37:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Markdown学习练习笔记/兼文档</p>
+<h2 id="哲学-philosophy"><a href="#哲学-philosophy" class="headerlink" title="哲学 philosophy"></a>哲学 philosophy</h2><p>咳咳。简单说就是“易读”，“易写”。</p>
+<blockquote>
+<p>Markdown is intended to be as easy-to-read and easy-to-write as is feasible.</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="标题-HEADERS"><a href="#标题-HEADERS" class="headerlink" title="标题 HEADERS"></a>标题 HEADERS</h2><h3 id="一级标题-H1"><a href="#一级标题-H1" class="headerlink" title="一级标题 H1"></a>一级标题 H1</h3><pre><code># 这是一个一级标题 header1
+
+这还是一个一级标题 header1
+===========
+</code></pre><h3 id="二级标题-H2"><a href="#二级标题-H2" class="headerlink" title="二级标题 H2"></a>二级标题 H2</h3><pre><code>## 这是一个二级标题 H2
+
+这还是一个二级标题 H2
+--------
+</code></pre><h3 id="三级-六级标题"><a href="#三级-六级标题" class="headerlink" title="三级-六级标题"></a>三级-六级标题</h3><pre><code>### 三级标题 H3
+……
+###### 六级标题 H6
+</code></pre><p>只有一种写法了。</p>
+<h2 id="引用-Blockquotes"><a href="#引用-Blockquotes" class="headerlink" title="引用 Blockquotes"></a>引用 Blockquotes</h2><pre><code>&gt; Smile, breathe and go slowly.
+</code></pre><blockquote>
+<p>Smile, breathe and go slowly.</p>
+</blockquote>
+<h2 id="列表-LIST"><a href="#列表-LIST" class="headerlink" title="列表 LIST"></a>列表 LIST</h2><h3 id="无序列表-Unordered-lists"><a href="#无序列表-Unordered-lists" class="headerlink" title="无序列表 Unordered lists"></a>无序列表 Unordered lists</h3><pre><code>- 第一点
+- 第二点
+</code></pre><ul>
+<li>第一点</li>
+<li>第二点</li>
+</ul>
+<h3 id="有序列表-Ordered-lists"><a href="#有序列表-Ordered-lists" class="headerlink" title="有序列表 Ordered lists"></a>有序列表 Ordered lists</h3><pre><code>3. 第一点
+2. 第二点
+</code></pre><p><em>有趣的是这里前面的数字不重要，无论写什么数字都会生成从1开始递增的有序列表。比如我上面这个例子。会生成。</em></p>
+<ol>
+<li>第一点</li>
+<li>第二点</li>
+</ol>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h3><pre><code>[曼珠沙华](http://blog.wileam.com/ &quot;生活博客&quot;)
+</code></pre><p><a href="http://blog.wileam.com/" title="生活博客" target="_blank" rel="external">曼珠沙华</a></p>
+<h3 id="参考式"><a href="#参考式" class="headerlink" title="参考式"></a>参考式</h3><pre><code>[曼珠沙华][1], [技术博客][2]
+[1]: http://blog.wileam.com/ &quot;(此处可选)生活博客&quot;
+[2]: http://code.wileam.com/ &quot;(此处可选)技术博客&quot;
+</code></pre><p><a href="http://blog.wileam.com/" title="(此处可选)生活博客" target="_blank" rel="external">曼珠沙华</a>, <a href="http://code.wileam.com/" title="(此处可选)技术博客">技术博客</a></p>
+<p>注意最下面的参考链接是直接不会出现的。</p>
+<h2 id="代码块-CODE-BLOCKS"><a href="#代码块-CODE-BLOCKS" class="headerlink" title="代码块 CODE BLOCKS"></a>代码块 CODE BLOCKS</h2><p>缩进 4spaces/1Tab。</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;span4&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;span8&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h2 id="加粗-斜体-EMPHASIS"><a href="#加粗-斜体-EMPHASIS" class="headerlink" title="加粗/斜体 EMPHASIS"></a>加粗/斜体 EMPHASIS</h2><pre><code>**加粗**
+*斜体*
+</code></pre><p><strong>加粗</strong><br><em>斜体</em></p>
+<h2 id="图像-IMAGES"><a href="#图像-IMAGES" class="headerlink" title="图像 IMAGES"></a>图像 IMAGES</h2><p>###行内式</p>
+<pre><code>![Avatar](../uploads/avatar.jpg &quot;Optional title&quot;)
+</code></pre><p><img src="../uploads/avatar.jpg" alt="Avatar" title="Optional title"></p>
+<h3 id="参考式-1"><a href="#参考式-1" class="headerlink" title="参考式"></a>参考式</h3><pre><code>![Avatar-gavatar][3]
+[3]: ../uploads/avatar.jpg &quot;(optional)avatar-1&quot;
+</code></pre><p><img src="../uploads/avatar.jpg" alt="Avatar-gavatar" title="(optional)avatar-1"></p>
+<p>目前markdown还不能更改大小，如果需要设置宽高需要写html \<img\>代码。</img\></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="电子邮件-email"><a href="#电子邮件-email" class="headerlink" title="电子邮件 email"></a>电子邮件 email</h3><pre><code>&lt;abc@gmail.com&gt;
+</code></pre><p><a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x61;&#x62;&#x63;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#x61;&#x62;&#x63;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;</a></p>
+<h3 id="反斜杠"><a href="#反斜杠" class="headerlink" title="反斜杠"></a>反斜杠</h3><pre><code>\*我就是想显示星号不想斜体\*
+</code></pre><p>*我就是想显示星号不想斜体*</p>
+<hr>
+<p>reference: <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">markdown syntax</a><br>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/markdown-syntax.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/markdown-syntax.md</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Markdown学习练习笔记/兼文档&lt;/p&gt;
+&lt;h2 id=&quot;哲学-philosophy&quot;&gt;&lt;a href=&quot;#哲学-philosophy&quot; class=&quot;headerlink&quot; title=&quot;哲学 philosophy&quot;&gt;&lt;/a&gt;哲学 philosophy&lt;/h2&gt;&lt;p&gt;咳咳。简单说就是“易读”，“易写”。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Markdown is intended to be as easy-to-read and easy-to-write as is feasible.&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="other" scheme="http://code.wileam.com/categories/other/"/>
+    
+    
+      <category term="translate" scheme="http://code.wileam.com/tags/translate/"/>
+    
+      <category term="markdown" scheme="http://code.wileam.com/tags/markdown/"/>
+    
+      <category term="syntax" scheme="http://code.wileam.com/tags/syntax/"/>
+    
+  </entry>
+  
+</feed>

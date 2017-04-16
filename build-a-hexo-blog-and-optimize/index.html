@@ -1,0 +1,565 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hexo搭建静态博客以及优化 | Joanna&#39;s coding blog</title>
+  <meta name="author" content="Joanna Wu">
+  
+  <meta name="description" content="Joanna&#39;s coding blog，">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="hexo搭建静态博客以及优化"/>
+  <meta property="og:site_name" content="Joanna&#39;s coding blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Joanna&#39;s coding blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-touch-icon-76x76.png" />
+  <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <!--
+  <SCRIPT type=text/javascript src="/js/scrolltop.js"></SCRIPT>
+   -->
+  <!--howiefh calendar begin-->
+  <SCRIPT type=text/javascript src="/js/calendar.js"></SCRIPT>
+  <!--howiefh calendar end-->
+  <!-- console begin -->
+  <SCRIPT type=text/javascript src="/js/console.js"></SCRIPT>
+  <!-- console end -->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41676519-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+  ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Joanna&#39;s coding blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/archives">Archive</a></li>
+    
+      <li><a href="/atom.xml">RSS</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<div class="prev_next clearfix">
+  
+  <a href="/markdown-syntax/" class="prev" title="markdown语法">上一篇<span class="xs-hidden">：markdown语法</span></a>
+  
+  
+  <a href="/icon-font-intro/" class="next" title="Icon Font的好处及应用">下一篇<span class="xs-hidden">：Icon Font的好处及应用</span></a>
+  
+</div>
+
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-14T01:56:49.000Z"><a href="/build-a-hexo-blog-and-optimize/">Dec 14 2013</a></time>
+      
+      
+  
+    <h1 class="title">hexo搭建静态博客以及优化</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>首先，<em>这不是一篇详尽的完整的教程</em>，只是记录大致的hexo建站流程以及自己折腾的过程。因为网上关于hexo的教程已经太多，一搜一大把。但是我还是推荐英文尚可的直接阅读hexo作者的<strong><a href="http://zespia.tw/hexo/docs/" target="_blank" rel="external">文档</a></strong>，因为很多教程也只是一知半解，还是看作者文档来的比较彻底。另外，hexo源代码开源，实在不行还可以去hexo的<a href="https://github.com/tommy351/hexo" target="_blank" rel="external">github</a>去提<a href="https://github.com/tommy351/hexo/issues" target="_blank" rel="external">issue</a>。</p>
+<p>折腾的成果就是你现在看到的这个博客，所以这里本身就是一个demo。^_^</p>
+<p><em>p.s. hexo作者据说是台湾的一名在校学生…… T_T 努力吧少年…… </em></p>
+<h2 id="建站流程"><a href="#建站流程" class="headerlink" title="建站流程"></a>建站流程</h2><h3 id="1-安装node-js以及git"><a href="#1-安装node-js以及git" class="headerlink" title="1. 安装node.js以及git"></a>1. 安装node.js以及git</h3><a id="more"></a>
+<h3 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h3><pre><code>$ npm install -g hexo
+</code></pre><h3 id="3-部署github-pages"><a href="#3-部署github-pages" class="headerlink" title="3. 部署github pages"></a>3. 部署github pages</h3><h4 id="3-1-github建立repo"><a href="#3-1-github建立repo" class="headerlink" title="3.1 github建立repo"></a>3.1 github建立repo</h4><p>以下二选一。</p>
+<ul>
+<li>建立一个 username.github.com 的repo，username为你的github用户名，每个用户只能有一个这样的repo，则直接发布到master分支即可。</li>
+<li>建立一个项目repo，发布的branch是gh-pages.</li>
+</ul>
+<p>自定义域名</p>
+<p>如果你用自定义域名的话，github pages需要你建立一个名称为CNAME的文件，里面放入你的域名地址。如我的<a href="https://github.com/wileam/code/blob/gh-pages/CNAME" target="_blank" rel="external">CNAME文件</a>.</p>
+<p>因为每次deploy的时候hexo都会重新生成文件，所以直接加在github是不好使的，<strong>这个文件需要放在 hexo folder/source文件夹根目录下。</strong></p>
+<h4 id="3-2-hexo配置deploy信息："><a href="#3-2-hexo配置deploy信息：" class="headerlink" title="3.2 hexo配置deploy信息："></a>3.2 hexo配置deploy信息：</h4><p>修改在blog根目录下的_config.yml，添加repo地址：</p>
+<pre><code>deploy:
+  type: github
+  repository: https://github.com/[username]/[reponame].git
+</code></pre><p>References:<br>[1] <a href="https://help.github.com/categories/20/articles" target="_blank" rel="external">github pages help</a><br>[2] <a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank" rel="external">hexo Deployment Docs</a><br>[3] 想用BAE的可以看这篇：<a href="http://jimliu.net/2013/11/20/use-hexo-on-bae/" target="_blank" rel="external">在BAE上使用hexo搭建博客</a></p>
+<h3 id="4-hexo基本操作"><a href="#4-hexo基本操作" class="headerlink" title="4. hexo基本操作"></a>4. hexo基本操作</h3><ul>
+<li><p>新建博客</p>
+<pre><code>$ hexo init &lt;folder&gt;
+</code></pre></li>
+</ul>
+<p>在该目录下就建立了你的hexo blog.</p>
+<ul>
+<li><p>新建文章</p>
+<pre><code>$ hexo init &lt;title&gt;
+</code></pre></li>
+</ul>
+<p>会在source/_post新建一个名为 title.md 的文章，用喜欢的编辑器打开就可以用markdown语法写文章了。</p>
+<ul>
+<li><p>server</p>
+<pre><code>$ hexo server
+</code></pre></li>
+</ul>
+<p>就可以在 localhost:4000/ 查看你的博客。</p>
+<ul>
+<li><p>generate &amp; deploy</p>
+<pre><code>$ hexo generate
+$ hexo deploy
+</code></pre></li>
+</ul>
+<p>或者（以下这俩效果是完全一样的）</p>
+<pre><code>$ hexo generate --deploy
+$ hexo deploy --generate
+</code></pre><h2 id="折腾"><a href="#折腾" class="headerlink" title="折腾"></a>折腾</h2><h3 id="插件-plugins"><a href="#插件-plugins" class="headerlink" title="插件 plugins"></a>插件 plugins</h3><ul>
+<li>rss生成 hexo-generator-feed</li>
+<li>sitemap hexo-generator-sitemap</li>
+</ul>
+<p>添加插件的基本操作是：</p>
+<pre><code>$ npm install &lt;plugin-name&gt; --save
+$ npm update
+</code></pre><p>然后修改blog根目录下的_config.yml，添加：</p>
+<pre><code>plugins:
+- plugin-name
+</code></pre><p>插件部分详见：<a href="https://github.com/tommy351/hexo/wiki/Plugins" target="_blank" rel="external">https://github.com/tommy351/hexo/wiki/Plugins</a></p>
+<h3 id="组件-widgets"><a href="#组件-widgets" class="headerlink" title="组件 widgets"></a>组件 widgets</h3><ul>
+<li>关于 about me [1]</li>
+<li>日历 calendar [2]</li>
+<li>返回页面顶部 Scrolltop [2]</li>
+<li>微博秀 weibo show [3]</li>
+</ul>
+<h3 id="其他调整"><a href="#其他调整" class="headerlink" title="其他调整"></a>其他调整</h3><ul>
+<li>去掉addthis和Disqus</li>
+<li>添加多说 [1]</li>
+<li>添加百度统计 [1] 和Google Analytics<br>原先一直用GA然后现在两个都用是打算对比一下。。</li>
+<li>自动附上博客文章源码的github地址</li>
+<li><strong>添加social icons</strong></li>
+<li>样式微调</li>
+<li>字体微调 [1]</li>
+</ul>
+<p>优化调整参考了：<br>[1] <a href="https://github.com/LiuJi-Jim/hexo-theme-light" target="_blank" rel="external">jim-liu的优化版light theme</a><br>[2] <a href="https://github.com/howiefh/howiefh.github.io/" target="_blank" rel="external">净土howiefh</a><br>[3] <a href="http://app.weibo.com/tool/weiboshow" target="_blank" rel="external">微博开放平台</a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="源代码管理"><a href="#源代码管理" class="headerlink" title="源代码管理"></a>源代码管理</h3><p>由于我用的github pages所以发布是会发布到gh-pages分支，而我用这个博客repo的master分支管理整个博客的源代码。这样就可以轻松的实现不同电脑的同步了。<br>本博客的源代码：<a href="https://github.com/wileam/code/" target="_blank" rel="external">https://github.com/wileam/code/</a></p>
+<h3 id="发布显示更多"><a href="#发布显示更多" class="headerlink" title="发布显示更多"></a>发布显示更多</h3><p>在你觉得适合的位置插入</p>
+<pre><code>&lt;!-- more --&gt;
+</code></pre><p>就会将之前的部分生成摘要。点击”阅读全文“才会看到全文。</p>
+<h3 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h3><p>hexo文章的头部文件是用<a href="http://en.wikipedia.org/wiki/YAML" target="_blank" rel="external">YAML</a>来写的，比如文章要同时标记多个tags，就需要用</p>
+<pre><code>tags: [tag1, tag2]
+</code></pre><p>或者</p>
+<pre><code>tags:
+- tag1
+- tag2
+</code></pre><p>这样的语法来写，详见YAML的<a href="http://en.wikipedia.org/wiki/YAML" target="_blank" rel="external">wikipedia</a>.</p>
+<h3 id="ejs和stylus"><a href="#ejs和stylus" class="headerlink" title="ejs和stylus"></a>ejs和stylus</h3><p>hexo是用的ejs和stylus。同样如果习惯用LESS之类也可以装相应的plugins.</p>
+<p>ejs是embedded javascript，从js文件中抽取出html结构，使代码结构清晰简洁易读。(其实我还不太明白所以没怎么改ejs……)<br>文档存备用：<a href="https://code.google.com/p/embeddedjavascript/w/list" target="_blank" rel="external">https://code.google.com/p/embeddedjavascript/w/list</a></p>
+<p>stylus是和less/sass类似的一个css processor，比原生的css更简洁一些。<br>同样文档存备用：<a href="http://learnboost.github.io/stylus/" target="_blank" rel="external">http://learnboost.github.io/stylus/</a></p>
+<h3 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h3><p>参见<a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">markdown syntax</a>，或者我之前的博客，<a href="http://code.wileam.com/markdown-syntax/">markdown语法</a></p>
+<h3 id="疑似bug"><a href="#疑似bug" class="headerlink" title="疑似bug"></a>疑似bug</h3><p>如果更新了css文件，那么需要把public的css文件删除，然后</p>
+<pre><code>$ hexo deploy --generate
+</code></pre><p>这样才会重新生成新的文件。我试了好几次都是这样，不知道是不是bug……</p>
+<hr>
+<p>本文源码：<a href="https://github.com/wileam/code/blob/master/source/_posts/build-a-hexo-blog-and-optimize.md" target="_blank" rel="external">https://github.com/wileam/code/blob/master/source/_posts/build-a-hexo-blog-and-optimize.md</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/other/">other</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/hexo/">hexo</a>, <a href="/tags/blog/">blog</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<div class="prev_next clearfix">
+  
+  <a href="/markdown-syntax/" class="prev" title="markdown语法">上一篇<span class="xs-hidden">：markdown语法</span></a>
+  
+  
+  <a href="/icon-font-intro/" class="next" title="Icon Font的好处及应用">下一篇<span class="xs-hidden">：Icon Font的好处及应用</span></a>
+  
+</div>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:code.wileam.com">
+  </form>
+</div>
+
+  
+<div class="widget about_me">
+  <h3 class="title">ABOUT ME</h3>
+  <ul class="entry">
+    
+    <li><img width="150" title="avatar" src="/uploads/avatar.jpg" /></li>
+    
+    
+    <li><a href="/about" target="_BLANK">Joanna Wu(wileam)</a></li>
+    
+    <li>Smile, breathe & go slowly. ^_^</li>
+    
+    <li><br></li>
+    
+    <li><img src="/uploads/email.gif"></li>
+    
+    <ul class="social-icons">
+        <li><a href="https://github.com/wileam/" class="social_github"></a></li>
+        <li><a href="http://www.douban.com/people/wileam/" class="social_douban"></a></li>
+        <li><a href="http://weibo.com/wileam" class="social_weibo"></a></li>
+        <li><a href="http://www.pinterest.com/wileam/" class="social_pintrest"></a></li>
+        <li><a href="https://twitter.com/wileam" class="social_twitter"></a></li>
+        <li><a href="https://www.facebook.com/Joanna.Wu.0326" class="social_facebook"></a></li>
+    </ul>
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+    <h3 class="title">Calendar</h3>
+    <div class="Calendar">
+      <div id="idCalendarPre">&lt;&lt;</div>
+      <div id="idCalendarNext">&gt;&gt;</div>
+      <span id="idCalendarYear">2008</span>年<span id="idCalendarMonth">8</span>月
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <td>日</td>
+            <td>一</td>
+            <td>二</td>
+            <td>三</td>
+            <td>四</td>
+            <td>五</td>
+            <td>六</td>
+          </tr>
+        </thead>
+        <tbody id="idCalendar">
+        </tbody>
+      </table>
+    </div>
+</div>
+<script language="JavaScript">
+var cale = new Calendar("idCalendar", {
+    //howiefh
+    /* SelectDay: new Date().setDate(10), */
+    SelectDay: new Date().setDate(this.Date),
+    onSelectDay: function(o){ o.className = "onSelect"; },
+    //howiefh
+    onToday: function(o){ o.className = "onToday"; },
+    onFinish: function(){
+        //howiefh
+        // $("idCalendarYear").innerHTML = this.Year; $("idCalendarMonth").innerHTML = this.Month;
+        $$("idCalendarYear").innerHTML = "<a href='/" + "archives/" + this.Year + "/'>" + this.Year + " "+ "</a>";
+        if (this.Month < 10) {
+            $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + "0" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
+        } else {
+            $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
+        }
+
+        // var flag = [10,15,20];
+        // for(var i = 0, len = flag.length; i < len; i++){
+            // this.Days[flag[i]].innerHTML = "<a href='javascript:void(0);' onclick=\"alert('日期是:"+this.Year+"/"+this.Month+"/"+flag[i]+"');return false;\">" + flag[i] + "</a>";
+        // }
+
+        
+            var postdate = new Date("Sat Dec 14 2013 12:56:49 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/build-a-hexo-blog-and-optimize/' title='hexo搭建静态博客以及优化'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Thu Aug 13 2015 00:59:42 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/css-conf-shanghai/' title='第二届 CSS CONF 小记'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Wed Jan 21 2015 22:05:40 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/css-conf/' title='CSS CONF小记'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sun Apr 05 2015 22:27:32 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/es6-class/' title='ES6 Class一瞥'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sat Feb 15 2014 17:22:01 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/front-end-interview/' title='一些前端面试题'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sun Sep 14 2014 19:47:52 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/iphone-6-screen/' title='iphone6屏幕揭秘'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sun Dec 22 2013 15:30:17 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/icon-font-intro/' title='Icon Font的好处及应用'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Wed Dec 11 2013 01:12:44 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/markdown-syntax/' title='markdown语法'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sun Aug 24 2014 01:46:13 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/update-hexo/' title='升级hexo的一些坑'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Fri Jul 22 2016 22:27:32 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/css-beauty/' title='The beauty of CSS (animation)'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sat Jul 30 2016 22:27:32 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/default-value-n-params-env/' title='params default value &amp; params environment &amp; TDZ'>" + day + "</a>";
+            }
+    
+
+        //howiefh
+    }
+});
+
+$$("idCalendarPre").onclick = function(){ cale.PreMonth(); }
+$$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
+</SCRIPT>
+
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/frontend/">frontend</a><small>4</small></li>
+  
+    <li><a href="/categories/other/">other</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/career/" style="font-size: 10px;">career</a> <a href="/tags/conference/" style="font-size: 15px;">conference</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/frontend/" style="font-size: 20px;">frontend</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iconfont/" style="font-size: 10px;">iconfont</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/openparty/" style="font-size: 10px;">openparty</a> <a href="/tags/slides/" style="font-size: 10px;">slides</a> <a href="/tags/syntax/" style="font-size: 10px;">syntax</a> <a href="/tags/translate/" style="font-size: 15px;">translate</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts<a href="/archives" class="more-link">More...</a></h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/default-value-n-params-env/">params default value &amp; params environment &amp; TDZ</a>
+      </li>
+    
+      <li>
+        <a href="/css-beauty/">The beauty of CSS (animation)</a>
+      </li>
+    
+      <li>
+        <a href="/css-conf-shanghai/">第二届 CSS CONF 小记</a>
+      </li>
+    
+      <li>
+        <a href="/es6-class/">ES6 Class一瞥</a>
+      </li>
+    
+      <li>
+        <a href="/css-conf/">CSS CONF小记</a>
+      </li>
+    
+      <li>
+        <a href="/iphone-6-screen/">iphone6屏幕揭秘</a>
+      </li>
+    
+      <li>
+        <a href="/update-hexo/">升级hexo的一些坑</a>
+      </li>
+    
+      <li>
+        <a href="/front-end-interview/">一些前端面试题</a>
+      </li>
+    
+      <li>
+        <a href="/icon-font-intro/">Icon Font的好处及应用</a>
+      </li>
+    
+      <li>
+        <a href="/build-a-hexo-blog-and-optimize/">hexo搭建静态博客以及优化</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">Links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://blog.wileam.com" target="_BLANK">Life Blog</a></li>
+    
+    <li><a href="http://popotang.com/" target="_BLANK">popotang</a></li>
+    
+    <li><a href="http://jimliu.net/" target="_BLANK">Jim-Liu&#39;s blog</a></li>
+    
+    <li><a href="http://icyleaf.com/" target="_BLANK">icyleaf&#39;s blog</a></li>
+    
+    <li><a href="http://twinsant.com/" target="_BLANK">twinsant</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 Joanna Wu
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'wileamcode';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div style="display:none;">
+  <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fad3506c5d867c96497be564bf746cab8' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+
+</div>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41676519-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+  ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>

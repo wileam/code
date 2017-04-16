@@ -1,0 +1,583 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS CONF小记 | Joanna&#39;s coding blog</title>
+  <meta name="author" content="Joanna Wu">
+  
+  <meta name="description" content="Joanna&#39;s coding blog，">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="CSS CONF小记"/>
+  <meta property="og:site_name" content="Joanna&#39;s coding blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Joanna&#39;s coding blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-touch-icon-76x76.png" />
+  <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <!--
+  <SCRIPT type=text/javascript src="/js/scrolltop.js"></SCRIPT>
+   -->
+  <!--howiefh calendar begin-->
+  <SCRIPT type=text/javascript src="/js/calendar.js"></SCRIPT>
+  <!--howiefh calendar end-->
+  <!-- console begin -->
+  <SCRIPT type=text/javascript src="/js/console.js"></SCRIPT>
+  <!-- console end -->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41676519-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+  ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Joanna&#39;s coding blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/archives">Archive</a></li>
+    
+      <li><a href="/atom.xml">RSS</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<div class="prev_next clearfix">
+  
+  <a href="/iphone-6-screen/" class="prev" title="iphone6屏幕揭秘">上一篇<span class="xs-hidden">：iphone6屏幕揭秘</span></a>
+  
+  
+  <a href="/es6-class/" class="next" title="ES6 Class一瞥">下一篇<span class="xs-hidden">：ES6 Class一瞥</span></a>
+  
+</div>
+
+<article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-01-21T11:05:40.000Z"><a href="/css-conf/">Jan 21 2015</a></time>
+      
+      
+  
+    <h1 class="title">CSS CONF小记</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>1月10号去北京参加了<a href="http://css.w3ctech.com/" target="_blank" rel="external">CSS CONF</a>中国首届CSS开发者大会，总体感觉还不错。了解了更多关于css未来可能的发展方向，现在的新技术，以及应用情况，不足之处可能是时间安排过于紧张，有些消化不了，以及后期由于时间紧张导致的没有互动和交流环节。</p>
+<p>W3ctech已更新slides资料，见：<a href="http://www.w3ctech.com/topic/733" target="_blank" rel="external">http://www.w3ctech.com/topic/733</a></p>
+<p>下面就挨个讲每个分享我记得的要点、感受及资料分享吧。</p>
+<a id="more"></a>
+<h1 id="Bert-Bos-The-future-of-CSS"><a href="#Bert-Bos-The-future-of-CSS" class="headerlink" title="Bert Bos - The future of CSS"></a>Bert Bos - The future of CSS</h1><blockquote>
+<p>Slides: <a href="http://www.w3.org/Talks/2015/0110-CSS-Beijing/" target="_blank" rel="external">http://www.w3.org/Talks/2015/0110-CSS-Beijing/</a></p>
+</blockquote>
+<p>Bert Bos是CSS的联合创始人，也是重量级人物。这次主要就是介绍了W3C标准的工作流程，以及CSS未来的发展方向。</p>
+<p>题外话：现场邀请了高博老师来翻译，之前w3ctech有个投票说是否需要翻译，80%＋是需要，但是其实现场说的很简单根本不需要翻译嘛（逃</p>
+<h3 id="W3C的文稿状态："><a href="#W3C的文稿状态：" class="headerlink" title="W3C的文稿状态："></a>W3C的文稿状态：</h3><p>WD: working draft草案<br>CR: Candidate Recommendation<br>PR: Proposed Recommendation<br>REC: Recommendation</p>
+<p>这四种是从WD-CR-PR-REC的顺序，所以看到一个标准先看它目前所处的状态，一般越靠后越稳定。REC就是最终定稿了。</p>
+<h3 id="level-NOT-version"><a href="#level-NOT-version" class="headerlink" title="level NOT version"></a>level NOT version</h3><p>扩展：level 3包括level2全部内容。<br>not change, only extent.<br>add new feature, not change existing one.</p>
+<p>1994-1996: 1 spec.<br>1998: 1 spec.<br>1999+: 60 modules, each have independent level.</p>
+<p>1999年之后一个重要的变化就是把整体的一个标准拆分成60个模块，每一个模块都有自己的level，也就是不存在CSS3、CSS4，只有某个处在CSS level 3的模块，或者是CSS level 1的模块。</p>
+<h3 id="where-does-the-w3c-wg-get-ideas"><a href="#where-does-the-w3c-wg-get-ideas" class="headerlink" title="where does the w3c wg get ideas"></a>where does the w3c wg get ideas</h3><ul>
+<li>company: w3c members</li>
+<li>join other group.</li>
+<li><strong>join the w3c email group <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#119;&#x77;&#x77;&#x2d;&#x73;&#116;&#121;&#108;&#101;&#64;&#119;&#51;&#x2e;&#x6f;&#x72;&#x67;">&#119;&#x77;&#x77;&#x2d;&#x73;&#116;&#121;&#108;&#101;&#64;&#119;&#51;&#x2e;&#x6f;&#x72;&#x67;</a></strong></li>
+<li>conferences, personal communication i.e. w3c agenda</li>
+</ul>
+<p>参与W3C的方式：1和2都需要公司层面的参与，3是所有人都可以加入邮件组，也是bert比较推荐的方式。另外中文也有一个邮件组，叫 W3C HTML5 中文興趣小組 <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x70;&#117;&#98;&#x6c;&#105;&#99;&#45;&#x68;&#x74;&#109;&#108;&#x2d;&#105;&#103;&#x2d;&#122;&#x68;&#64;&#119;&#x33;&#x2e;&#x6f;&#x72;&#x67;">&#x70;&#117;&#98;&#x6c;&#105;&#99;&#45;&#x68;&#x74;&#109;&#108;&#x2d;&#105;&#103;&#x2d;&#122;&#x68;&#64;&#119;&#x33;&#x2e;&#x6f;&#x72;&#x67;</a>，有兴趣的同学也欢迎加入。</p>
+<h3 id="development-areas"><a href="#development-areas" class="headerlink" title="development areas"></a>development areas</h3><ul>
+<li>语音识别</li>
+<li>电子书格式标准化 Pager</li>
+<li>GUI layout ( include user interaction)</li>
+<li>Graphics</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>CSS虽然已经18年了但仍然在活跃的开发中，是很有活力的语言</li>
+<li>未来关注ebooks &amp; paper books领域CSS标准的发展</li>
+<li>打印排版的解决方式，尤其是非西方字体的排版，Bert也是呼吁中文开发者们需要加快行动，进行中文排版的优化。</li>
+</ul>
+<h1 id="winter-重识CSS"><a href="#winter-重识CSS" class="headerlink" title="winter 重识CSS"></a>winter 重识CSS</h1><p>计子winter老师用geek的方式去学习css，他觉得学习一个语言有三步：学习语法、学习表达式、如何去用。他期待看到的是一个css的语法的列表，表达式的列表，但现状是这些都是零散的散落在w3c的文档里。于是他拉取了css所有syntax和semantic的Json串……方便有一个整体的认识还有做二次开发。<br>（问了一下寒老师json地址，他说回头会放到github上。到时候再更新。</p>
+<h1 id="点头猪-移动时代CSS对用户体验的影响"><a href="#点头猪-移动时代CSS对用户体验的影响" class="headerlink" title="点头猪 移动时代CSS对用户体验的影响"></a>点头猪 移动时代CSS对用户体验的影响</h1><blockquote>
+<p>Slides: keynote <a href="http://pan.baidu.com/s/1mgA6Unu" target="_blank" rel="external">http://pan.baidu.com/s/1mgA6Unu</a><br>PDF: <a href="http://pan.baidu.com/s/1dDo035n" target="_blank" rel="external">http://pan.baidu.com/s/1dDo035n</a><br>PDF带注释：<a href="http://pan.baidu.com/s/1sjO9Olf" target="_blank" rel="external">http://pan.baidu.com/s/1sjO9Olf</a></p>
+</blockquote>
+<p>CSS女神前携程现平安付的点头猪分享了她的一些思考，台风很赞，有内容有深度思考也有恰到好处的幽默，强烈推荐。等视频出来也不要错过。</p>
+<ul>
+<li>关于交互的很多细节和思考。</li>
+<li>设计师工程师的职责划分。<br>  设计师和工程师不同的角色，以及开发者个人的知识结构的影响。理想状态大概是豆瓣的克军老师提到的“产品工程师”。</li>
+<li>CSS动画性能：招财猫的动画。</li>
+</ul>
+<h1 id="灭灭-豆瓣阅读在-WebFont-上的探索和实践"><a href="#灭灭-豆瓣阅读在-WebFont-上的探索和实践" class="headerlink" title="灭灭 豆瓣阅读在 WebFont 上的探索和实践"></a>灭灭 豆瓣阅读在 WebFont 上的探索和实践</h1><blockquote>
+<p>Slides: <a href="https://speakerdeck.com/houkanshan/web-fonts-at-douban-read" target="_blank" rel="external">https://speakerdeck.com/houkanshan/web-fonts-at-douban-read</a> （需翻墙）</p>
+</blockquote>
+<p>灭灭是豆瓣阅读的前端，关注已久但是一直没见过。据说我在帝都的时候去open party那场他也在，只是当时我不知道。这回也算是终于见面了。</p>
+<p>这场有蛮多干货，对web字体排版有兴趣的强烈推荐去看slides。但是讲的非常非常快，有点跟不上节奏。事后沟通得知是安排时间太紧张了，只有15分钟。很多对于文字处理的细节，非常细致到近乎处女座。下面只是简单记的几个问题，重点还是去看slides，制作也很精致。</p>
+<h3 id="Itatic-Type"><a href="#Itatic-Type" class="headerlink" title="Itatic Type"></a>Itatic Type</h3><p>中文斜体的处理：楷体。</p>
+<p>中英文混排时对italic type的处理，期望的效果：中文楷体，正体。英文斜体。</p>
+<h3 id="bitmap"><a href="#bitmap" class="headerlink" title="bitmap"></a>bitmap</h3><p>unicode-range: 强制对中文使用中文引号。</p>
+<h3 id="Kerning"><a href="#Kerning" class="headerlink" title="Kerning"></a>Kerning</h3><p>OpenType中也用到了kerning，来调整字符间距。</p>
+<h3 id="标点挤压"><a href="#标点挤压" class="headerlink" title="标点挤压"></a>标点挤压</h3><p>制作了一套标点挤压的字体Mojikumi。</p>
+<p>解决方案：<br><strong>自己做字体，选取异常的字符做成字体，并且放在声明的最前面。</strong></p>
+<h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><p>line-height<br>不同字体的base-line位置，ascend height和descend height不同。slides里面有各个系统的这些数据汇总表。</p>
+<h3 id="hint"><a href="#hint" class="headerlink" title="hint"></a>hint</h3><p>webfont替换本地字体 闪动</p>
+<p>webfont无法加载，影响整个页面加载。如google font。<br>解决：检测加载，超时不加载，采用本地字体。</p>
+<p>中文排版优化：<a href="http://css.hanzi.co/" target="_blank" rel="external">漢字標準格式</a></p>
+<h1 id="Jaychsu-Flexbox更优雅的布局"><a href="#Jaychsu-Flexbox更优雅的布局" class="headerlink" title="Jaychsu Flexbox更优雅的布局"></a>Jaychsu Flexbox更优雅的布局</h1><blockquote>
+<p>Slides: <a href="https://gitcafe.com/jaychsu/flex" target="_blank" rel="external">https://gitcafe.com/jaychsu/flex</a></p>
+</blockquote>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>垂直居中的实现：</p>
+<p>1 固定宽高的容器<br>parent:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span><span class="selector-pseudo">:relative</span></div></pre></td></tr></table></figure></p>
+<p>child:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">position:absolute;</div><div class="line">left:50%;</div><div class="line">top:50%;</div><div class="line">margin-left:-width/2;</div><div class="line">margin-top:-height/2;</div></pre></td></tr></table></figure></p>
+<p>2<br>parent:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">text-align</span>: <span class="selector-tag">center</span>;</div></pre></td></tr></table></figure></p>
+<p>child:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>;</div><div class="line"><span class="selector-tag">vertical-align</span><span class="selector-pseudo">:middle</span>;</div></pre></td></tr></table></figure></p>
+<p>3 flexbox<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">display:flexbox;</div><div class="line">justify-content:center; //水平居中</div><div class="line">align-items:center; //垂直居中</div></pre></td></tr></table></figure></p>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p>见<a href="http://caniuse.com/#feat=flexbox" target="_blank" rel="external">caniuse</a><br>兼容性还并不好，安卓4.4+, IE11 目前还无法广泛使用。</p>
+<h3 id="flexbox原理"><a href="#flexbox原理" class="headerlink" title="flexbox原理"></a>flexbox原理</h3><ul>
+<li>flexbox宽度的计算：<br>flex-grow: 没有充满的时候充满宽度<br>flex-shrink: 超过宽度的时候缩小宽度<br>flex-basis:没有flex-grow和flex-shrink时的宽度</li>
+</ul>
+<p>default:<br>flex: 1 0 auto;</p>
+<h1 id="hax（贺师俊）-myth-of-css-frameworks"><a href="#hax（贺师俊）-myth-of-css-frameworks" class="headerlink" title="hax（贺师俊） myth of css frameworks"></a>hax（贺师俊） myth of css frameworks</h1><blockquote>
+<p>Slides: <a href="http://johnhax.net/2015/myth-of-css-frameworks/" target="_blank" rel="external">http://johnhax.net/2015/myth-of-css-frameworks/</a></p>
+</blockquote>
+<p>Hax的主题是对CSS框架的迷(pi)思(pan)，关于各种CSS的组织方式(OOCSS/SMACSS/ACSS/BEM)的思(pi)考(pan)。</p>
+<p>这个问题其实我之前有蛮多思考，CSS本身不难，但涉及到命名、规范、可维护性，就变的复杂起来。Hax看了很多很多相关文章，其中不少我也看过。Hax用了很久来说BEM，OOCSS这些方案的缺陷，和css的初衷背离，得出的结论是semantic（语义化） css是没有意义的，只有semantic html。而这些实践事实上都是在解决一个block/widget/ui components层面的问题，这个问题有很多的方案，hax更认同的是html层面的，比如html5的一些自定义标签，role=”xx”乃至未来的web components。而这个问题在实际中更加复杂，会受到项目历史的代码规范、工期等等的影响，BEM等方案并不能提高可维护性反而可能更差。</p>
+<p>贺老的最终观点就是：<br>There’s no such thing as semantic CSS. There’s only semantic HTML and its visible form.</p>
+<p>我觉得web components自然是很好的，可是目前我们还很不成熟，没办法投入生产，甚至h5的自定义标签使用也需要hack的引入一段js来兼容旧版浏览器。那么对于一个block/widget/ui components，总需要一种方式去解决，虽然bem很丑，但是它也是一种实践中比较有效的解决方案。避免了多层嵌套，实现了复用。至于过长的书写，也都有比较成熟的工具比如html中emmet+bem, css中scss/less+bem都可以大大的简化书写复杂度，实现了一个比较清晰的组件和较好的可维护性，同时并没有增加工作量。</p>
+<p>所以我觉得在新项目中，之前没有代码规范的情况下，还是可以使用这些方式去组织css和html的，只要项目成员达成一致。我觉得可能任何方案都会有问题，重要的是总是要有一种相对统一的规范来解决问题。</p>
+<p>（如有错误欢迎指出，求hax大神轻喷</p>
+<h1 id="一丝-CSS工作流"><a href="#一丝-CSS工作流" class="headerlink" title="一丝 CSS工作流"></a>一丝 CSS工作流</h1><blockquote>
+<p>Slides: <a href="http://yisibl.github.io/share/css-workflow.html" target="_blank" rel="external">http://yisibl.github.io/share/css-workflow.html</a></p>
+</blockquote>
+<p>因为之前一丝姐姐来我们部门分享过类似的内容，这里就主要是复习一下+听段子了。武大头传奇、百家讲坛什么的，简直23333……讲了CSS后处理器的一些原理，虽然我至今也没完全明白postcss和css-preprocessor比如scss/less的区别，我理解的css grace大概就是紧跟W3C标准，如果标准没有实现，那么css grace会给一个hack的实现。虽然在生产中还不打算使用，但是回头打算在demo或个人项目里尝试一下。</p>
+<p>另外还提到了阿里妈妈那边对中文字体的处理 <a href="http://thx.github.io/cube/doc/type/" target="_blank" rel="external">Type.css</a>，也是针对中文做了一些优化。</p>
+<h1 id="尤雨溪-CSS与界面动效"><a href="#尤雨溪-CSS与界面动效" class="headerlink" title="尤雨溪 CSS与界面动效"></a>尤雨溪 CSS与界面动效</h1><blockquote>
+<p>Slides: <a href="http://feppt.qiniudn.com/浅谈CSS与web界面动效开发模式.pdf" target="_blank" rel="external">http://feppt.qiniudn.com/浅谈CSS与web界面动效开发模式.pdf</a></p>
+</blockquote>
+<p>前Google Creative Lab成员，Vue.js作者，尤小右。之前也来我厂做了vuejs的分享，这次的主题是关于界面动效的。有几点印象比较深的。</p>
+<ul>
+<li><p>命令式 vs 声明式<br>命令式：如jQuery<br>声明式：状态和动画分离，易于维护。如Angular/Vue</p>
+</li>
+<li><p>JS vs CSS 动画<br>JS：逐帧渲染<br>CSS: 避免触发reflow，repaint</p>
+</li>
+<li><p>动画 可能的未来：</p>
+<ul>
+<li><a href="http://famo.us/" target="_blank" rel="external">http://famo.us/</a></li>
+<li><a href="https://www.polymer-project.org/platform/web-animations.html" target="_blank" rel="external">web-animations at polymer</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="勾三股四（-勾股）-web-components"><a href="#勾三股四（-勾股）-web-components" class="headerlink" title="勾三股四（@勾股） web components"></a>勾三股四（@勾股） web components</h1><blockquote>
+<p><strong>Slides</strong>: <a href="http://jiongks.name/slides/css-scoping/" target="_blank" rel="external">http://jiongks.name/slides/css-scoping/</a> (勾股：由于本人比较骚包急于秀一下新技术，所以需要支持webcomponents的浏览器才可以正常打开，比如Chrome 36+)<br><strong>Video</strong>: 现场 <a href="http://www.tudou.com/programs/view/8bvwGHaL6T4/" target="_blank" rel="external">http://www.tudou.com/programs/view/8bvwGHaL6T4/</a><br>补充：<a href="http://www.tudou.com/programs/view/dz4aXjDFnLw/" target="_blank" rel="external">http://www.tudou.com/programs/view/dz4aXjDFnLw/</a><br>web components标准的翻译：<a href="http://w3c-html-ig-zh.github.io/webcomponents/" target="_blank" rel="external">http://w3c-html-ig-zh.github.io/webcomponents/</a></p>
+</blockquote>
+<p>勾股上场的时候离整场大会结束只剩20分钟了，于是噼里啪啦飞速的过了一遍还跳过了好多，见现场视频，之后又补录了一个视频把现场略过的章节细讲了一下。讲的很清楚，对web components有兴趣的严重推荐看视频。毕竟这是web可能的未来。</p>
+<h3 id="web-components"><a href="#web-components" class="headerlink" title="web components"></a>web components</h3><ul>
+<li>组件化</li>
+<li>自定义标签</li>
+<li>隐藏内部结构 shadow-dom</li>
+</ul>
+<h1 id="吴小倩-CSS动画性能"><a href="#吴小倩-CSS动画性能" class="headerlink" title="吴小倩 CSS动画性能"></a>吴小倩 CSS动画性能</h1><blockquote>
+<p>Slides: <a href="http://www.w3.org/2015/Talks/0109-CSSConf-xq/" target="_blank" rel="external">http://www.w3.org/2015/Talks/0109-CSSConf-xq/</a></p>
+</blockquote>
+<p>之前都只是在邮件组里或者w3c的skype会议里听到小倩声音（很好听），这次见到真人，也是一个很美的小姑娘。她上场的时候只剩5分钟了几乎没什么时间，于是快速的过了一些CSS动画的demo，对比他们的速度和性能，主要是说做CSS动画的时候要避免repaint和reflow，这两个是比较耗性能的。</p>
+<p>另外小倩还介绍了动画控制相关的新的API，<a href="http://www.w3.org/TR/animation-timing/" target="_blank" rel="external">RequestAnimationFrame</a> &amp; <a href="http://dev.w3.org/csswg/css-will-change/" target="_blank" rel="external">will-change</a>。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/conference/">conference</a>, <a href="/tags/css/">css</a>, <a href="/tags/frontend/">frontend</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<div class="prev_next clearfix">
+  
+  <a href="/iphone-6-screen/" class="prev" title="iphone6屏幕揭秘">上一篇<span class="xs-hidden">：iphone6屏幕揭秘</span></a>
+  
+  
+  <a href="/es6-class/" class="next" title="ES6 Class一瞥">下一篇<span class="xs-hidden">：ES6 Class一瞥</span></a>
+  
+</div>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:code.wileam.com">
+  </form>
+</div>
+
+  
+<div class="widget about_me">
+  <h3 class="title">ABOUT ME</h3>
+  <ul class="entry">
+    
+    <li><img width="150" title="avatar" src="/uploads/avatar.jpg" /></li>
+    
+    
+    <li><a href="/about" target="_BLANK">Joanna Wu(wileam)</a></li>
+    
+    <li>Smile, breathe & go slowly. ^_^</li>
+    
+    <li><br></li>
+    
+    <li><img src="/uploads/email.gif"></li>
+    
+    <ul class="social-icons">
+        <li><a href="https://github.com/wileam/" class="social_github"></a></li>
+        <li><a href="http://www.douban.com/people/wileam/" class="social_douban"></a></li>
+        <li><a href="http://weibo.com/wileam" class="social_weibo"></a></li>
+        <li><a href="http://www.pinterest.com/wileam/" class="social_pintrest"></a></li>
+        <li><a href="https://twitter.com/wileam" class="social_twitter"></a></li>
+        <li><a href="https://www.facebook.com/Joanna.Wu.0326" class="social_facebook"></a></li>
+    </ul>
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+    <h3 class="title">Calendar</h3>
+    <div class="Calendar">
+      <div id="idCalendarPre">&lt;&lt;</div>
+      <div id="idCalendarNext">&gt;&gt;</div>
+      <span id="idCalendarYear">2008</span>年<span id="idCalendarMonth">8</span>月
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <td>日</td>
+            <td>一</td>
+            <td>二</td>
+            <td>三</td>
+            <td>四</td>
+            <td>五</td>
+            <td>六</td>
+          </tr>
+        </thead>
+        <tbody id="idCalendar">
+        </tbody>
+      </table>
+    </div>
+</div>
+<script language="JavaScript">
+var cale = new Calendar("idCalendar", {
+    //howiefh
+    /* SelectDay: new Date().setDate(10), */
+    SelectDay: new Date().setDate(this.Date),
+    onSelectDay: function(o){ o.className = "onSelect"; },
+    //howiefh
+    onToday: function(o){ o.className = "onToday"; },
+    onFinish: function(){
+        //howiefh
+        // $("idCalendarYear").innerHTML = this.Year; $("idCalendarMonth").innerHTML = this.Month;
+        $$("idCalendarYear").innerHTML = "<a href='/" + "archives/" + this.Year + "/'>" + this.Year + " "+ "</a>";
+        if (this.Month < 10) {
+            $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + "0" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
+        } else {
+            $$("idCalendarMonth").innerHTML = "<a href='/" + "archives/" + this.Year + "/" + this.Month + "/'>" + " " + this.Month + " " + "</a>";
+        }
+
+        // var flag = [10,15,20];
+        // for(var i = 0, len = flag.length; i < len; i++){
+            // this.Days[flag[i]].innerHTML = "<a href='javascript:void(0);' onclick=\"alert('日期是:"+this.Year+"/"+this.Month+"/"+flag[i]+"');return false;\">" + flag[i] + "</a>";
+        // }
+
+        
+            var postdate = new Date("Sat Dec 14 2013 12:56:49 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/build-a-hexo-blog-and-optimize/' title='hexo搭建静态博客以及优化'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Thu Aug 13 2015 00:59:42 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/css-conf-shanghai/' title='第二届 CSS CONF 小记'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Wed Jan 21 2015 22:05:40 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/css-conf/' title='CSS CONF小记'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sun Apr 05 2015 22:27:32 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/es6-class/' title='ES6 Class一瞥'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sat Feb 15 2014 17:22:01 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/front-end-interview/' title='一些前端面试题'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sun Sep 14 2014 19:47:52 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/iphone-6-screen/' title='iphone6屏幕揭秘'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sun Dec 22 2013 15:30:17 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/icon-font-intro/' title='Icon Font的好处及应用'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Wed Dec 11 2013 01:12:44 GMT+1100");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/markdown-syntax/' title='markdown语法'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sun Aug 24 2014 01:46:13 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/update-hexo/' title='升级hexo的一些坑'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Fri Jul 22 2016 22:27:32 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/css-beauty/' title='The beauty of CSS (animation)'>" + day + "</a>";
+            }
+    
+            var postdate = new Date("Sat Jul 30 2016 22:27:32 GMT+1000");
+            if (postdate.getFullYear() == this.Year && postdate.getMonth()+1 == this.Month) {
+                var day = postdate.getDate();
+                this.Days[day].innerHTML = "<a href='/default-value-n-params-env/' title='params default value &amp; params environment &amp; TDZ'>" + day + "</a>";
+            }
+    
+
+        //howiefh
+    }
+});
+
+$$("idCalendarPre").onclick = function(){ cale.PreMonth(); }
+$$("idCalendarNext").onclick = function(){ cale.NextMonth(); }
+</SCRIPT>
+
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/frontend/">frontend</a><small>4</small></li>
+  
+    <li><a href="/categories/other/">other</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/career/" style="font-size: 10px;">career</a> <a href="/tags/conference/" style="font-size: 15px;">conference</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/frontend/" style="font-size: 20px;">frontend</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iconfont/" style="font-size: 10px;">iconfont</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/openparty/" style="font-size: 10px;">openparty</a> <a href="/tags/slides/" style="font-size: 10px;">slides</a> <a href="/tags/syntax/" style="font-size: 10px;">syntax</a> <a href="/tags/translate/" style="font-size: 15px;">translate</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts<a href="/archives" class="more-link">More...</a></h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/default-value-n-params-env/">params default value &amp; params environment &amp; TDZ</a>
+      </li>
+    
+      <li>
+        <a href="/css-beauty/">The beauty of CSS (animation)</a>
+      </li>
+    
+      <li>
+        <a href="/css-conf-shanghai/">第二届 CSS CONF 小记</a>
+      </li>
+    
+      <li>
+        <a href="/es6-class/">ES6 Class一瞥</a>
+      </li>
+    
+      <li>
+        <a href="/css-conf/">CSS CONF小记</a>
+      </li>
+    
+      <li>
+        <a href="/iphone-6-screen/">iphone6屏幕揭秘</a>
+      </li>
+    
+      <li>
+        <a href="/update-hexo/">升级hexo的一些坑</a>
+      </li>
+    
+      <li>
+        <a href="/front-end-interview/">一些前端面试题</a>
+      </li>
+    
+      <li>
+        <a href="/icon-font-intro/">Icon Font的好处及应用</a>
+      </li>
+    
+      <li>
+        <a href="/build-a-hexo-blog-and-optimize/">hexo搭建静态博客以及优化</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">Links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://blog.wileam.com" target="_BLANK">Life Blog</a></li>
+    
+    <li><a href="http://popotang.com/" target="_BLANK">popotang</a></li>
+    
+    <li><a href="http://jimliu.net/" target="_BLANK">Jim-Liu&#39;s blog</a></li>
+    
+    <li><a href="http://icyleaf.com/" target="_BLANK">icyleaf&#39;s blog</a></li>
+    
+    <li><a href="http://twinsant.com/" target="_BLANK">twinsant</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 Joanna Wu
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'wileamcode';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div style="display:none;">
+  <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fad3506c5d867c96497be564bf746cab8' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+
+</div>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41676519-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+  ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>
