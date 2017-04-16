@@ -6,7 +6,7 @@ tags:
 - slides
 ---
 
-去 Google Women Techmaker 做了一个小分享，关于一些趣味的动效的。
+去 Women Techmaker - GDG Shanghai 做了一个小分享，关于 CSS 的一些趣味动效的。
 
 Slides 在这里：
 
