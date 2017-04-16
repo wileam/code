@@ -11,8 +11,6 @@ Contact:
 
 Geek, coder, front-end developer.
 
-Based in Hangzhou, China.
-
 Enjoy coding, playing chess, soduko, rubik's cube...etc
 
 Enjoy reading, writing, travelling...etc

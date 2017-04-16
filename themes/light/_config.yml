@@ -12,7 +12,6 @@ widgets:
 - tagcloud
 - recent_posts
 - links
-- duoshuo_recent_comments
 
 highlightjs: monokai_sublime
 
@@ -46,8 +45,6 @@ links:
   link: http://icyleaf.com/
 - name: twinsant
   link: http://twinsant.com/
-
-duoshuo: wileamcode
 
 about_me:
   title: ABOUT ME
